@@ -49,7 +49,7 @@ const ContactPage: React.FC = () => {
             {/* Updated border radius to 0.7rem */}
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
               <img 
-                src="https://images.unsplash.com/photo-1600880210830-804791557929?q=80&w=2940&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1643391448862-881a06885f90?q=80&w=3054&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                 alt="Corporate Discussion" 
                 className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
               />
@@ -137,7 +137,7 @@ const ContactPage: React.FC = () => {
             >
                <div className="absolute inset-0">
                  <img 
-                   src="https://images.unsplash.com/photo-1542601906990-b4d3fb7d5c73?q=80&w=2874&auto=format&fit=crop" 
+                   src="https://images.unsplash.com/photo-1653339403801-db80aba42935?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                    alt="Lagos Office Location" 
                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
                  />
@@ -267,7 +267,7 @@ const ContactPage: React.FC = () => {
               className="relative h-full min-h-[400px] lg:min-h-full rounded-[0.7rem] overflow-hidden shadow-inner bg-gray-200 border border-white"
             >
                <img 
-                 src="https://images.unsplash.com/photo-1542601906990-b4d3fb7d5c73?q=80&w=2874&auto=format&fit=crop" 
+                 src="https://images.unsplash.com/photo-1617505907947-9cb31eb80183?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                  alt="Operational Hub Location" 
                  className="w-full h-full object-cover grayscale transition-all duration-1000"
                />
