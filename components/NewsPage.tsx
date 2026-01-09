@@ -77,7 +77,7 @@ const ARTICLES = [
     title: "AgAsset Co Secures New Series B",
     excerpt: "Consolidating our position as the continent's primary productive infrastructure vehicle.",
     date: "March 15, 2025",
-    image: "https://images.unsplash.com/photo-1625246333195-58197bd47f3b?q=80&w=2940&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1633158829875-e5316a358c6f?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     badgeColor: "bg-teal-100 text-teal-700"
   },
   {
@@ -86,7 +86,7 @@ const ARTICLES = [
     title: "500 Assets Successfully Deployed",
     excerpt: "A historic day as we cross the 1 million swap threshold network-wide.",
     date: "February 28, 2025",
-    image: "https://images.unsplash.com/photo-1600863073007-4228c2c842b0?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1743742566156-f1745850281a?q=80&w=3025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     badgeColor: "bg-yellow-100 text-yellow-700"
   }
 ];
