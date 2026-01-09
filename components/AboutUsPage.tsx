@@ -361,7 +361,7 @@ const AboutUsPage: React.FC = () => {
             >
                <div className="absolute inset-0">
                  <img 
-                   src="https://images.unsplash.com/photo-1542601906990-b4d3fb7d5c73?q=80&w=2874&auto=format&fit=crop" 
+                   src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                    alt="Productive Future" 
                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
                  />

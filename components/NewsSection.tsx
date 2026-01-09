@@ -14,7 +14,7 @@ const articles = [
     title: "Financing the Solar Transition",
     date: "March 12, 2025",
     excerpt: "How lease-to-own models are unlocking potential in rural Nigeria. We explore the financial structures that allow smallholder farmers to bypass the massive upfront costs of solar equipment.",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5c73?q=80&w=2874&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1589201529153-5297335c1684?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 2,

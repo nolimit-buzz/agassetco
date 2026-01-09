@@ -14,9 +14,9 @@ const projects = [
     tags: ["Solar Milling", "PUE"],
     description: "A flagship deployment integrating 200kW solar capacity with industrial-grade rice hulling machinery. This project stabilizes the mini-grid by acting as a reliable anchor tenant while boosting local processing capacity by over 300%.",
     images: [
-      "https://images.unsplash.com/photo-1600863073007-4228c2c842b0?q=80&w=2070&auto=format&fit=crop", // Rice/Grain
-      "https://images.unsplash.com/photo-1625246333195-58197bd47f3b?q=80&w=2940&auto=format&fit=crop", // Farming
-      "https://images.unsplash.com/photo-1595838788863-29a377d0a7d5?q=80&w=2874&auto=format&fit=crop"  // Processing
+      "https://images.unsplash.com/photo-1706770290344-b4a1ba7fc6b3?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1763800758293-40b0658f2141?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1686820740687-426a7b9b2043?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ]
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     images: [
       "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2874&auto=format&fit=crop", // Produce
       "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2942&auto=format&fit=crop", // Farming 2
-      "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e10?q=80&w=2071&auto=format&fit=crop"  // Warehouse
+      "https://images.unsplash.com/photo-1763716231971-8c0acd41baa5?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  // Warehouse
     ]
   },
   {

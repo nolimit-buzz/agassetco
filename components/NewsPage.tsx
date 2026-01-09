@@ -13,7 +13,7 @@ const FEATURED_SLIDES = [
     title: "Reducing post-harvest losses by 40% through localized preservation.",
     category: "CASE STUDY",
     date: "Feb 28, 2025",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5c73?q=80&w=2874&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1763252453830-3f5c06f97e68?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     excerpt: "Our latest case study in Kaduna demonstrates how temperature-controlled logistics transforms vegetable value chains."
   },
   {
@@ -41,7 +41,7 @@ const ARTICLES = [
     title: "Introducing the TANKVOLT T22-Pro",
     excerpt: "The next evolution in heavy-duty electric logistics assets, capable of bridging peak gaps.",
     date: "June 15, 2025",
-    image: "https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?q=80&w=2787&auto=format&fit=crop",
+    image: "/tankvolt.jpeg",
     badgeColor: "bg-purple-100 text-purple-700"
   },
   {
