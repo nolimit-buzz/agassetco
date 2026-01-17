@@ -125,7 +125,7 @@ const AboutSlider: React.FC = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
-                                className="text-[2.25rem] font-medium tracking-tight text-white"
+                                className="text-4xl font-medium tracking-tight text-white"
                             >
                                 {slides[currentSlide].title}
                             </motion.h3>

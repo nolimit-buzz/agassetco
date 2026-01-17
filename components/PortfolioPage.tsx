@@ -123,14 +123,14 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
         >
           {/* META HEADER: Repositioned breadcrumbs matching News page style */}
           <motion.div variants={fadeInUp} className="flex flex-row items-center justify-between mb-12 border-b border-gray-100 pb-8">
-            <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
               <Home className="w-2.5 h-2.5" />
               <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => onNavigate?.('home')}>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
               <span className="text-ag-green-950">Portfolio</span>
             </div>
             
-            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-ag-green-950">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
               01 Track Record & Projects — 2025
             </div>
           </motion.div>
@@ -166,7 +166,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                   ].map((stat, i) => (
                     <div key={i} className="flex flex-col">
                        <span className="text-2xl md:text-3xl font-bold text-ag-green-950">{stat.val}</span>
-                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{stat.label}</span>
+                       <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{stat.label}</span>
                     </div>
                   ))}
                </div>
@@ -186,7 +186,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
             <div className="lg:col-span-7 lg:text-right">
               <motion.h1 
                 variants={fadeInUp}
-                className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
                 REAL ASSETS. <br/>
                 <span className="text-ag-lime">REAL IMPACT.</span>
@@ -213,14 +213,14 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
             <div className="flex items-center gap-2 bg-gray-50 p-1.5 rounded-full border border-gray-100 self-start md:self-auto md:mb-24">
               <button 
                 onClick={() => setViewMode('grid')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${viewMode === 'grid' ? 'bg-ag-green-950 text-white shadow-lg' : 'text-gray-400 hover:text-ag-green-950'}`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${viewMode === 'grid' ? 'bg-ag-green-950 text-white shadow-lg' : 'text-gray-400 hover:text-ag-green-950'}`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
                 Option A
               </button>
               <button 
                 onClick={() => setViewMode('accordion')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${viewMode === 'accordion' ? 'bg-ag-green-950 text-white shadow-lg' : 'text-gray-400 hover:text-ag-green-950'}`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${viewMode === 'accordion' ? 'bg-ag-green-950 text-white shadow-lg' : 'text-gray-400 hover:text-ag-green-950'}`}
               >
                 <Rows className="w-3.5 h-3.5" />
                 Option B
@@ -233,7 +233,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                <button 
                  key={cat}
                  onClick={() => setActiveTab(cat)}
-                 className={`px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 border ${
+                 className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 border ${
                    activeTab === cat 
                      ? 'bg-ag-green-950 text-white border-ag-green-950 shadow-xl' 
                      : 'bg-white text-gray-400 border-gray-100 hover:border-ag-lime/50'
@@ -265,27 +265,27 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                     <div className="aspect-[4/3] overflow-hidden relative">
                        <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                        <div className="absolute top-4 left-4 flex gap-2">
-                          <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest text-ag-green-950">{project.type}</span>
-                          <span className="bg-ag-lime px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest text-white shadow-sm">{project.status}</span>
+                          <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-ag-green-950">{project.type}</span>
+                          <span className="bg-ag-lime px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-white shadow-sm">{project.status}</span>
                        </div>
                     </div>
                     <div className="p-8">
-                       <span className="text-[10px] font-bold text-ag-lime uppercase tracking-widest block mb-2">{project.category}</span>
+                       <span className="text-xs font-bold text-ag-lime uppercase tracking-widest block mb-2">{project.category}</span>
                        <h3 className="text-2xl font-bold text-ag-green-950 mb-6 leading-tight">{project.title}</h3>
                        
                        <div className="space-y-4 mb-8">
                           <div>
-                             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">The Problem</p>
+                             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">The Problem</p>
                              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">{project.problem}</p>
                           </div>
                           <div>
-                             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">The Solution</p>
+                             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">The Solution</p>
                              <p className="text-sm text-ag-green-950 font-medium leading-relaxed line-clamp-2">{project.solution}</p>
                           </div>
                        </div>
 
                        <div className="pt-6 border-t border-gray-100">
-                          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Key Impact Metrics</p>
+                          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Key Impact Metrics</p>
                           <ul className="space-y-2">
                              {project.impact.slice(0, 2).map((imp, idx) => (
                                <li key={idx} className="flex items-center gap-3 text-sm font-bold text-ag-green-950">
@@ -387,7 +387,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                className="bg-ag-green-950 rounded-[0.7rem] p-8 flex flex-col justify-between relative group hover:shadow-2xl hover:shadow-ag-green-900/20 transition-all duration-300 transform hover:-translate-y-1"
              >
                 <div className="flex justify-between items-start">
-                  <span className="text-white/70 text-[10px] font-bold uppercase tracking-widest">Financial Performance</span>
+                  <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Financial Performance</span>
                   <motion.div 
                     animate={{ rotate: [0, 5, -5, 0] }}
                     transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
@@ -429,7 +429,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                   </motion.div>
                 </div>
                 <div className="relative z-10">
-                   <div className="text-white/70 text-[10px] font-bold uppercase tracking-widest mb-2">Operational Health</div>
+                   <div className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Operational Health</div>
                   <h3 className="text-3xl text-white font-medium mb-3">99.2% Uptime</h3>
                   <p className="text-white/80 leading-relaxed font-light text-sm max-w-[95%]">
                     Real-time telemetry prevents breakdowns before they occur, protecting productive hours.
@@ -443,7 +443,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                className="bg-[#F3F4F6] rounded-[0.7rem] p-8 flex flex-col justify-between group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
              >
                 <div className="flex justify-between items-start mb-4">
-                  <span className="text-ag-green-950/60 text-[10px] font-bold uppercase tracking-widest">Environmental Return</span>
+                  <span className="text-ag-green-950/60 text-xs font-bold uppercase tracking-widest">Environmental Return</span>
                   <motion.div 
                     whileHover={{ rotate: 180 }}
                     transition={{ duration: 0.6 }}
@@ -461,7 +461,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                   </div>
                   <div className="flex flex-wrap gap-2">
                      {["#ESG", "#CARBON", "#SOLAR"].map((tag) => (
-                       <span key={tag} className="px-4 py-2 text-[10px] font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
+                       <span key={tag} className="px-4 py-2 text-xs font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
                          {tag}
                        </span>
                      ))}
@@ -482,7 +482,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <div>
-               <motion.h2 variants={fadeInUp} className="text-[3.5rem] md:text-[5rem] leading-[1.05] font-bold text-white tracking-tighter mb-10">
+               <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
                  Have a <br /> Project in <br /> <span className="text-ag-lime">Mind?</span>
                </motion.h2>
                <motion.p variants={fadeInUp} className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
@@ -501,7 +501,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                    <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-[#051b11] text-white p-1 pr-1 rounded-full hover:bg-ag-lime transition-all duration-500 shadow-xl">
                       <div className="flex items-center gap-4 pl-8">
                          <MapPin className="w-5 h-5 text-ag-lime group-hover:text-white transition-colors" />
-                         <span className="font-bold text-[10px] tracking-[0.2em] uppercase">Submit a Project Site</span>
+                         <span className="font-bold text-xs tracking-[0.2em] uppercase">Submit a Project Site</span>
                       </div>
                       <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
                          <ChevronRight className="w-5 h-5" />
@@ -511,7 +511,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                    <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-gray-50 border border-gray-100 text-ag-green-950 p-1 pr-1 rounded-full hover:bg-ag-green-950 hover:text-white transition-all duration-500">
                       <div className="flex items-center gap-4 pl-8">
                          <Download className="w-5 h-5 text-ag-lime" />
-                         <span className="font-bold text-[10px] tracking-[0.2em] uppercase">Download Impact Report</span>
+                         <span className="font-bold text-xs tracking-[0.2em] uppercase">Download Impact Report</span>
                       </div>
                       <div className="w-14 h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
                          <ChevronRight className="w-5 h-5" />
@@ -520,7 +520,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-gray-100 text-center">
-                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
                       Interested in co-investment? <a href="#" className="text-ag-lime hover:underline underline-offset-4 ml-1">Contact CIO</a>
                    </p>
                 </div>
@@ -554,7 +554,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
         className="w-full py-8 md:py-10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-left hover:bg-gray-50 transition-colors duration-300 px-4 rounded-[0.7rem] my-2"
       >
         <div className="flex items-baseline gap-6 md:gap-12">
-          <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest hidden md:block">
+          <span className="text-xs font-bold text-gray-300 uppercase tracking-widest hidden md:block">
             / {project.id}
           </span>
           <h3 className={`text-2xl md:text-4xl font-medium tracking-tight transition-colors duration-300 ${isOpen ? 'text-ag-lime' : 'text-ag-green-950 group-hover:text-ag-green-700'}`}>
@@ -570,10 +570,10 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
           </div>
           
           <div className="flex gap-2">
-            <span className="px-3 py-1 bg-ag-green-950 text-white text-[9px] font-bold uppercase tracking-widest rounded-full">
+            <span className="px-3 py-1 bg-ag-green-950 text-white text-xs font-bold uppercase tracking-widest rounded-full">
               {project.category}
             </span>
-            <span className="px-3 py-1 border border-ag-green-950/10 text-ag-green-950 text-[9px] font-bold uppercase tracking-widest rounded-full">
+            <span className="px-3 py-1 border border-ag-green-950/10 text-ag-green-950 text-xs font-bold uppercase tracking-widest rounded-full">
               {project.type}
             </span>
           </div>
@@ -637,7 +637,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                            key={tab.id}
                            onMouseEnter={() => setActiveDetailTab(tab.id as any)}
                            onClick={() => setActiveDetailTab(tab.id as any)}
-                           className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 relative text-left py-2 ${
+                           className={`text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 relative text-left py-2 ${
                              activeDetailTab === tab.id ? 'text-ag-lime' : 'text-gray-400 hover:text-ag-green-950'
                            }`}
                          >
@@ -653,24 +653,24 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                       <AnimatePresence mode="wait">
                         {activeDetailTab === 'problem' && (
                           <motion.div key="p" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.3 }}>
-                             <span className="text-[9px] font-bold text-gray-300 uppercase tracking-widest block mb-4">Challenge Analysis</span>
-                             <p className="text-[1.125rem] text-gray-500 font-normal leading-relaxed">{project.problem}</p>
+                             <span className="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-4">Challenge Analysis</span>
+                             <p className="text-lg text-gray-500 font-normal leading-relaxed">{project.problem}</p>
                           </motion.div>
                         )}
                         {activeDetailTab === 'solution' && (
                           <motion.div key="s" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.3 }}>
-                             <span className="text-[9px] font-bold text-gray-300 uppercase tracking-widest block mb-4">Strategic Intervention</span>
-                             <p className="text-[1.125rem] text-gray-500 font-normal leading-relaxed">{project.solution}</p>
+                             <span className="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-4">Strategic Intervention</span>
+                             <p className="text-lg text-gray-500 font-normal leading-relaxed">{project.solution}</p>
                           </motion.div>
                         )}
                         {activeDetailTab === 'impact' && (
                           <motion.div key="i" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.3 }}>
-                             <span className="text-[9px] font-bold text-gray-300 uppercase tracking-widest block mb-4">Performance Metrics</span>
+                             <span className="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-4">Performance Metrics</span>
                              <ul className="space-y-4">
                                 {project.impact.map((metric, i) => (
                                   <li key={i} className="flex items-center gap-3">
                                     <div className="w-1.5 h-1.5 rounded-full bg-ag-lime" />
-                                    <span className="text-[1.125rem] text-gray-500 font-normal">{metric}</span>
+                                    <span className="text-lg text-gray-500 font-normal">{metric}</span>
                                   </li>
                                 ))}
                              </ul>
@@ -719,7 +719,7 @@ const Tooltip: React.FC<{ label: string; children: React.ReactNode }> = ({ label
             initial={{ opacity: 0, y: 5, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.9 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-ag-green-950 text-white text-[9px] font-bold uppercase tracking-widest rounded-lg shadow-xl whitespace-nowrap z-50 pointer-events-none"
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-ag-green-950 text-white text-xs font-bold uppercase tracking-widest rounded-lg shadow-xl whitespace-nowrap z-50 pointer-events-none"
           >
             {label}
             <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-ag-green-950" />

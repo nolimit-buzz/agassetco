@@ -122,7 +122,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
         >
           {/* Metadata & Breadcrumbs Header */}
           <motion.div variants={fadeInUp} className="flex flex-row items-center justify-between mb-12 border-b border-gray-100 pb-8">
-            <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
               <Home className="w-2.5 h-2.5" />
               <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => onNavigate?.('home')}>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
@@ -131,7 +131,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
               <span className="text-ag-green-950">News</span>
             </div>
             
-            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-ag-green-950">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
               06 Articles & Insights — 2025
             </div>
           </motion.div>
@@ -169,7 +169,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
           <motion.div variants={fadeInUp} className="w-full">
             <div className="flex justify-between items-center border-b border-ag-green-950 pb-4 mb-8">
               <h3 className="text-sm font-bold text-ag-green-950 uppercase tracking-[0.3em]">Featured Insights</h3>
-              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest cursor-default select-none">[ Active Slider ]</span>
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest cursor-default select-none">[ Active Slider ]</span>
             </div>
             
             <div className="flex flex-col">
@@ -184,9 +184,9 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                     <span className={`text-xs font-bold font-mono transition-colors ${currentSlide === i ? 'text-ag-lime' : 'text-gray-300'}`}>0{i+1}</span>
                     <div className="flex flex-col gap-1 max-w-3xl">
                        <div className="flex items-center gap-3 mb-1">
-                          <span className={`text-[9px] font-bold uppercase tracking-widest ${currentSlide === i ? 'text-ag-lime' : 'text-gray-400'}`}>{slide.category}</span>
+                          <span className={`text-xs font-bold uppercase tracking-widest ${currentSlide === i ? 'text-ag-lime' : 'text-gray-400'}`}>{slide.category}</span>
                           <span className="w-1 h-1 bg-gray-200 rounded-full" />
-                          <span className="text-[9px] font-bold text-gray-300 uppercase tracking-widest">{slide.date}</span>
+                          <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">{slide.date}</span>
                        </div>
                        <h4 className={`text-xl md:text-3xl font-bold tracking-tight transition-all duration-300 ${currentSlide === i ? 'text-ag-green-950 translate-x-2' : 'text-gray-400 group-hover:text-ag-green-950'}`}>
                         {slide.title}
@@ -195,7 +195,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                   </div>
                   
                   <div className={`flex items-center gap-4 transition-all duration-500 ${currentSlide === i ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-ag-lime">READ</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-ag-lime">READ</span>
                     <div className="w-10 h-10 rounded-full bg-ag-lime flex items-center justify-center text-white shadow-lg shadow-ag-lime/20">
                       <ArrowRight className="w-4 h-4" />
                     </div>
@@ -217,14 +217,14 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
           
           <div className="flex items-center gap-8">
             <div className="relative group">
-              <button className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-gray-200 text-[11px] font-bold uppercase tracking-widest text-ag-green-950 hover:border-ag-lime transition-all shadow-sm">
+              <button className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-gray-200 text-sm font-bold uppercase tracking-widest text-ag-green-950 hover:border-ag-lime transition-all shadow-sm">
                 <Filter className="w-3.5 h-3.5" />
                 Filter
                 <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
               </button>
             </div>
             
-            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] border-l border-gray-200 pl-8">
+            <div className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] border-l border-gray-200 pl-8">
               Showing 6 of 27
             </div>
           </div>
@@ -254,7 +254,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                 {/* Immersive Text Overlays */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
                   <div className="flex justify-between items-start">
-                    <span className="text-white/70 text-[10px] font-bold uppercase tracking-widest">{article.category}</span>
+                    <span className="text-white/70 text-xs font-bold uppercase tracking-widest">{article.category}</span>
                     <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-md">
                       <Bookmark className="text-white w-4 h-4 stroke-[1.5]" />
                     </div>
@@ -276,7 +276,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                    <img src={article.image} alt={article.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
                 <div className="p-8 flex flex-col flex-1">
-                   <div className="flex items-center gap-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">
+                   <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
                      <Calendar className="w-3.5 h-3.5" />
                      {article.date}
                    </div>
@@ -287,7 +287,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                      {article.excerpt}
                    </p>
                    <div className="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
-                     <span className="text-[10px] font-bold uppercase tracking-widest text-ag-lime">Read Insights</span>
+                     <span className="text-xs font-bold uppercase tracking-widest text-ag-lime">Read Insights</span>
                      <ArrowRight className="w-4 h-4 text-ag-lime" />
                    </div>
                 </div>
@@ -298,7 +298,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
 
         {/* Load More */}
         <div className="mt-20 flex justify-center">
-           <button className="group flex items-center gap-4 bg-white border border-gray-200 px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-ag-green-950 hover:bg-ag-green-950 hover:text-white transition-all duration-500 shadow-sm">
+           <button className="group flex items-center gap-4 bg-white border border-gray-200 px-10 py-5 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-ag-green-950 hover:bg-ag-green-950 hover:text-white transition-all duration-500 shadow-sm">
              View All Insights
              <div className="w-6 h-6 bg-ag-lime rounded-full flex items-center justify-center transition-transform group-hover:rotate-45">
                 <Plus className="w-3 h-3 text-white" />
@@ -319,7 +319,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
           <div className="relative z-10 max-w-xl">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="text-ag-lime w-6 h-6" />
-              <span className="text-ag-lime text-[10px] font-bold uppercase tracking-[0.3em]">Stay Informed</span>
+              <span className="text-ag-lime text-xs font-bold uppercase tracking-[0.3em]">Stay Informed</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-6 leading-tight">
               Get the latest PUE <br/> insights delivered.

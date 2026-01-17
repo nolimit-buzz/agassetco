@@ -88,7 +88,7 @@ const Solutions: React.FC = () => {
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
-               className="text-5xl md:text-6xl lg:text-[4.5rem] font-medium leading-[1.05] tracking-tight text-ag-green-950"
+               className="text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tight text-ag-green-950"
              >
                Integrated systems for <br/> <span className="text-ag-lime">rural prosperity.</span>
              </motion.h2>
@@ -155,7 +155,7 @@ const Solutions: React.FC = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute top-4 left-4">
-                       <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-ag-green-950">
+                       <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-ag-green-950">
                           {currentSolution.subtitle}
                        </span>
                     </div>

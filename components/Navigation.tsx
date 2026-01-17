@@ -90,7 +90,7 @@ const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage = 'home
                       key={link.id}
                       href="#"
                       onClick={(e) => handleLinkClick(e, link.id as any)}
-                      className={`text-sm font-medium relative group transition-all duration-300 ${
+                      className={`text-lg font-medium relative group transition-all duration-300 ${
                         currentPage === link.id 
                           ? 'text-ag-lime' 
                           : (isLightMode ? 'text-gray-600 hover:text-ag-green-950' : 'text-white hover:text-ag-lime')
@@ -106,7 +106,7 @@ const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage = 'home
             <div className="hidden md:block shrink-0 relative z-50">
               <button 
                 onClick={(e) => handleLinkClick(e, 'contact')}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wide uppercase shadow-lg transition-all duration-500 hover:scale-105 ${
+                className={`px-6 py-2.5 rounded-full text-base font-bold tracking-wide uppercase shadow-lg transition-all duration-500 hover:scale-105 ${
                   isLightMode
                     ? 'bg-ag-green-950 text-white shadow-ag-green-950/20' 
                     : 'bg-white text-ag-green-950 shadow-white/10'

@@ -146,7 +146,7 @@ const HubAndSolutions: React.FC = () => {
                 {/* Central Core */}
                 <div className="absolute z-20 w-40 h-40 rounded-full bg-ag-green-950 border border-white/10 shadow-[0_0_60px_rgba(120,188,66,0.1)] flex flex-col items-center justify-center text-center p-4 backdrop-blur-sm">
                     <div className="text-white font-bold text-xl tracking-tight">AgAsset</div>
-                    <div className="text-[10px] text-ag-lime uppercase tracking-widest mt-1">Central Hub</div>
+                    <div className="text-xs text-ag-lime uppercase tracking-widest mt-1">Central Hub</div>
                 </div>
 
                 {/* Spokes */}
@@ -216,7 +216,7 @@ const HubAndSolutions: React.FC = () => {
                                     <div className="grow flex flex-col justify-center">
                                         <motion.span 
                                             layout="position"
-                                            className={`text-[10px] font-bold uppercase tracking-widest mb-1 transition-colors duration-300 ${isActive ? 'text-ag-lime' : 'text-white/40'}`}
+                                            className={`text-xs font-bold uppercase tracking-widest mb-1 transition-colors duration-300 ${isActive ? 'text-ag-lime' : 'text-white/40'}`}
                                         >
                                             {solution.subtitle}
                                         </motion.span>

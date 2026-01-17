@@ -81,7 +81,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
         >
           {/* META HEADER: Matching News/Portfolio Style */}
           <motion.div variants={fadeInUp} className="flex flex-row items-center justify-between mb-12 border-b border-gray-100 pb-8">
-            <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
               <Home className="w-2.5 h-2.5" />
               <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => onNavigate?.('home')}>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
@@ -90,7 +90,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               <span className="text-ag-green-950">Privacy Policy</span>
             </div>
             
-            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-ag-green-950">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
               Data Privacy & Security Standard — v2.1
             </div>
           </motion.div>
@@ -110,11 +110,11 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
                 </motion.p>
                 <motion.div variants={fadeInUp} className="flex gap-8">
                   <div className="flex flex-col gap-1">
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">Last Updated</p>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-none">Last Updated</p>
                     <p className="text-sm font-bold text-ag-green-950">February 15, 2025</p>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">Regulatory</p>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-none">Regulatory</p>
                     <p className="text-sm font-bold text-ag-green-950">NDPR / GDPR Compliant</p>
                   </div>
                 </motion.div>
@@ -123,7 +123,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               <div className="lg:col-span-7 lg:text-right">
                 <motion.h1 
                   variants={fadeInUp}
-                  className="text-6xl md:text-8xl lg:text-[7.5rem] font-bold text-ag-green-950 leading-[0.9] tracking-tighter"
+                  className="text-6xl md:text-8xl lg:text-9xl font-bold text-ag-green-950 leading-[0.9] tracking-tighter"
                 >
                   PRIVACY <br/>
                   <span className="text-ag-lime">POLICY.</span>
@@ -140,7 +140,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
           
           {/* STICKY SIDEBAR */}
           <aside className="lg:col-span-3 hidden lg:block sticky top-32 pb-20 self-start">
-            <div className="text-[11px] font-bold uppercase tracking-[0.25em] text-gray-400 border-b border-gray-100 pb-8 mb-10">
+            <div className="text-sm font-bold uppercase tracking-[0.25em] text-gray-400 border-b border-gray-100 pb-8 mb-10">
               Table of Contents
             </div>
             
@@ -161,7 +161,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
                       isActive ? 'bg-ag-lime scale-100' : 'bg-transparent scale-0'
                     }`} />
                     
-                    <span className={`text-[11px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-40'}`}>
+                    <span className={`text-sm transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-40'}`}>
                       {section.num}
                     </span>
                     <span className="relative pb-1">
@@ -180,14 +180,14 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
             </nav>
 
             <div className="mt-20 p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100">
-              <p className="text-[10px] font-bold text-ag-green-950 uppercase tracking-[0.2em] mb-4">Privacy Officer</p>
+              <p className="text-xs font-bold text-ag-green-950 uppercase tracking-[0.2em] mb-4">Privacy Officer</p>
               <p className="text-xs text-gray-500 font-light leading-relaxed mb-10">
                 Questions about your data? Our dedicated privacy team is available for clarification.
               </p>
               <a 
                 href="#" 
                 onClick={(e) => { e.preventDefault(); onNavigate?.('contact'); }} 
-                className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.25em] hover:text-ag-green-950 transition-colors"
+                className="text-xs font-bold text-ag-lime uppercase tracking-[0.25em] hover:text-ag-green-950 transition-colors"
               >
                 Data Inquiry
               </a>
@@ -201,7 +201,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               {/* SECTION 01: COLLECTION */}
               <article id="collection" className="scroll-mt-32">
                 <div className="border-t border-ag-green-950 pt-8 mb-12">
-                  <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-12">
+                  <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-12">
                     <div className="flex items-center gap-4">
                       <span className="text-ag-green-950">01</span>
                       <span className="w-8 h-px bg-gray-100"></span>
@@ -228,7 +228,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               {/* SECTION 02: PROCESSING */}
               <article id="processing" className="scroll-mt-32">
                 <div className="border-t border-ag-green-950 pt-8 mb-12">
-                  <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-12">
+                  <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-12">
                     <div className="flex items-center gap-4">
                       <span className="text-ag-green-950">02</span>
                       <span className="w-8 h-px bg-gray-100"></span>
@@ -262,7 +262,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               {/* SECTION 03: IOT & TELEMETRY */}
               <article id="iot" className="scroll-mt-32">
                 <div className="border-t border-ag-green-950 pt-8 mb-12">
-                  <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-12">
+                  <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-12">
                     <div className="flex items-center gap-4">
                       <span className="text-ag-green-950">03</span>
                       <span className="w-8 h-px bg-gray-100"></span>
@@ -297,7 +297,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               {/* SECTION 04: SHARING */}
               <article id="sharing" className="scroll-mt-32">
                 <div className="border-t border-ag-green-950 pt-8 mb-12">
-                  <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-12">
+                  <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-12">
                     <div className="flex items-center gap-4">
                       <span className="text-ag-green-950">04</span>
                       <span className="w-8 h-px bg-gray-100"></span>
@@ -325,7 +325,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               {/* SECTION 05: RIGHTS */}
               <article id="rights" className="scroll-mt-32">
                 <div className="border-t border-ag-green-950 pt-8 mb-12">
-                  <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-12">
+                  <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-12">
                     <div className="flex items-center gap-4">
                       <span className="text-ag-green-950">05</span>
                       <span className="w-8 h-px bg-gray-100"></span>

@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  /* ag-green color palette */
+  --color-ag-green-950: #051b11;
+  --color-ag-green-900: #0a2e20;
+  --color-ag-green-800: #0F5132;
+  --color-ag-green-700: #166e45;
+  --color-ag-green-100: #d1fae5;
+  
+  /* ag-lime color palette */
+  --color-ag-lime: #78BC42;
+  --color-ag-lime-hover: #65a336;
+  --color-ag-lime-light: #bef264;
+
+  /* Container sizes */
+  --container-3xs: 17rem;
+  --container-2xs: 19rem;
+  --container-xs: 21rem;
+  --container-sm: 25rem;
+  --container-md: 32rem;
+  --container-lg: 36rem;
+  --container-xl: 40rem;
+  --container-2xl: 40rem;
+  --container-3xl: 44rem;
+  --container-4xl: 46rem;
+  --container-5xl: 55rem;
+  --container-6xl: 68rem;
+  --container-7xl: 74rem;
+
+  /* Text sizes */
+  --text-xs: 0.624rem;
+  --text-xs--line-height: calc(1 / 0.68);
+  --text-sm: 0.625rem;
+  --text-sm--line-height: calc(1.25 / 0.875);
+  --text-base: 0.75rem;
+  --text-base--line-height: calc(1.5 / 1);
+  --text-lg: 0.875rem;
+  --text-lg--line-height: calc(1.75 / 1.125);
+  --text-xl: 1rem;
+  --text-xl--line-height: calc(1.75 / 1.25);
+  --text-2xl: 1.125rem;
+  --text-2xl--line-height: calc(2 / 1.5);
+  --text-3xl: 1.8rem;
+  --text-3xl--line-height: calc(2.25 / 1.875);
+  --text-4xl: 1.5rem;
+  --text-4xl--line-height: calc(2.75 / 2.5);
+  --text-5xl: 3.15rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.36rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 4.32rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 4.8125rem;
+  --text-8xl--line-height: 1;
+  --text-9xl: 6.125rem;
+  --text-9xl--line-height: 1;
+}
+
+/* Ensure Outfit font is applied globally */
+body {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Custom scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #051b11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0F5132;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #78BC42;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  color: transparent;
+}
+

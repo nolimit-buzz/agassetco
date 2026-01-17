@@ -60,7 +60,7 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-[3rem] md:text-[3.5rem] font-medium text-ag-green-950 leading-[1.1] tracking-tight mb-6"
+                className="text-5xl md:text-6xl font-medium text-ag-green-950 leading-[1.1] tracking-tight mb-6"
               >
                 We drive rural economic growth by financing productive assets powered by <span className="text-ag-lime">renewable energy.</span>
               </motion.h2>

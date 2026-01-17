@@ -52,7 +52,7 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ articleId, onNavigate }
   return (
     <div className="bg-white min-h-screen pb-32 pt-24 font-sans selection:bg-ag-lime selection:text-white">
       {/* Top Meta Navigation */}
-      <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-wrap items-center justify-center gap-4 md:gap-8 text-[10px] font-bold uppercase tracking-widest text-gray-400 border-b border-gray-100">
+      <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-wrap items-center justify-center gap-4 md:gap-8 text-xs font-bold uppercase tracking-widest text-gray-400 border-b border-gray-100">
         <button 
           onClick={() => onNavigate?.('news')}
           className="flex items-center gap-2 hover:text-ag-green-950 transition-colors"
@@ -75,7 +75,7 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ articleId, onNavigate }
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
-          className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
         >
           {article.title}
         </motion.h1>
@@ -155,10 +155,10 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ articleId, onNavigate }
                 <div className="aspect-[16/10] rounded-[0.7rem] overflow-hidden mb-6 relative">
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-white px-3 py-1 rounded-full text-[9px] font-bold text-ag-green-950 uppercase tracking-widest">{item.cat}</span>
+                    <span className="bg-white px-3 py-1 rounded-full text-xs font-bold text-ag-green-950 uppercase tracking-widest">{item.cat}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
+                <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
                    <Calendar className="w-3 h-3" /> {item.date}
                 </div>
                 <h3 className="text-xl font-bold text-ag-green-950 leading-tight group-hover:text-ag-lime transition-colors">

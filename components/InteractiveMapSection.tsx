@@ -71,7 +71,7 @@ const InteractiveMapSection: React.FC = () => {
           
           {/* COLUMN 1: State Selector (25%) */}
           <div className="lg:col-span-3 flex flex-col gap-2">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 px-4">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 px-4">
               Select Location
             </h4>
             {LOCATIONS.map((loc) => (
@@ -140,7 +140,7 @@ const InteractiveMapSection: React.FC = () => {
                 className="bg-white border border-gray-100 p-8 rounded-[2.5rem] shadow-xl w-full"
               >
                 <div className="mb-6">
-                  <span className="bg-ag-lime/20 text-ag-green-950 text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+                  <span className="bg-ag-lime/20 text-ag-green-950 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
                     {selectedLocation.tag}
                   </span>
                 </div>
@@ -168,7 +168,7 @@ const InteractiveMapSection: React.FC = () => {
                     <div className="w-6 h-6 bg-ag-green-950 rounded flex items-center justify-center">
                       <Globe className="w-3.5 h-3.5 text-white" />
                     </div>
-                    <span className="text-[10px] font-bold text-ag-green-950 uppercase tracking-widest">
+                    <span className="text-xs font-bold text-ag-green-950 uppercase tracking-widest">
                       {selectedLocation.sdg}
                     </span>
                   </div>

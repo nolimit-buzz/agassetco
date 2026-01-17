@@ -38,10 +38,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                  </svg>
                </div>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6 font-medium">
+            <p className="text-base md:text-[0.875rem] text-gray-400 leading-relaxed mb-6 font-medium">
               A wholly owned subsidiary of <strong className="text-ag-green-950">Agronomie</strong>.
             </p>
-            <div className="text-xs font-bold uppercase tracking-widest text-gray-300">
+            <div className="text-base font-bold uppercase tracking-widest text-gray-300">
                Lagos • Nairobi
             </div>
           </div>
@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Links 1 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Company</h4>
-            <ul className="space-y-4 text-sm font-medium">
+            <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
               {[
                 { name: 'About Us', page: 'about' },
                 { name: 'Portfolio', page: 'portfolio' },
@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Links 2 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Solutions</h4>
-            <ul className="space-y-4 text-sm font-medium">
+            <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
               {['Lease-to-Own', 'PUE Financing', 'Asset Management', 'Developer Portal'].map(item => (
                 <li key={item}>
                   <a href="#" className="hover:text-ag-lime transition-colors">
@@ -83,7 +83,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Links 3 */}
           <div>
              <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Connect</h4>
-             <ul className="space-y-4 text-sm font-medium">
+             <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
                {['LinkedIn', 'Twitter / X', 'Medium'].map(item => (
                  <li key={item}>
                    <a href="#" className="flex items-center gap-2 hover:text-ag-lime transition-colors group">
@@ -108,7 +108,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* 3. Bottom Utility Row */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4">
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm font-bold text-gray-400 uppercase tracking-widest mt-4">
            <div className="flex gap-8">
               <a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-ag-green-950 transition-colors">Privacy Policy</a>
               <a href="#" onClick={(e) => handleLinkClick(e, 'terms')} className="hover:text-ag-green-950 transition-colors">Terms</a>

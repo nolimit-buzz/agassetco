@@ -83,10 +83,10 @@ const SolutionsPage: React.FC = () => {
           className="max-w-7xl mx-auto"
         >
           <motion.div variants={fadeInUp} className="border-b border-gray-200 py-4 flex justify-between items-center mb-12">
-            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
               Solutions Portfolio Overview
             </div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-ag-green-950">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
               01
             </div>
           </motion.div>
@@ -114,7 +114,7 @@ const SolutionsPage: React.FC = () => {
               </motion.div>
             </div>
 
-            <div className="absolute bottom-6 left-6 flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-white bg-black/20 backdrop-blur-md px-4 py-2 rounded-full">
+            <div className="absolute bottom-6 left-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white bg-black/20 backdrop-blur-md px-4 py-2 rounded-full">
               <Home className="w-2.5 h-2.5" />
               <span>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
@@ -126,7 +126,7 @@ const SolutionsPage: React.FC = () => {
             <div className="lg:col-span-7">
               <motion.h1 
                 variants={fadeInUp}
-                className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
                 PUE-AS-A- <br/>
                 <span className="text-ag-lime">SERVICE.</span>
@@ -141,7 +141,7 @@ const SolutionsPage: React.FC = () => {
               </motion.p>
               <motion.button 
                 variants={fadeInUp}
-                className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-ag-green-950 group"
+                className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-ag-green-950 group"
               >
                 View Catalog <Plus className="w-3 h-3 text-ag-lime group-hover:rotate-90 transition-transform duration-300" />
               </motion.button>
@@ -165,7 +165,7 @@ const SolutionsPage: React.FC = () => {
             <motion.div variants={fadeInUp} className="bg-white p-12 md:p-16 flex flex-col justify-between group transition-colors duration-500 hover:bg-gray-50/50">
                <div>
                   <div className="flex justify-between items-start mb-12">
-                     <span className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.2em]">Model A</span>
+                     <span className="text-xs font-bold text-ag-lime uppercase tracking-[0.2em]">Model A</span>
                      <Briefcase className="w-8 h-8 text-ag-green-950/20 group-hover:text-ag-lime transition-colors duration-300" />
                   </div>
                   <h3 className="text-4xl font-medium text-ag-green-950 mb-6 tracking-tight">Asset Ownership Model</h3>
@@ -179,7 +179,7 @@ const SolutionsPage: React.FC = () => {
             <motion.div variants={fadeInUp} className="bg-ag-green-950 p-12 md:p-16 flex flex-col justify-between group transition-colors duration-500 hover:bg-ag-green-900">
                <div>
                   <div className="flex justify-between items-start mb-12">
-                     <span className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.2em]">Model B</span>
+                     <span className="text-xs font-bold text-ag-lime uppercase tracking-[0.2em]">Model B</span>
                      <Zap className="w-8 h-8 text-white/10 group-hover:text-ag-lime transition-colors duration-300" />
                   </div>
                   <h3 className="text-4xl font-medium text-white mb-6 tracking-tight">PUE-as-a-Service</h3>
@@ -357,7 +357,7 @@ const SolutionsPage: React.FC = () => {
           className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col gap-20"
         >
           <motion.div variants={fadeInUp} className="w-full border-b border-white/10 pb-12">
-            <div className="text-center mb-10"><p className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.3em] opacity-80">TRUSTED BY GLOBAL INSTITUTIONS & INFRASTRUCTURE LEADERS</p></div>
+            <div className="text-center mb-10"><p className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] opacity-80">TRUSTED BY GLOBAL INSTITUTIONS & INFRASTRUCTURE LEADERS</p></div>
             <div className="relative overflow-hidden h-12">
                 <div className="flex items-center gap-16 md:gap-32 w-max whitespace-nowrap">
                    {marqueePartners.map((name, i) => (
@@ -369,7 +369,7 @@ const SolutionsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end pb-8">
             <motion.div variants={fadeInUp}>
-               <h2 className="text-[3.5rem] md:text-[5rem] leading-[1.05] font-bold text-white tracking-tighter mb-8">
+               <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-8">
                  Empower Your <br /> Grid. Drive <span className="text-ag-lime">ARPU.</span>
                </h2>
                <p className="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-lg">
@@ -389,7 +389,7 @@ const SolutionsPage: React.FC = () => {
                  <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-ag-green-950 text-white p-1 pr-1 rounded-full hover:bg-ag-lime transition-all duration-500 shadow-xl shadow-ag-green-950/20">
                     <div className="flex items-center gap-4 pl-8">
                        <ClipboardList className="w-5 h-5 text-ag-lime group-hover:text-white transition-colors" />
-                       <span className="font-bold text-[10px] tracking-[0.2em] uppercase">Partnership Proposal</span>
+                       <span className="font-bold text-xs tracking-[0.2em] uppercase">Partnership Proposal</span>
                     </div>
                     <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45 group-hover:scale-90"><ArrowRight className="w-5 h-5" /></div>
                  </motion.button>
@@ -397,7 +397,7 @@ const SolutionsPage: React.FC = () => {
                  <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-gray-50 border border-gray-100 text-ag-green-950 p-1 pr-1 rounded-full hover:bg-ag-green-950 hover:text-white transition-all duration-500">
                     <div className="flex items-center gap-4 pl-8">
                        <BarChart className="w-5 h-5 text-ag-lime" />
-                       <span className="font-bold text-[10px] tracking-[0.2em] uppercase">Technical Specs (PDF)</span>
+                       <span className="font-bold text-xs tracking-[0.2em] uppercase">Technical Specs (PDF)</span>
                     </div>
                     <div className="w-14 h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45 group-hover:scale-90"><Download className="w-5 h-5" /></div>
                  </motion.button>

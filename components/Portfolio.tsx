@@ -120,7 +120,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project, isOpen, onClick }) => 
           
           <div className="flex gap-2">
             {project.tags.map((tag, i) => (
-              <span key={i} className="px-3 py-1 bg-ag-green-950 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+              <span key={i} className="px-3 py-1 bg-ag-green-950 text-white text-xs font-bold uppercase tracking-widest rounded-full">
                 {tag}
               </span>
             ))}

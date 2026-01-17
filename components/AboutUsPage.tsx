@@ -67,10 +67,10 @@ const AboutUsPage: React.FC = () => {
           className="max-w-7xl mx-auto"
         >
           <motion.div variants={fadeInUp} className="border-b border-gray-200 py-4 flex justify-between items-center mb-12">
-            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
               AgAsset Corporate Presentation
             </div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-ag-green-950">
+            <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
               01
             </div>
           </motion.div>
@@ -97,7 +97,7 @@ const AboutUsPage: React.FC = () => {
               </motion.div>
             </div>
 
-            <div className="absolute bottom-6 left-6 flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-white bg-black/20 backdrop-blur-md px-4 py-2 rounded-full">
+            <div className="absolute bottom-6 left-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white bg-black/20 backdrop-blur-md px-4 py-2 rounded-full">
               <Home className="w-2.5 h-2.5" />
               <span>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
@@ -111,7 +111,7 @@ const AboutUsPage: React.FC = () => {
             <div className="lg:col-span-7">
               <motion.h1 
                 variants={fadeInUp}
-                className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
                 EXECUTION <br/>
                 <span className="text-ag-lime">ENGINE.</span>
@@ -126,7 +126,7 @@ const AboutUsPage: React.FC = () => {
               </motion.p>
               <motion.button 
                 variants={fadeInUp}
-                className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-ag-green-950 group"
+                className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-ag-green-950 group"
               >
                 Explore Mandate <Plus className="w-3 h-3 text-ag-lime group-hover:rotate-90 transition-transform duration-300" />
               </motion.button>
@@ -168,7 +168,7 @@ const AboutUsPage: React.FC = () => {
                         className="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg h-full flex flex-col items-center justify-center"
                       >
                         <Building2 className="w-5 h-5 mb-4 text-gray-400" />
-                        <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Originator</div>
+                        <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Originator</div>
                         <div className="text-xl font-bold text-ag-green-950">Agronomie</div>
                       </motion.div>
                     </div>
@@ -178,7 +178,7 @@ const AboutUsPage: React.FC = () => {
                         className="bg-ag-green-950 text-white p-8 rounded-2xl shadow-2xl relative z-10 border border-ag-lime/30 flex flex-col items-center justify-center h-[180px] md:h-[200px]"
                       >
                          <Zap className="w-6 h-6 mb-4 text-ag-lime animate-pulse" />
-                         <div className="text-[10px] text-ag-lime uppercase tracking-widest mb-1">Asset Vehicle</div>
+                         <div className="text-xs text-ag-lime uppercase tracking-widest mb-1">Asset Vehicle</div>
                          <div className="text-2xl font-bold tracking-tight mb-2">AgAsset Co</div>
                       </motion.div>
                     </div>
@@ -188,7 +188,7 @@ const AboutUsPage: React.FC = () => {
                         className="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg h-full flex flex-col items-center justify-center"
                       >
                         <Users className="w-5 h-5 mb-4 text-gray-400" />
-                        <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Beneficiary</div>
+                        <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Beneficiary</div>
                         <div className="text-xl font-bold text-ag-green-950">End User</div>
                       </motion.div>
                     </div>
@@ -239,7 +239,7 @@ const AboutUsPage: React.FC = () => {
                     >
                         <Activity className="text-ag-lime w-6 h-6" />
                     </motion.div>
-                    <span className="text-[10px] font-bold text-white uppercase tracking-widest opacity-60">Telemetry</span>
+                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Telemetry</span>
                 </div>
 
                 <div className="absolute top-[30%] right-[12%] flex flex-col items-center group">
@@ -249,7 +249,7 @@ const AboutUsPage: React.FC = () => {
                     >
                         <Search className="text-ag-lime w-6 h-6" />
                     </motion.div>
-                    <span className="text-[10px] font-bold text-white uppercase tracking-widest opacity-60">Predictive</span>
+                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Predictive</span>
                 </div>
 
                 <div className="absolute bottom-[20%] left-[20%] flex flex-col items-center group">
@@ -259,7 +259,7 @@ const AboutUsPage: React.FC = () => {
                     >
                         <Lock className="text-ag-lime w-6 h-6" />
                     </motion.div>
-                    <span className="text-[10px] font-bold text-white uppercase tracking-widest opacity-60">Remote Lock</span>
+                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Remote Lock</span>
                 </div>
 
                 <div className="absolute bottom-[10%] right-[22%] flex flex-col items-center group">
@@ -269,7 +269,7 @@ const AboutUsPage: React.FC = () => {
                     >
                         <Zap className="text-ag-lime w-6 h-6" />
                     </motion.div>
-                    <span className="text-[10px] font-bold text-white uppercase tracking-widest opacity-60">Load Control</span>
+                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Load Control</span>
                 </div>
             </motion.div>
 
@@ -281,7 +281,7 @@ const AboutUsPage: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl order-1 lg:order-2"
             >
-                <div className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.3em] mb-6">03 OPERATIONS</div>
+                <div className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] mb-6">03 OPERATIONS</div>
                 <h2 className="text-4xl md:text-5xl font-bold text-ag-green-950 leading-[1.1] tracking-tight mb-8">
                   Operational <br/> Excellence <br/> Beyond the Grid.
                 </h2>
@@ -408,7 +408,7 @@ const AboutUsPage: React.FC = () => {
                  </div>
                  <div className="flex flex-wrap gap-2">
                     {["#CAPEX", "#OPEX", "#SCALE"].map((tag) => (
-                      <span key={tag} className="px-4 py-2 text-[10px] font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
+                      <span key={tag} className="px-4 py-2 text-xs font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
                         {tag}
                       </span>
                     ))}
@@ -460,7 +460,7 @@ const AboutUsPage: React.FC = () => {
         >
           <motion.div variants={fadeInUp} className="w-full border-b border-white/10 pb-16 mb-24">
             <div className="text-center mb-12">
-              <p className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.3em] opacity-80">TRUSTED BY GLOBAL INSTITUTIONS & INFRASTRUCTURE LEADERS</p>
+              <p className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] opacity-80">TRUSTED BY GLOBAL INSTITUTIONS & INFRASTRUCTURE LEADERS</p>
             </div>
             <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
                {partners.map((name, i) => (
@@ -471,7 +471,7 @@ const AboutUsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <motion.div variants={fadeInUp}>
-               <h2 className="text-[3.5rem] md:text-[5rem] leading-[1.05] font-bold text-white tracking-tighter mb-10">
+               <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
                  Align Your <br /> Capital with <br /> <span className="text-ag-lime">Impact.</span>
                </h2>
                <p className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
@@ -493,7 +493,7 @@ const AboutUsPage: React.FC = () => {
                    <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-ag-green-950 text-white p-1 pr-1 rounded-full hover:bg-ag-lime transition-all duration-500 shadow-xl shadow-ag-green-950/20">
                       <div className="flex items-center gap-4 pl-8">
                          <FileCheck className="w-5 h-5 text-ag-lime group-hover:text-white transition-colors" />
-                         <span className="font-bold text-[10px] tracking-[0.2em] uppercase">Corporate Profile (PDF)</span>
+                         <span className="font-bold text-xs tracking-[0.2em] uppercase">Corporate Profile (PDF)</span>
                       </div>
                       <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
                          <Download className="w-5 h-5" />
@@ -503,7 +503,7 @@ const AboutUsPage: React.FC = () => {
                    <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-gray-50 border border-gray-100 text-ag-green-950 p-1 pr-1 rounded-full hover:bg-ag-green-950 hover:text-white transition-all duration-500">
                       <div className="flex items-center gap-4 pl-8">
                          <TrendingUp className="w-5 h-5 text-ag-lime" />
-                         <span className="font-bold text-[10px] tracking-[0.2em] uppercase">Impact Report 2024</span>
+                         <span className="font-bold text-xs tracking-[0.2em] uppercase">Impact Report 2024</span>
                       </div>
                       <div className="w-14 h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
                          <Download className="w-5 h-5" />
@@ -512,7 +512,7 @@ const AboutUsPage: React.FC = () => {
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-gray-100 text-center">
-                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
                       Need specialized data? <a href="#" className="text-ag-lime hover:underline underline-offset-4 ml-1">Contact Partnerships</a>
                    </p>
                 </div>

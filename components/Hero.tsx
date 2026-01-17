@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-[clamp(3.5rem,8vw,7rem)] leading-[1.05] font-bold text-white tracking-tight drop-shadow-lg will-change-transform"
+                    className="text-6xl md:text-7xl lg:text-9xl leading-[1.05] font-bold text-white tracking-tight drop-shadow-lg will-change-transform"
                 >
                     Productive Use <br />
                     of <span className="text-ag-lime">Energy Financing.</span>
