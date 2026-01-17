@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowUpRight, 
+  ArrowRight,
   MapPin, 
   CheckCircle2, 
   Download, 
@@ -20,7 +21,7 @@ import {
   Rows
 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import InteractiveMapSection from './InteractiveMapSection';
+import { NigeriaMap } from './MapSection';
 
 interface PortfolioPageProps {
   onNavigate?: (page: any, id?: any) => void;
@@ -201,7 +202,85 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6 mb-12">
           <SectionHeader number="01" category="Reach" title="Geographic Footprint." />
         </div>
-        <InteractiveMapSection />
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start min-h-[600px]">
+            
+            {/* COLUMN 1: State Selector (25%) */}
+            <div className="lg:col-span-3 flex flex-col gap-2">
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 px-4">
+                Select Location
+              </h4>
+              {[
+                { id: 'imo', stateName: 'Imo State' },
+                { id: 'niger', stateName: 'Niger State' },
+                { id: 'ogun', stateName: 'Ogun State' },
+                { id: 'kaduna', stateName: 'Kaduna State' },
+                { id: 'kano', stateName: 'Kano State' }
+              ].map((loc) => (
+                <button
+                  key={loc.id}
+                  className="w-full text-left px-6 py-5 rounded-xl transition-all duration-300 font-medium text-sm flex items-center justify-between group bg-white border border-gray-100 text-gray-500 hover:bg-gray-100 hover:text-ag-green-950"
+                >
+                  <span>{loc.stateName}</span>
+                  <ArrowRight className="w-4 h-4 transition-transform -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0" />
+                </button>
+              ))}
+            </div>
+
+            {/* COLUMN 2: Map Visualization (50%) */}
+            <div className="lg:col-span-6 relative flex items-center justify-center">
+              <div className="relative w-full aspect-[5/4]">
+                <NigeriaMap />
+              </div>
+            </div>
+
+            {/* COLUMN 3: Project Detail Card (25%) */}
+            <div className="lg:col-span-3 flex items-center">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white border border-gray-100 p-8 rounded-[2.5rem] shadow-xl w-full"
+              >
+                <div className="mb-6">
+                  <span className="bg-ag-lime/20 text-ag-green-950 text-xs font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+                    Renewable Energy
+                  </span>
+                </div>
+                
+                <div className="mb-1">
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    Imo State
+                  </span>
+                </div>
+                
+                <h3 className="text-2xl font-bold text-ag-green-950 mb-4 leading-tight">
+                  Solar Hybrid Mini Grid Solution
+                </h3>
+                
+                <p className="text-sm text-gray-500 font-light leading-relaxed mb-10">
+                  Providing constant power to a cluster of 15 SMEs, specializing in localized palm oil processing and packaging.
+                </p>
+                
+                <div className="flex items-center justify-between pt-8 border-t border-gray-200">
+                  <button className="w-12 h-12 rounded-full bg-ag-lime flex items-center justify-center text-ag-green-950 shadow-lg shadow-ag-lime/30 hover:scale-105 transition-transform">
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                  
+                  <div className="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-2xl shadow-sm border border-gray-100">
+                    <div className="w-6 h-6 bg-ag-green-950 rounded flex items-center justify-center">
+                      <Globe className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <span className="text-xs font-bold text-ag-green-950 uppercase tracking-widest">
+                      SDG 7
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+          </div>
+        </div>
       </section>
 
       {/* 02. FEATURED PROJECTS */}

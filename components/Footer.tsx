@@ -22,21 +22,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           
           {/* Branding Column */}
           <div className="col-span-1 md:col-span-1 pr-8">
-            <div className="flex items-end gap-1 mb-6 select-none cursor-pointer" onClick={(e) => handleLinkClick(e, 'home')}>
-               <span className="text-3xl font-bold tracking-tighter text-ag-green-950 leading-none">
-                 AgAsset<span className="text-ag-lime">Co</span>
-               </span>
-               <div className="relative w-8 h-8 -mb-1 ml-1">
-                 <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible" fill="none">
-                    <circle cx="50" cy="50" r="25" stroke="#0F5132" strokeWidth="8" />
-                    <path d="M50 15 V10 M50 90 V85 M15 50 H10 M85 50 H90" stroke="#0F5132" strokeWidth="8" strokeLinecap="round" />
-                    <path d="M25 25 L22 22 M78 78 L75 75 M25 75 L22 78 M78 25 L75 22" stroke="#0F5132" strokeWidth="8" strokeLinecap="round" />
-                    <path d="M50 50 Q 50 20 30 10" stroke="#0F5132" strokeWidth="6" strokeLinecap="round" />
-                    <path d="M50 50 Q 50 15 70 5" stroke="#0F5132" strokeWidth="6" strokeLinecap="round" />
-                    <path d="M40 30 Q 30 25 35 15" stroke="#0F5132" strokeWidth="4" strokeLinecap="round" />
-                    <path d="M60 25 Q 70 20 65 10" stroke="#0F5132" strokeWidth="4" strokeLinecap="round" />
-                 </svg>
-               </div>
+            <div className="mb-6 select-none cursor-pointer" onClick={(e) => handleLinkClick(e, 'home')}>
+               <img 
+                 src="/logo.svg" 
+                 alt="AgAsset Co" 
+                 className="h-16 w-auto"
+               />
             </div>
             <p className="text-base md:text-[0.875rem] text-gray-400 leading-relaxed mb-6 font-medium">
               A wholly owned subsidiary of <strong className="text-ag-green-950">Agronomie</strong>.

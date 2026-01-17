@@ -56,30 +56,14 @@ const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage = 'home
             : 'bg-transparent py-6 border-b border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-14">
+        <div className="max-w-7xl px-6 mx-auto flex items-center justify-between h-14">
             
-            <button onClick={(e) => handleLinkClick(e, 'home')} className="flex items-center gap-2 shrink-0 relative z-50 outline-none group">
-              <div 
-                className={`w-8 h-8 flex items-center justify-center rounded-full shadow-sm transition-all duration-500 ${
-                  isLightMode ? 'bg-ag-green-950' : 'bg-ag-lime'
-                }`}
-              >
-                 <svg viewBox="0 0 100 100" className="w-5 h-5">
-                    <path 
-                      className={`transition-all duration-500 ${
-                        isLightMode ? 'fill-white' : 'fill-ag-green-950'
-                      }`}
-                      d="M50 0 L60 10 L70 5 L80 15 L75 25 L85 30 L95 25 L100 35 L90 45 L95 55 L100 60 L90 70 L80 65 L70 75 L60 70 L50 80 L40 70 L30 75 L20 65 L10 70 L0 60 L5 55 L10 45 L0 35 L5 25 L15 30 L25 25 L20 15 L30 5 L40 10 Z" 
-                    />
-                 </svg>
-              </div>
-              <span 
-                className={`text-xl font-bold tracking-tight transition-all duration-500 ${
-                  isLightMode ? 'text-ag-green-950' : 'text-white'
-                }`}
-              >
-                AgAsset<span className="text-ag-lime">Co</span>
-              </span>
+            <button onClick={(e) => handleLinkClick(e, 'home')} className="flex items-center shrink-0 relative z-50 outline-none group">
+              <img 
+                src={isLightMode ? "/logo.svg" : "/logo-white.svg"} 
+                alt="AgAsset Co" 
+                className={`h-16 w-auto transition-all duration-500 ${isLightMode ? 'h-16' : 'h-14'}`}
+              />
             </button>
 
             <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
