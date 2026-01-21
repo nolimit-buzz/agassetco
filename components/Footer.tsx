@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                  className="h-16 w-auto"
                />
             </div>
-            <p className="text-base md:text-[0.875rem] text-gray-400 leading-relaxed mb-6 font-medium">
+            <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-6 font-medium">
               A wholly owned subsidiary of <strong className="text-ag-green-950">Agronomie</strong>.
             </p>
             <div className="text-base font-bold uppercase tracking-widest text-gray-300">
@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Links 1 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Company</h4>
-            <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
+            <ul className="space-y-4 text-base md:text-sm font-medium">
               {[
                 { name: 'About Us', page: 'about' },
                 { name: 'Portfolio', page: 'portfolio' },
