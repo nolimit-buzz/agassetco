@@ -390,6 +390,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                     project={project} 
                     isOpen={activeProjectId === project.id}
                     onClick={() => setActiveProjectId(activeProjectId === project.id ? null : project.id)}
+                    onNavigate={onNavigate}
                   />
                 ))}
               </AnimatePresence>
@@ -621,9 +622,10 @@ interface ProjectAccordionRowProps {
   project: typeof PROJECTS[0];
   isOpen: boolean;
   onClick: () => void;
+  onNavigate?: (page: any, id?: any) => void;
 }
 
-const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOpen, onClick }) => {
+const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOpen, onClick, onNavigate }) => {
   const [activeDetailTab, setActiveDetailTab] = useState<'problem' | 'solution' | 'impact'>('problem');
 
   return (
@@ -772,8 +774,11 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                          </div>
                        </Tooltip>
                     </div>
-
-                    <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 hover:text-ag-lime transition-all group/btn ml-auto">
+                    
+                    <button
+                      onClick={() => onNavigate?.('project-detail', project.id)}
+                      className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 hover:text-ag-lime transition-all group/btn ml-auto"
+                    >
                       Learn More <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                     </button>
                   </div>
