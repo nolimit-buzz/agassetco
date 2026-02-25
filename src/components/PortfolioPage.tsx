@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowUpRight, 
@@ -108,7 +109,10 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      }
     }
   };
 
@@ -139,10 +143,13 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
 
           <motion.div variants={fadeInUp} className="relative w-full aspect-[21/9] md:aspect-[3/1] mb-16 group">
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2940&auto=format&fit=crop" 
                 alt="Working Lands" 
-                className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                fill
+                className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                sizes="100vw"
+                priority
               />
               <div className="absolute inset-0 bg-ag-green-950/10 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply"></div>
             </div>
@@ -343,7 +350,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                     className="group bg-white rounded-[0.7rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                   >
                     <div className="aspect-[4/3] overflow-hidden relative">
-                       <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                       <Image src={project.images[0]} alt={project.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 33vw" priority={project.id === "01"} />
                        <div className="absolute top-4 left-4 flex gap-2">
                           <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-ag-green-950">{project.type}</span>
                           <span className="bg-ag-lime px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-white shadow-sm">{project.status}</span>
@@ -493,10 +500,12 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                className="relative rounded-[0.7rem] overflow-hidden p-8 flex flex-col justify-between group h-full min-h-[350px] transform hover:-translate-y-1 transition-transform duration-300"
              >
                 <div className="absolute inset-0">
-                  <img 
+                  <Image 
                     src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" 
                     alt="Operational Uptime" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ag-green-900/90 via-ag-green-900/40 to-ag-green-900/20"></div>
                 </div>
@@ -672,7 +681,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }}
             className="overflow-hidden"
           >
             <div className="pb-16 pt-4 px-4">
@@ -686,7 +695,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                       transition={{ delay: 0.1 }}
                       className="relative rounded-[0.7rem] overflow-hidden shadow-lg h-full"
                     >
-                      <img src={project.images[0]} alt="Detail 1" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                      <Image src={project.images[0]} alt="Detail 1" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" sizes="50vw" />
                     </motion.div>
                     <motion.div 
                       initial={{ scale: 0.95, opacity: 0 }}
@@ -694,7 +703,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                       transition={{ delay: 0.2 }}
                       className="relative rounded-[0.7rem] overflow-hidden shadow-lg h-full"
                     >
-                      <img src={project.images[1]} alt="Detail 2" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                      <Image src={project.images[1]} alt="Detail 2" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" sizes="50vw" />
                     </motion.div>
                   </div>
                   <motion.div 
@@ -703,7 +712,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                     transition={{ delay: 0.3 }}
                     className="relative rounded-[0.7rem] overflow-hidden shadow-xl h-[260px]"
                   >
-                    <img src={project.images[2]} alt="Detail 3 Landscape" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                    <Image src={project.images[2]} alt="Detail 3 Landscape" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" sizes="(max-width: 1024px) 100vw, 50vw" />
                   </motion.div>
                 </div>
 

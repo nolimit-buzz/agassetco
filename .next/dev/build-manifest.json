@@ -1,6 +1,31 @@
 {
   "pages": {
-    "/_app": []
+    "/_app": [
+      "static/chunks/0e072_next_dist_compiled_f0d94c68._.js",
+      "static/chunks/0e072_next_dist_shared_lib_20014a75._.js",
+      "static/chunks/0e072_next_dist_client_d9a74851._.js",
+      "static/chunks/0e072_next_dist_e15c2e31._.js",
+      "static/chunks/0e072_next_app_29b58a1e.js",
+      "static/chunks/[next]_entry_page-loader_ts_d967c068._.js",
+      "static/chunks/0e072_react-dom_15a8b116._.js",
+      "static/chunks/0e072_5f20e332._.js",
+      "static/chunks/[root-of-the-server]__021e5c2c._.js",
+      "static/chunks/agassetco_pages__app_2da965e7._.js",
+      "static/chunks/turbopack-agassetco_pages__app_808de93e._.js"
+    ],
+    "/_error": [
+      "static/chunks/0e072_next_dist_compiled_f0d94c68._.js",
+      "static/chunks/0e072_next_dist_shared_lib_69ee27aa._.js",
+      "static/chunks/0e072_next_dist_client_d9a74851._.js",
+      "static/chunks/0e072_next_dist_fe12a159._.js",
+      "static/chunks/0e072_next_error_4063e472.js",
+      "static/chunks/[next]_entry_page-loader_ts_aaa09d42._.js",
+      "static/chunks/0e072_react-dom_15a8b116._.js",
+      "static/chunks/0e072_5f20e332._.js",
+      "static/chunks/[root-of-the-server]__c4fe6cb9._.js",
+      "static/chunks/agassetco_pages__error_2da965e7._.js",
+      "static/chunks/turbopack-agassetco_pages__error_fd490e41._.js"
+    ]
   },
   "devFiles": [],
   "polyfillFiles": [

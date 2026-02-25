@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
                     style={{ y: titleY, opacity: titleOpacity }}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
                     className="text-6xl md:text-7xl lg:text-9xl leading-[1.05] font-bold text-white tracking-tight drop-shadow-lg will-change-transform"
                 >
                     Productive Use <br />
@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
                 <motion.p 
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
                     className="text-lg text-white/90 font-light leading-relaxed mb-8 drop-shadow-md"
                 >
                     We bridge the gap between solar mini-grids and rural economic growth, turning energy access into income generation.
@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
                 <motion.button 
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: 0.7, duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }}
                     className="group bg-white hover:bg-ag-lime text-ag-green-950 hover:text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-ag-lime/20"
                 >
                     Partner With Us

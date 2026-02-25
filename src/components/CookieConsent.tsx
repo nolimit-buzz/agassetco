@@ -43,7 +43,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onNavigate }) => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }}
           className="fixed bottom-0 left-0 w-full z-[1000] p-4 md:p-6 no-print"
         >
           <div className="max-w-7xl mx-auto">

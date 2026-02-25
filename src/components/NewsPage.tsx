@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, ChevronRight, Calendar, ArrowRight, Filter, ChevronDown, Plus, TrendingUp, Clock, Bookmark } from 'lucide-react';
 
@@ -107,7 +108,10 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      }
     }
   };
 
@@ -141,16 +145,23 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
           <motion.div variants={fadeInUp} className="relative w-full aspect-[21/9] md:aspect-[2.5/1] mb-20 group">
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100 shadow-2xl">
               <AnimatePresence mode="wait">
-                <motion.img 
+                <motion.div
                   key={currentSlide}
                   initial={{ opacity: 0, scale: 1.05 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.05 }}
                   transition={{ duration: 1.2, ease: "easeInOut" }}
-                  src={FEATURED_SLIDES[currentSlide].image} 
-                  alt="Featured News" 
-                  className="w-full h-full object-cover grayscale"
-                />
+                  className="absolute inset-0"
+                >
+                  <Image 
+                    src={FEATURED_SLIDES[currentSlide].image} 
+                    alt="Featured News" 
+                    fill
+                    className="object-cover grayscale"
+                    sizes="100vw"
+                    priority={currentSlide === 0}
+                  />
+                </motion.div>
               </AnimatePresence>
               <div className="absolute inset-0 bg-ag-green-950/20 mix-blend-multiply"></div>
               
@@ -245,10 +256,13 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
             >
               {/* Default View: Full Immersive Image */}
               <div className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
-                <img 
+                <Image 
                   src={article.image} 
                   alt={article.title} 
-                  className="w-full h-full object-cover grayscale mix-blend-multiply opacity-90"
+                  fill
+                  className="object-cover grayscale mix-blend-multiply opacity-90"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  priority={article.id === 1}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ag-green-950/90 via-ag-green-950/40 to-ag-green-950/20" />
                 
@@ -273,8 +287,8 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
 
               {/* Hover View: Editorial White Card */}
               <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col">
-                <div className="h-[45%] overflow-hidden">
-                   <img src={article.image} alt={article.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                <div className="h-[45%] overflow-hidden relative">
+                   <Image src={article.image} alt={article.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
                 <div className="p-8 flex flex-col flex-1">
                    <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">

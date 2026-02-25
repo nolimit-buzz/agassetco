@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   ArrowRight, 
@@ -31,19 +32,27 @@ const AboutUsPage: React.FC = () => {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
-    }
+      transition: {
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1] as any,   // ← add `as any`
+      },
+    },
   };
+
+
 
   const imageEntrance = {
     hidden: { opacity: 0, scale: 1.08 },
     visible: { 
       opacity: 1, 
       scale: 1,
-      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { 
+        duration: 1.8, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      }
     }
   };
 
@@ -77,10 +86,13 @@ const AboutUsPage: React.FC = () => {
 
           <motion.div variants={imageEntrance} className="relative w-full aspect-[21/9] md:aspect-[3/1] mb-16 group">
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2940&auto=format&fit=crop" 
                 alt="Working Lands" 
-                className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                fill
+                className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                sizes="100vw"
+                priority
               />
               <div className="absolute inset-0 bg-ag-green-950/10 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply"></div>
             </div>
@@ -90,7 +102,7 @@ const AboutUsPage: React.FC = () => {
               <motion.div 
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 0.8, x: 0 }}
-                transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
                 className="rotate-90 whitespace-nowrap text-white text-5xl md:text-8xl font-bold tracking-tighter select-none origin-center"
               >
                 AGASSET
@@ -360,10 +372,12 @@ const AboutUsPage: React.FC = () => {
               className="relative rounded-[0.7rem] overflow-hidden p-8 flex flex-col justify-between group h-full min-h-[350px] transform hover:-translate-y-1 transition-transform duration-300"
             >
                <div className="absolute inset-0">
-                 <img 
+                 <Image 
                    src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                    alt="Productive Future" 
-                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                   fill
+                   className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                   sizes="(max-width: 768px) 100vw, 33vw"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-ag-green-900/90 via-ag-green-900/40 to-ag-green-900/20"></div>
                </div>
@@ -439,7 +453,7 @@ const AboutUsPage: React.FC = () => {
               <motion.div variants={fadeInUp} key={i} className="group cursor-pointer">
                 {/* Updated border radius to 0.7rem */}
                 <div className="aspect-[3/4] overflow-hidden rounded-[0.7rem] mb-6 bg-gray-100 relative">
-                  <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+                  <Image src={person.img} alt={person.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" sizes="(max-width: 640px) 50vw, 25vw" />
                 </div>
                 <h3 className="text-xl font-bold text-ag-green-950 group-hover:text-ag-lime transition-colors">{person.name}</h3>
                 <p className="text-sm font-bold uppercase tracking-widest text-gray-400 mt-1">{person.title}</p>

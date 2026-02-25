@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Plus, Minus } from 'lucide-react';
 import SectionHeader from './SectionHeader';
@@ -140,7 +141,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project, isOpen, onClick }) => 
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }}
             className="overflow-hidden"
           >
             <div className="pb-12 pt-2">
@@ -155,10 +156,13 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project, isOpen, onClick }) => 
                     transition={{ delay: 0.1 + (idx * 0.1), duration: 0.5 }}
                     className="relative w-full h-full rounded-[0.7rem] overflow-hidden group/image"
                   >
-                     <img 
+                     <Image 
                        src={img} 
                        alt={`Project Detail ${idx + 1}`} 
-                       className="w-full h-full object-cover transition-transform duration-700 group/image:scale-110" 
+                       fill
+                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                       sizes="(max-width: 768px) 100vw, 33vw"
+                       priority={project.id === '01' && idx === 0}
                      />
                      <div className="absolute inset-0 bg-ag-green-950/10 group/image:bg-transparent transition-colors duration-300" />
                   </motion.div>

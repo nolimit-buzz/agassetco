@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { motion, animate, useInView } from 'framer-motion';
 import { Coins, Users, Zap, Briefcase, Leaf, Heart, Image as ImageIcon } from 'lucide-react';
 import SectionHeader from './SectionHeader';
@@ -85,10 +86,13 @@ const DevelopmentImpact: React.FC = () => {
             viewport={{ once: true }}
             className="md:row-span-2 rounded-[2rem] overflow-hidden relative group min-h-[400px]"
           >
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1595838788863-29a377d0a7d5?q=80&w=2874&auto=format&fit=crop" 
               alt="Rural Agriculture" 
-              className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+              fill
+              className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              priority
             />
             <div className="absolute inset-0 bg-ag-green-950/20 group-hover:bg-transparent transition-colors duration-1000" />
             <div className="absolute bottom-8 left-8 text-white z-10">
@@ -188,10 +192,12 @@ const DevelopmentImpact: React.FC = () => {
             viewport={{ once: true }}
             className="rounded-[2rem] overflow-hidden relative group min-h-[320px]"
           >
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2944&auto=format&fit=crop" 
               alt="Solar Site" 
-              className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+              fill
+              className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
             <div className="absolute inset-0 bg-ag-green-950/20 group-hover:bg-transparent transition-colors duration-1000" />
             <div className="absolute top-8 left-8">

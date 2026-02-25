@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BatteryWarning, Wrench, Coins } from 'lucide-react';
 import SectionHeader from './SectionHeader';
@@ -15,7 +16,10 @@ const ProblemSolution: React.FC = () => {
       opacity: 1, 
       y: 0,
       scale: 1,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+      transition: { 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      } 
     }
   };
 
@@ -93,10 +97,13 @@ const ProblemSolution: React.FC = () => {
             className="relative rounded-[0.7rem] overflow-hidden p-8 flex flex-col justify-between group h-full min-h-[350px] transform hover:-translate-y-1 transition-transform duration-300"
           >
              <div className="absolute inset-0">
-               <img 
+               <Image 
                  src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=2940&auto=format&fit=crop" 
                  alt="Cost Barrier" 
-                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                 fill
+                 className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                 sizes="(max-width: 768px) 100vw, 33vw"
+                 priority
                />
                <div className="absolute inset-0 bg-gradient-to-t from-ag-green-900/90 via-ag-green-900/40 to-ag-green-900/20"></div>
              </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Wifi, Users, Briefcase, Settings, ArrowUpRight, Zap, Database, ShieldCheck } from 'lucide-react';
 import SectionHeader from './SectionHeader';
@@ -79,10 +80,13 @@ const HubAndSolutions: React.FC = () => {
       
       {/* 1. STATIC CINEMATIC BACKGROUND */}
       <div className="absolute inset-0 z-0">
-         <img 
+         <Image 
            src={STATIC_BG}
            alt="Background" 
-           className="w-full h-full object-cover"
+           fill
+           className="object-cover"
+           sizes="100vw"
+           priority
          />
          
          {/* Custom Gradient: Light at top (30%), Dark at bottom */}

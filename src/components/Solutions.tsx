@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 
@@ -120,10 +121,13 @@ const Solutions: React.FC = () => {
             transition={{ duration: 1 }}
             className="absolute inset-0 z-0"
           >
-            <img 
+            <Image 
               src={currentSolution.bgImage} 
               alt="Background" 
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={currentIndex === 0}
             />
             
             {/* GRADIENT OVERLAY STRATEGY */}
@@ -149,10 +153,12 @@ const Solutions: React.FC = () => {
               >
                  {/* Inner Image */}
                  <div className="relative aspect-[4/3] w-full rounded-[1.5rem] overflow-hidden mb-6 group">
-                    <img 
+                    <Image 
                       src={currentSolution.cardImage} 
                       alt={currentSolution.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 480px) 100vw, 420px"
                     />
                     <div className="absolute top-4 left-4">
                        <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-ag-green-950">

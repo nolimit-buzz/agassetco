@@ -2,6 +2,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown, ArrowRight, Building2, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -79,10 +80,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage = 'home' }) => {
         <div className="max-w-7xl px-6 mx-auto flex items-center justify-between h-14">
             
             <Link href="/" className="flex items-center shrink-0 relative z-50 outline-none group">
-              <img
+              <Image
                 src={isLightMode ? '/logo.svg' : '/logo-white.svg'}
                 alt="AgAsset Co"
-                className={`h-16 w-auto transition-all duration-500 ${isLightMode ? 'h-16' : 'h-14'}`}
+                width={140}
+                height={64}
+                className={`w-auto transition-all duration-500 ${isLightMode ? 'h-16' : 'h-14'}`}
+                priority
               />
             </Link>
 

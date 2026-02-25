@@ -1,6 +1,7 @@
 
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -39,10 +40,12 @@ const ImpactCTA: React.FC = () => {
         style={{ y }} 
         className="absolute -top-[20%] left-0 w-full h-[140%] z-0"
       >
-        <img 
+        <Image 
           src="https://images.unsplash.com/photo-1542601906990-b4d3fb7d5c73?q=80&w=2874&auto=format&fit=crop" 
           alt="Solar Panels in Field" 
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          sizes="100vw"
         />
         
         {/* Deep Multiply Overlay */}

@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/contact/page": "/contact",
+  "/cookie-policy/page": "/cookie-policy",
+  "/news/[id]/page": "/news/[id]",
+  "/news/page": "/news",
+  "/page": "/",
+  "/portfolio/[id]/page": "/portfolio/[id]",
+  "/portfolio/page": "/portfolio",
+  "/privacy/page": "/privacy",
+  "/solutions/page": "/solutions",
+  "/team/page": "/team",
+  "/terms/page": "/terms"
+}

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Warehouse, Coins, Settings, ArrowRight } from 'lucide-react';
 
@@ -106,10 +107,12 @@ const About: React.FC = () => {
                   {isDark && (
                     <>
                       <div className="absolute inset-0 z-0">
-                        <img 
+                        <Image 
                           src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2832&auto=format&fit=crop" 
                           alt="Background" 
-                          className="w-full h-full object-cover opacity-60 mix-blend-overlay grayscale transition-transform duration-700 hover:scale-105"
+                          fill
+                          className="object-cover opacity-60 mix-blend-overlay grayscale transition-transform duration-700 hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 50vw"
                         />
                         <div className="absolute inset-0 bg-ag-green-950/85 mix-blend-multiply"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-ag-green-950 via-transparent to-transparent opacity-80"></div>

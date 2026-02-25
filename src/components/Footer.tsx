@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -14,9 +15,11 @@ const Footer: React.FC = () => {
           {/* Branding Column */}
           <div className="col-span-1 md:col-span-1 pr-8">
             <Link href="/" className="mb-6 inline-block select-none cursor-pointer">
-              <img
+              <Image
                 src="/logo.svg"
                 alt="AgAsset Co"
+                width={140}
+                height={64}
                 className="h-16 w-auto"
               />
             </Link>

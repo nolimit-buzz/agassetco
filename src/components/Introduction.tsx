@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Coins, Settings, BarChart3, Plus, Minus } from 'lucide-react';
 import SectionHeader from './SectionHeader';
@@ -58,13 +59,16 @@ const Introduction: React.FC = () => {
             initial={{ opacity: 0, scale: 0.98, y: 30 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
             className="relative h-[400px] lg:h-[650px] rounded-[2rem] overflow-hidden shadow-2xl order-1"
           >
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2944&auto=format&fit=crop" 
               alt="Solar Field" 
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
             />
             {/* Minimal Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-ag-green-950/40 to-transparent opacity-60" />

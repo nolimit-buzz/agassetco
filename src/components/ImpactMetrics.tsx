@@ -23,7 +23,7 @@ const ImpactMetrics: React.FC = () => {
                 opacity: 1, 
                 y: 0, 
                 scale: 1,
-                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any } 
               }
             }}
             className="text-center px-4 py-8"
@@ -41,7 +41,7 @@ const ImpactMetrics: React.FC = () => {
                 opacity: 1, 
                 y: 0, 
                 scale: 1,
-                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any } 
               }
             }}
             className="text-center px-4 py-8"
@@ -59,7 +59,7 @@ const ImpactMetrics: React.FC = () => {
                 opacity: 1, 
                 y: 0, 
                 scale: 1,
-                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any } 
               }
             }}
             className="text-center px-4 py-8"

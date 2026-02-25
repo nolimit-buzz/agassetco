@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, ArrowRight, ChevronRight, Home, Download, FileCheck, ClipboardList, BarChart, ChevronDown as ChevronDownIcon } from 'lucide-react';
 import SectionHeader from './SectionHeader';
@@ -13,7 +14,10 @@ const ContactPage: React.FC = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      }
     }
   };
 
@@ -48,10 +52,13 @@ const ContactPage: React.FC = () => {
           <motion.div variants={fadeInUp} className="relative w-full aspect-[21/9] md:aspect-[3/1] mb-16 group">
             {/* Updated border radius to 0.7rem */}
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1643391448862-881a06885f90?q=80&w=3054&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                 alt="Corporate Discussion" 
-                className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                fill
+                className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                sizes="100vw"
+                priority
               />
               <div className="absolute inset-0 bg-ag-green-950/20 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply"></div>
             </div>
@@ -136,10 +143,12 @@ const ContactPage: React.FC = () => {
               className="relative rounded-[0.7rem] overflow-hidden p-10 flex flex-col justify-between group h-full min-h-[350px] transform hover:-translate-y-1 transition-transform duration-300"
             >
                <div className="absolute inset-0">
-                 <img 
+                 <Image 
                    src="https://images.unsplash.com/photo-1653339403801-db80aba42935?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                    alt="Lagos Office Location" 
-                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                   fill
+                   className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                   sizes="(max-width: 768px) 100vw, 33vw"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-ag-green-900/90 via-ag-green-900/60 to-ag-green-900/40"></div>
                </div>
@@ -266,10 +275,12 @@ const ContactPage: React.FC = () => {
               variants={fadeInUp}
               className="relative h-full min-h-[400px] lg:min-h-full rounded-[0.7rem] overflow-hidden shadow-inner bg-gray-200 border border-white"
             >
-               <img 
+               <Image 
                  src="https://images.unsplash.com/photo-1617505907947-9cb31eb80183?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                  alt="Operational Hub Location" 
-                 className="w-full h-full object-cover grayscale transition-all duration-1000"
+                 fill
+                 className="object-cover grayscale transition-all duration-1000"
+                 sizes="(max-width: 1024px) 100vw, 50vw"
                />
                <div className="absolute inset-0 bg-ag-green-950/10 mix-blend-multiply"></div>
                

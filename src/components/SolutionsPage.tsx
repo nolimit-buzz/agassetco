@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowUpRight, 
@@ -51,7 +52,10 @@ const SolutionsPage: React.FC = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+      transition: { 
+        duration: 1.2, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      }
     }
   };
 
@@ -60,7 +64,10 @@ const SolutionsPage: React.FC = () => {
     visible: { 
       opacity: 1, 
       scale: 1,
-      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { 
+        duration: 1.8, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      }
     }
   };
 
@@ -95,10 +102,13 @@ const SolutionsPage: React.FC = () => {
           <motion.div variants={imageEntrance} className="relative w-full aspect-[21/9] md:aspect-[3/1] mb-16 group">
             {/* Updated border radius to 0.7rem */}
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2944&auto=format&fit=crop" 
                 alt="Solar Utility Infrastructure" 
-                className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                fill
+                className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                sizes="100vw"
+                priority
               />
               <div className="absolute inset-0 bg-ag-green-950/20 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply"></div>
             </div>
@@ -108,7 +118,7 @@ const SolutionsPage: React.FC = () => {
               <motion.div 
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 0.8, x: 0 }}
-                transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
                 className="rotate-90 whitespace-nowrap text-white text-5xl md:text-8xl font-bold tracking-tighter select-none origin-center"
               >
                 SOLUTIONS
@@ -250,7 +260,7 @@ const SolutionsPage: React.FC = () => {
                variants={fadeInUp}
                className="relative rounded-[0.7rem] overflow-hidden aspect-square lg:aspect-auto lg:h-[600px] shadow-2xl group"
             >
-               <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Telemetry Operations Interface" />
+               <Image src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Telemetry Operations Interface" sizes="(max-width: 1024px) 100vw, 50vw" />
                <div className="absolute inset-0 bg-ag-green-950/20 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply" />
                <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-[0.7rem]">
                   <div className="flex items-center gap-3 text-white font-bold text-xs uppercase tracking-widest mb-2">

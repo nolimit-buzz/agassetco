@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronLeft, Calendar, ArrowRight, Home, Share2 } from 'lucide-react';
 
@@ -46,7 +47,14 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ articleId, onNavigate }
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1] as any,
+      } 
+    }
   };
 
   return (
@@ -86,10 +94,10 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ articleId, onNavigate }
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
           className="aspect-[21/9] rounded-[0.7rem] overflow-hidden shadow-2xl relative"
         >
-          <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
+          <Image src={article.image} alt={article.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 1024px" priority />
           <div className="absolute inset-0 bg-ag-green-950/10 mix-blend-multiply" />
         </motion.div>
       </section>
@@ -153,7 +161,7 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ articleId, onNavigate }
              <div key={idx} className="group cursor-pointer">
                 {/* Updated border radius to 0.7rem */}
                 <div className="aspect-[16/10] rounded-[0.7rem] overflow-hidden mb-6 relative">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 33vw" />
                   <div className="absolute top-4 left-4">
                     <span className="bg-white px-3 py-1 rounded-full text-xs font-bold text-ag-green-950 uppercase tracking-widest">{item.cat}</span>
                   </div>
