@@ -29,13 +29,37 @@ interface ContactData {
 }
 
 interface ContactPageProps {
-  initialData: {
+  initialData?: {
     data: ContactData;
-  };
+  } | null;
 }
 
+const FALLBACK_DATA: ContactData = {
+  id: 0,
+  documentId: '',
+  hero_breadcrumb: 'Contact Us',
+  hero_title: 'Get In Touch',
+  hero_subtitle: 'Contact',
+  hero_description: 'We would love to hear from you. Reach out to our team and we will get back to you as soon as possible.',
+  operating_hours: 'Mon–Fri, 9AM–6PM WAT',
+  email_card_title: 'General Inquiry',
+  email_address: 'info@agassetco.com',
+  email_description: 'For general inquiries, partnership proposals, and investment opportunities.',
+  office_card_label: 'Head Office',
+  office_title: 'Lagos, Nigeria',
+  office_description: 'Victoria Island, Lagos. The commercial and financial hub of West Africa.',
+  phone_card_label: 'Call Us',
+  phone_number: '+234 800 000 0000',
+  phone_description: 'Available Monday to Friday during business hours.',
+  form_heading: 'Send a Message',
+  cta_heading: 'Partner With Us',
+  cta_description: 'Join the ecosystem of innovators building the future of productive energy in Africa.',
+  map_label: 'Our Location',
+  map_location: 'Victoria Island, Lagos, Nigeria',
+};
+
 const ContactPage = ({ initialData }: ContactPageProps) => {
-  const data = initialData.data;
+  const data = initialData?.data ?? FALLBACK_DATA;
   const partners = ["REA", "Agronomie", "Power Africa", "Shell Foundation", "World Bank", "IFC"];
   const marqueePartners = [...partners, ...partners, ...partners, ...partners];
 
