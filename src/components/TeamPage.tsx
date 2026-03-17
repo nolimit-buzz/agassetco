@@ -15,62 +15,62 @@ interface TeamMember {
 }
 
 const EXECUTIVE_TEAM: TeamMember[] = [
-  { 
-    id: 'exec1', 
-    name: "Sarah Van Dorn", 
-    title: "Chief Executive Officer", 
+  {
+    id: 'exec1',
+    name: "Sarah Van Dorn",
+    title: "Chief Executive Officer",
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop",
     linkedin: "#"
   },
-  { 
-    id: 'exec2', 
-    name: "Michael Abara", 
-    title: "Technical Director", 
+  {
+    id: 'exec2',
+    name: "Michael Abara",
+    title: "Technical Director",
     img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop",
     linkedin: "#"
   },
-  { 
-    id: 'exec3', 
-    name: "Elena Rossi", 
-    title: "Chief Investment Officer", 
+  {
+    id: 'exec3',
+    name: "Elena Rossi",
+    title: "Chief Investment Officer",
     img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop",
     linkedin: "#"
   }
 ];
 
 const BOARD_TEAM: TeamMember[] = [
-  { 
-    id: 'board1', 
-    name: "Dr. Tunde Ojo", 
-    title: "Chairman", 
+  {
+    id: 'board1',
+    name: "Dr. Tunde Ojo",
+    title: "Chairman",
     img: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1887&auto=format&fit=crop",
     linkedin: "#"
   },
-  { 
-    id: 'board2', 
-    name: "Claire Thompson", 
-    title: "Non-Executive Director", 
+  {
+    id: 'board2',
+    name: "Claire Thompson",
+    title: "Non-Executive Director",
     img: "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1886&auto=format&fit=crop",
     linkedin: "#"
   },
-  { 
-    id: 'board3', 
-    name: "Jameson Pike", 
-    title: "Venture Partner", 
+  {
+    id: 'board3',
+    name: "Jameson Pike",
+    title: "Venture Partner",
     img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop",
     linkedin: "#"
   },
-  { 
-    id: 'board4', 
-    name: "Fatima Yusuf", 
-    title: "Impact Director", 
+  {
+    id: 'board4',
+    name: "Fatima Yusuf",
+    title: "Impact Director",
     img: "https://images.unsplash.com/photo-1567532939604-b6c5b0ad2e01?q=80&w=1887&auto=format&fit=crop",
     linkedin: "#"
   },
-  { 
-    id: 'board5', 
-    name: "Robert Lang", 
-    title: "Strategic Advisor", 
+  {
+    id: 'board5',
+    name: "Robert Lang",
+    title: "Strategic Advisor",
     img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
     linkedin: "#"
   }
@@ -95,10 +95,44 @@ const SECTIONS = [
 
 interface TeamPageProps {
   onNavigate?: (page: any) => void;
+  initialData?: {
+    hero_breadcrumb?: string;
+    hero_title?: string;
+    hero_subtitle?: string;
+    hero_description?: string;
+    executive_section_label?: string;
+    board_section_label?: string;
+    members_section_label?: string;
+    cta_heading?: string;
+    cta_description?: string;
+    executive?: TeamMember[];
+    board?: TeamMember[];
+    members?: TeamMember[];
+  } | null;
 }
 
-const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
+
+
+
+const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
   const [activeSection, setActiveSection] = useState('executive');
+
+  // Map fields from initialData with fallbacks to hardcoded values
+  const executiveTeam = initialData?.executive || EXECUTIVE_TEAM;
+  const boardTeam = initialData?.board || BOARD_TEAM;
+  const membersTeam = initialData?.members || MEMBERS_TEAM;
+
+  const heroBreadcrumb = initialData?.hero_breadcrumb || 'The Team';
+  const heroTitleFull = initialData?.hero_title || 'THE VOICES OF EXECUTION.';
+  const heroTitle = heroTitleFull.replace('EXECUTION.', ''); // For split styling if needed
+  const heroDescription = initialData?.hero_description || 'A multi-disciplinary team of veterans spanning energy, agriculture, finance, and logistics. We are unified by a single mandate: bridging the productive use gap.';
+  
+  const executiveLabel = initialData?.executive_section_label || 'Executive Team';
+  const boardLabel = initialData?.board_section_label || 'Board of Directors';
+  const membersLabel = initialData?.members_section_label || 'Strategic Members';
+
+  const ctaHeading = initialData?.cta_heading || 'Build the future With Us.';
+  const ctaDescription = initialData?.cta_description || 'CAREERS & IMPACT';
 
   useEffect(() => {
     const observerOptions = {
@@ -139,8 +173,8 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }
     }
@@ -148,8 +182,8 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
   const imageEntrance = {
     hidden: { opacity: 0, scale: 1.08 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] as any }
     }
@@ -157,10 +191,10 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-ag-lime selection:text-white">
-      
+
       {/* 01. HERO SECTION */}
       <section className="pt-32 pb-24 bg-white overflow-hidden px-6">
-        <motion.div 
+        <motion.div
           initial="hidden"
           animate="visible"
           className="max-w-7xl mx-auto"
@@ -173,9 +207,9 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
               <span className="opacity-50">Company</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
-              <span className="text-ag-green-950">The Team</span>
+              <span className="text-ag-green-950">{heroBreadcrumb}</span>
             </div>
-            
+
             <div className="text-sm font-bold uppercase tracking-[0.3em] text-ag-green-950">
               02 Corporate Governance & Leadership — 2025
             </div>
@@ -184,9 +218,9 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           {/* Hero Image */}
           <motion.div variants={imageEntrance as any} className="relative w-full aspect-[21/9] md:aspect-[3/1] mb-16 group">
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
-              <Image 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2940&auto=format&fit=crop" 
-                alt="AgAsset Team" 
+              <Image
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2940&auto=format&fit=crop"
+                alt="AgAsset Team"
                 fill
                 className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
                 sizes="100vw"
@@ -194,9 +228,9 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
               />
               <div className="absolute inset-0 bg-ag-green-950/10 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply"></div>
             </div>
-            
+
             <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 flex items-center justify-center z-10 pointer-events-none overflow-visible">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 0.8, x: 0 }}
                 transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
@@ -210,11 +244,11 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           {/* Title & Description Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-16">
             <div className="lg:col-span-5 pt-2">
-              <motion.p 
+              <motion.p
                 variants={fadeInUp as any}
                 className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed max-w-md mb-8"
               >
-                A multi-disciplinary team of veterans spanning energy, agriculture, finance, and logistics. We are unified by a single mandate: bridging the productive use gap.
+                {heroDescription}
               </motion.p>
               <motion.div variants={fadeInUp as any} className="flex items-center gap-4 text-base font-bold text-ag-green-950/40 uppercase tracking-widest">
                 <span>Infrastructure</span>
@@ -226,12 +260,16 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="lg:col-span-7 lg:text-right">
-              <motion.h1 
+              <motion.h1
                 variants={fadeInUp as any}
                 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
-                THE VOICES <br/>
-                OF <span className="text-ag-lime">EXECUTION.</span>
+                {heroTitleFull.includes('EXECUTION.') ? (
+                  <>
+                    {heroTitle} <br />
+                    OF <span className="text-ag-lime">EXECUTION.</span>
+                  </>
+                ) : heroTitleFull}
               </motion.h1>
             </div>
           </div>
@@ -241,38 +279,36 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
       {/* 02. MAIN CONTENT WITH SIDEBAR */}
       <section className="max-w-7xl mx-auto px-6 mt-12 relative mb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-          
+
           {/* STICKY SIDEBAR NAVIGATION */}
           <aside className="lg:col-span-3 hidden lg:block sticky top-48 self-start no-print">
             <div className="text-sm font-bold uppercase tracking-[0.25em] text-gray-400 border-b border-gray-100 pb-8 mb-10">
               Categories
             </div>
-            
+
             <nav className="flex flex-col gap-0 relative">
               <div className="absolute left-[3px] top-0 bottom-0 w-px bg-gray-100" />
-              
+
               {SECTIONS.map((section, i) => {
                 const isActive = activeSection === section.id;
                 return (
-                  <a 
+                  <a
                     key={section.id}
                     href={`#${section.id}`}
                     onClick={(e) => scrollToSection(e, section.id)}
-                    className={`text-base font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-8 pl-1.5 py-6 relative group ${
-                      isActive ? 'text-ag-green-950' : 'text-gray-300 hover:text-ag-green-950/70'
-                    }`}
+                    className={`text-base font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-8 pl-1.5 py-6 relative group ${isActive ? 'text-ag-green-950' : 'text-gray-300 hover:text-ag-green-950/70'
+                      }`}
                   >
-                    <div className={`absolute left-0 w-[7px] h-[7px] rounded-full z-10 transition-all duration-500 ${
-                      isActive ? 'bg-ag-lime scale-100' : 'bg-transparent scale-0'
-                    }`} />
-                    
+                    <div className={`absolute left-0 w-[7px] h-[7px] rounded-full z-10 transition-all duration-500 ${isActive ? 'bg-ag-lime scale-100' : 'bg-transparent scale-0'
+                      }`} />
+
                     <span className={`text-sm transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-40'}`}>
                       0{i + 1}
                     </span>
                     <span className="relative">
                       {section.label}
                       {isActive && (
-                        <motion.div 
+                        <motion.div
                           layoutId="teamSidebarUnderline"
                           className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-ag-green-950"
                           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -288,16 +324,16 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           {/* MAIN TEAM GRIDS */}
           <div className="lg:col-span-9">
             <div className="space-y-40">
-              
+
               {/* EXECUTIVE SECTION */}
               <article id="executive" className="scroll-mt-48">
-                <SectionHeader 
-                  number="01" 
-                  category="Leadership" 
-                  title={<>Executive <span className="text-ag-lime">Team.</span></>} 
+                <SectionHeader
+                  number="01"
+                  category="Leadership"
+                  title={<>{executiveLabel.includes('Team.') ? <>{executiveLabel.replace('Team.', '')} <span className="text-ag-lime">Team.</span></> : executiveLabel}</>}
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mt-12">
-                  {EXECUTIVE_TEAM.map((member, i) => (
+                  {executiveTeam.map((member, i) => (
                     <TeamCard key={member.id} member={member} index={i} />
                   ))}
                 </div>
@@ -305,13 +341,13 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
               {/* BOARD SECTION */}
               <article id="board" className="scroll-mt-48">
-                <SectionHeader 
-                  number="02" 
-                  category="Governance" 
-                  title={<>Board of <span className="text-ag-lime">Directors.</span></>} 
+                <SectionHeader
+                  number="02"
+                  category="Governance"
+                  title={<>{boardLabel.includes('Directors.') ? <>{boardLabel.replace('Directors.', '')} <span className="text-ag-lime">Directors.</span></> : boardLabel}</>}
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mt-12">
-                  {BOARD_TEAM.map((member, i) => (
+                  {boardTeam.map((member, i) => (
                     <TeamCard key={member.id} member={member} index={i} />
                   ))}
                 </div>
@@ -319,13 +355,13 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
               {/* MEMBERS SECTION */}
               <article id="members" className="scroll-mt-48">
-                <SectionHeader 
-                  number="03" 
-                  category="Operations" 
-                  title={<>Strategic <span className="text-ag-lime">Members.</span></>} 
+                <SectionHeader
+                  number="03"
+                  category="Operations"
+                  title={<>{membersLabel.includes('Members.') ? <>{membersLabel.replace('Members.', '')} <span className="text-ag-lime">Members.</span></> : membersLabel}</>}
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 mt-12">
-                  {MEMBERS_TEAM.map((member, i) => (
+                  {membersTeam.map((member, i) => (
                     <TeamCard key={member.id} member={member} index={i} small />
                   ))}
                 </div>
@@ -340,33 +376,35 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
       {/* 03. CTA FOOTER SECTION */}
       <section className="relative bg-ag-green-950 py-24 overflow-hidden no-print">
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
-            <motion.span 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="text-sm font-bold text-ag-lime uppercase tracking-[0.5em] mb-10"
-            >
-              CAREERS & IMPACT
-            </motion.span>
-            
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-[0.9] mb-12 max-w-4xl"
-            >
-              Build the future <br/> <span className="text-ag-lime italic font-serif">With Us.</span>
-            </motion.h2>
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-sm font-bold text-ag-lime uppercase tracking-[0.5em] mb-10"
+          >
+            {ctaDescription}
+          </motion.span>
 
-            <motion.button 
-              onClick={() => onNavigate?.('contact')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group flex items-center gap-8 bg-white text-ag-green-950 px-10 py-6 rounded-full font-bold uppercase tracking-widest text-base hover:shadow-2xl transition-all duration-500"
-            >
-              View Open Roles
-              <div className="w-8 h-8 bg-ag-green-950 rounded-full flex items-center justify-center text-white transition-all">
-                <ArrowRight size={14} className="group-hover:-rotate-45 transition-transform" />
-              </div>
-            </motion.button>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-[0.9] mb-12 max-w-4xl"
+          >
+            {ctaHeading.includes('With Us.') ? (
+              <>{ctaHeading.replace('With Us.', '')} <br /> <span className="text-ag-lime italic font-serif">With Us.</span></>
+            ) : ctaHeading}
+          </motion.h2>
+
+          <motion.button
+            onClick={() => onNavigate?.('contact')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group flex items-center gap-8 bg-white text-ag-green-950 px-10 py-6 rounded-full font-bold uppercase tracking-widest text-base hover:shadow-2xl transition-all duration-500"
+          >
+            View Open Roles
+            <div className="w-8 h-8 bg-ag-green-950 rounded-full flex items-center justify-center text-white transition-all">
+              <ArrowRight size={14} className="group-hover:-rotate-45 transition-transform" />
+            </div>
+          </motion.button>
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ag-lime/5 rounded-full blur-[140px] pointer-events-none" />
       </section>
@@ -383,7 +421,7 @@ interface TeamCardProps {
 
 const TeamCard: React.FC<TeamCardProps> = ({ member, index, small = false }) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -391,24 +429,24 @@ const TeamCard: React.FC<TeamCardProps> = ({ member, index, small = false }) => 
       className="group cursor-pointer"
     >
       <div className="aspect-[3/4] overflow-hidden rounded-[0.7rem] mb-6 bg-gray-100 relative shadow-md group-hover:shadow-xl transition-all duration-500">
-        <Image 
-          src={member.img} 
-          alt={member.name} 
+        <Image
+          src={member.img}
+          alt={member.name}
           fill
           className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
-        
+
         {/* LinkedIn Reveal Overlay */}
         <div className="absolute inset-0 bg-ag-green-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-            <motion.a 
-              href={member.linkedin}
-              whileHover={{ scale: 1.15 }}
-              className="w-12 h-12 rounded-full bg-white text-ag-green-950 flex items-center justify-center shadow-2xl hover:bg-ag-lime hover:text-white transition-colors"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Linkedin size={20} strokeWidth={2} />
-            </motion.a>
+          <motion.a
+            href={member.linkedin}
+            whileHover={{ scale: 1.15 }}
+            className="w-12 h-12 rounded-full bg-white text-ag-green-950 flex items-center justify-center shadow-2xl hover:bg-ag-lime hover:text-white transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Linkedin size={20} strokeWidth={2} />
+          </motion.a>
         </div>
       </div>
       <h3 className={`${small ? 'text-2xl' : 'text-3xl'} font-bold text-ag-green-950 group-hover:text-ag-lime transition-colors duration-300`}>

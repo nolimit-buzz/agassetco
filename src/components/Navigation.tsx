@@ -3,47 +3,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, ArrowRight, Building2, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface NavigationProps {
-  currentPage?: 'home' | 'about' | 'team' | 'solutions' | 'portfolio' | 'news' | 'contact' | 'terms' | 'privacy' | 'news-detail' | 'project-detail';
-}
-
-const routeFor = (page: string) => {
-  switch (page) {
-    case 'home':
-      return '/';
-    case 'about':
-    case 'company':
-      return '/about';
-    case 'team':
-      return '/team';
-    case 'solutions':
-      return '/solutions';
-    case 'portfolio':
-      return '/portfolio';
-    case 'news':
-      return '/news';
-    case 'contact':
-      return '/contact';
-    case 'terms':
-      return '/terms';
-    case 'privacy':
-      return '/privacy';
-    default:
-      return '/';
-  }
+// Helper to determine if a route is active
+const isActiveRoute = (currentPath: string, targetPath: string) => {
+  if (targetPath === '/' && currentPath === '/') return true;
+  if (targetPath !== '/' && currentPath.startsWith(targetPath)) return true;
+  return false;
 };
 
-const Navigation: React.FC<NavigationProps> = ({ currentPage = 'home' }) => {
+const Navigation: React.FC = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isCompanyHovered, setIsCompanyHovered] = useState(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
 
   // Transparent style is for Home and Project Detail pages when at the very top.
-  const isTransparentCapablePage = currentPage === 'home' || currentPage === 'project-detail';
+  const isTransparentCapablePage = pathname === '/' || pathname.startsWith('/portfolio/');
   const isLightMode = isScrolled || !isTransparentCapablePage || isCompanyHovered;
 
   useEffect(() => {
@@ -52,19 +31,19 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage = 'home' }) => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage]);
+  }, [pathname]);
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'company', label: 'Company', hasMega: true },
-    { id: 'solutions', label: 'Solutions' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'news', label: 'News' }
+    { id: 'home', label: 'Home', path: '/' },
+    { id: 'company', label: 'Company', path: '/about', hasMega: true },
+    { id: 'solutions', label: 'Solutions', path: '/solutions' },
+    { id: 'portfolio', label: 'Portfolio', path: '/portfolio' },
+    { id: 'news', label: 'News', path: '/news' }
   ];
 
   const companySubLinks = [
-    { id: 'about', label: 'About Us', desc: 'Our mission, mandate and history.', icon: Building2 },
-    { id: 'team', label: 'The Team', desc: 'Meet the industry veterans driving AgAsset.', icon: Users }
+    { id: 'about', label: 'About Us', path: '/about', desc: 'Our mission, mandate and history.', icon: Building2 },
+    { id: 'team', label: 'The Team', path: '/team', desc: 'Meet the industry veterans driving AgAsset.', icon: Users }
   ];
 
   return (
@@ -105,13 +84,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage = 'home' }) => {
                       onMouseEnter={() => link.hasMega && setIsCompanyHovered(true)}
                     >
                       <Link
-                        href={routeFor(link.hasMega ? 'company' : link.id)}
+                        href={link.path}
                         onClick={() => {
                           setMobileMenuOpen(false);
                           setIsCompanyHovered(false);
                         }}
                         className={`text-sm font-semibold relative group transition-all duration-300 flex items-center gap-1 ${
-                          (currentPage === link.id || (link.hasMega && (currentPage === 'about' || currentPage === 'team')))
+                          isActiveRoute(pathname, link.path)
                             ? 'text-ag-lime' 
                             : (isLightMode ? 'text-ag-green-950 hover:text-ag-lime' : 'text-white/80 hover:text-white')
                         }`}
@@ -121,7 +100,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage = 'home' }) => {
                           <ChevronDown size={14} className={`transition-transform duration-300 ${isCompanyHovered ? 'rotate-180' : ''}`} />
                         )}
                         <span className={`absolute -bottom-1 left-0 w-0 h-[1.5px] bg-ag-lime transition-all duration-300 group-hover:w-full ${
-                          (currentPage === link.id || (link.hasMega && (currentPage === 'about' || currentPage === 'team'))) ? 'w-full' : ''
+                          isActiveRoute(pathname, link.path) ? 'w-full' : ''
                         }`}></span>
                       </Link>
                     </div>
@@ -190,7 +169,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage = 'home' }) => {
                       {companySubLinks.map((item) => (
                         <Link
                           key={item.id}
-                          href={routeFor(item.id)}
+                          href={item.path}
                           onClick={() => {
                             setMobileMenuOpen(false);
                             setIsCompanyHovered(false);
@@ -236,19 +215,27 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage = 'home' }) => {
             className="md:hidden bg-ag-green-950 fixed inset-0 z-40 pt-32 px-6 flex flex-col items-center"
           >
             <div className="flex flex-col gap-8 items-center justify-center font-sans h-full pb-20 w-full">
-              {['home', 'about', 'team', 'solutions', 'portfolio', 'news', 'contact'].map((page) => (
-                <motion.div key={page} whileHover={{ scale: 1.1 }}>
+              {[
+                { label: 'home', path: '/' },
+                { label: 'about', path: '/about' },
+                { label: 'team', path: '/team' },
+                { label: 'solutions', path: '/solutions' },
+                { label: 'portfolio', path: '/portfolio' },
+                { label: 'news', path: '/news' },
+                { label: 'contact', path: '/contact' }
+              ].map((link) => (
+                <motion.div key={link.label} whileHover={{ scale: 1.1 }}>
                   <Link
-                    href={routeFor(page)}
+                    href={link.path}
                     className={`text-4xl font-bold tracking-tighter capitalize ${
-                      currentPage === page ? 'text-ag-lime' : 'text-white'
+                      pathname === link.path ? 'text-ag-lime' : 'text-white'
                     }`}
                     onClick={() => {
                       setMobileMenuOpen(false);
                       setIsCompanyHovered(false);
                     }}
                   >
-                    {page.replace('-', ' ')}
+                    {link.label.replace('-', ' ')}
                   </Link>
                 </motion.div>
               ))}

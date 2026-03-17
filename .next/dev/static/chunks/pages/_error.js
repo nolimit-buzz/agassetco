@@ -1,13 +1,13 @@
 __turbopack_load_page_chunks__("/_error", [
-  "static/chunks/0e072_next_dist_compiled_f0d94c68._.js",
-  "static/chunks/0e072_next_dist_shared_lib_69ee27aa._.js",
-  "static/chunks/0e072_next_dist_client_d9a74851._.js",
-  "static/chunks/0e072_next_dist_fe12a159._.js",
-  "static/chunks/0e072_next_error_4063e472.js",
-  "static/chunks/[next]_entry_page-loader_ts_aaa09d42._.js",
-  "static/chunks/0e072_react-dom_15a8b116._.js",
-  "static/chunks/0e072_5f20e332._.js",
-  "static/chunks/[root-of-the-server]__c4fe6cb9._.js",
-  "static/chunks/agassetco_pages__error_2da965e7._.js",
-  "static/chunks/turbopack-agassetco_pages__error_fd490e41._.js"
+  "static/chunks/node_modules_next_dist_compiled_8ca6b690._.js",
+  "static/chunks/node_modules_next_dist_shared_lib_9a2a7093._.js",
+  "static/chunks/node_modules_next_dist_client_5a8a528e._.js",
+  "static/chunks/node_modules_next_dist_a183fb77._.js",
+  "static/chunks/node_modules_next_error_1cfbb379.js",
+  "static/chunks/[next]_entry_page-loader_ts_43b523b5._.js",
+  "static/chunks/node_modules_react-dom_4411d9bd._.js",
+  "static/chunks/node_modules_7f09fef0._.js",
+  "static/chunks/[root-of-the-server]__092393de._.js",
+  "static/chunks/pages__error_2da965e7._.js",
+  "static/chunks/turbopack-pages__error_af01c4e3._.js"
 ])
