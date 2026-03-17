@@ -1,10 +1,10 @@
 // app/team/page.tsx
-import axios from 'axios';
+import strapi from '../../lib/strapi';
 import TeamPage from '../../components/TeamPage';
 
 async function getTeamData() {
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/team-page`);
+    const response = await strapi.get(`team-page`);
     console.log(response.data);
     return response.data;
   } catch (error) {
