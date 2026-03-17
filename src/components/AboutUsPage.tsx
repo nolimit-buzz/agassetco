@@ -2,21 +2,21 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { 
-  ArrowRight, 
-  Lock, 
-  TrendingUp as TrendingUpIcon, 
-  Handshake, 
-  ChevronRight, 
-  Home, 
-  Building2, 
-  Zap, 
-  Users, 
-  Download, 
-  Search, 
-  Activity, 
-  Cpu, 
-  Plus, 
+import {
+  ArrowRight,
+  Lock,
+  TrendingUp as TrendingUpIcon,
+  Handshake,
+  ChevronRight,
+  Home,
+  Building2,
+  Zap,
+  Users,
+  Download,
+  Search,
+  Activity,
+  Cpu,
+  Plus,
   FileText,
   TrendingUp,
   ShieldCheck,
@@ -27,8 +27,46 @@ import {
 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
-const AboutUsPage: React.FC = () => {
+interface AboutPageData {
+  id: number;
+  documentId: string;
+  hero_breadcrumb: string;
+  hero_title: string;
+  hero_subtitle: string;
+  hero_description: string;
+  structure_title: string;
+  structure_section_title: string;
+  structure_description: string;
+  operations_title: string;
+  operations_description: string;
+  values_section_title: string;
+  mission_title: string;
+  mission_description: string;
+  vision_title: string;
+  vision_description: string;
+  model_title: string;
+  model_description: string;
+  governance_title: string;
+  cta_heading: string;
+  cta_description: string;
+  corporate_profile_label: string;
+  impact_report_label: string;
+  partnerships_link_text: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+interface AboutUsPageProps {
+  initialData?: {
+    data: AboutPageData;
+  };
+}
+
+const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
   const partners = ["REA", "Agronomie", "Power Africa", "Shell Foundation", "World Bank", "IFC"];
+
+  const aboutData = initialData?.data;
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -46,11 +84,11 @@ const AboutUsPage: React.FC = () => {
 
   const imageEntrance = {
     hidden: { opacity: 0, scale: 1.08 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { 
-        duration: 1.8, 
+      transition: {
+        duration: 1.8,
         ease: [0.16, 1, 0.3, 1] as any,
       }
     }
@@ -64,12 +102,16 @@ const AboutUsPage: React.FC = () => {
     }
   };
 
+
+
+
+
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-ag-lime selection:text-white">
-      
+
       {/* 01. PRESENTATION HERO SECTION */}
       <section className="pt-32 pb-24 bg-white overflow-hidden px-6">
-        <motion.div 
+        <motion.div
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -77,7 +119,7 @@ const AboutUsPage: React.FC = () => {
         >
           <motion.div variants={fadeInUp} className="border-b border-gray-200 py-4 flex justify-between items-center mb-12">
             <div className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
-              AgAsset Corporate Presentation
+              {aboutData?.hero_breadcrumb || "AgAsset Corporate Presentation"}
             </div>
             <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
               01
@@ -86,9 +128,9 @@ const AboutUsPage: React.FC = () => {
 
           <motion.div variants={imageEntrance} className="relative w-full aspect-[21/9] md:aspect-[3/1] mb-16 group">
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
-              <Image 
-                src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2940&auto=format&fit=crop" 
-                alt="Working Lands" 
+              <Image
+                src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2940&auto=format&fit=crop"
+                alt="Working Lands"
                 fill
                 className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
                 sizes="100vw"
@@ -96,10 +138,10 @@ const AboutUsPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-ag-green-950/10 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply"></div>
             </div>
-            
+
             {/* Vertical Branding */}
             <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 flex items-center justify-center z-10 pointer-events-none overflow-visible">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 0.8, x: 0 }}
                 transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
@@ -121,22 +163,31 @@ const AboutUsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-7">
-              <motion.h1 
+              <motion.h1
                 variants={fadeInUp}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
-                EXECUTION <br/>
-                <span className="text-ag-lime">ENGINE.</span>
+                {aboutData?.hero_title ? (
+                  <>
+                    {aboutData.hero_title.split(' ').slice(0, -1).join(' ')} <br />
+                    <span className="text-ag-lime">{aboutData.hero_title.split(' ').slice(-1)}</span>
+                  </>
+                ) : (
+                  <>
+                    EXECUTION <br />
+                    <span className="text-ag-lime">ENGINE.</span>
+                  </>
+                )}
               </motion.h1>
             </div>
             <div className="lg:col-span-5 pt-2">
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
                 className="text-sm md:text-base text-gray-500 font-light leading-relaxed max-w-md mb-8"
               >
-                AgAsset Co is a specialized asset vehicle dedicated to bridging the gap between energy access and productive use. We finance, deploy, and manage machinery at scale.
+                {aboutData?.hero_description || "AgAsset Co is a specialized asset vehicle dedicated to bridging the gap between energy access and productive use. We finance, deploy, and manage machinery at scale."}
               </motion.p>
-              <motion.button 
+              <motion.button
                 variants={fadeInUp}
                 className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-ag-green-950 group"
               >
@@ -149,19 +200,19 @@ const AboutUsPage: React.FC = () => {
 
       {/* 02. PURPOSE-BUILT STRUCTURE */}
       <section className="py-24 bg-white border-t border-gray-100">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
           className="max-w-7xl mx-auto px-6"
         >
-          <SectionHeader number="02" category="Structure" title="Purpose-Built for Scale." />
+          <SectionHeader number="02" category="Structure" title={aboutData?.structure_title} />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div variants={fadeInUp} className="lg:col-span-5">
-              <h3 className="text-3xl font-medium text-ag-green-950 mb-6">The "Last Mile" Solution</h3>
+              <h3 className="text-3xl font-medium text-ag-green-950 mb-6">{aboutData?.structure_section_title}</h3>
               <p className="text-lg text-gray-500 font-light leading-relaxed mb-6">
-                While developers build grids and farmers grow crops, a missing link remained: the capital-intensive machinery required to process harvest. We fill that void.
+                {aboutData?.structure_description}
               </p>
               <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-ag-green-950/40">
                 <span>Infrastructure</span>
@@ -172,40 +223,40 @@ const AboutUsPage: React.FC = () => {
               </div>
             </motion.div>
             <motion.div variants={fadeInUp} className="lg:col-span-7">
-               <div className="relative rounded-[2.5rem] bg-gray-50/50 border border-gray-100 p-8 md:p-12 overflow-hidden shadow-inner">
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-                    <div className="flex-1 w-full text-center group">
-                      <motion.div 
-                        whileHover={{ y: -5 }}
-                        className="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg h-full flex flex-col items-center justify-center"
-                      >
-                        <Building2 className="w-5 h-5 mb-4 text-gray-400" />
-                        <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Originator</div>
-                        <div className="text-xl font-bold text-ag-green-950">Agronomie</div>
-                      </motion.div>
-                    </div>
-                    <div className="flex-1 w-full text-center group relative">
-                      <motion.div 
-                        whileHover={{ scale: 1.02 }}
-                        className="bg-ag-green-950 text-white p-8 rounded-2xl shadow-2xl relative z-10 border border-ag-lime/30 flex flex-col items-center justify-center h-[180px] md:h-[200px]"
-                      >
-                         <Zap className="w-6 h-6 mb-4 text-ag-lime animate-pulse" />
-                         <div className="text-xs text-ag-lime uppercase tracking-widest mb-1">Asset Vehicle</div>
-                         <div className="text-2xl font-bold tracking-tight mb-2">AgAsset Co</div>
-                      </motion.div>
-                    </div>
-                    <div className="flex-1 w-full text-center group">
-                      <motion.div 
-                        whileHover={{ y: -5 }}
-                        className="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg h-full flex flex-col items-center justify-center"
-                      >
-                        <Users className="w-5 h-5 mb-4 text-gray-400" />
-                        <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Beneficiary</div>
-                        <div className="text-xl font-bold text-ag-green-950">End User</div>
-                      </motion.div>
-                    </div>
+              <div className="relative rounded-[2.5rem] bg-gray-50/50 border border-gray-100 p-8 md:p-12 overflow-hidden shadow-inner">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+                  <div className="flex-1 w-full text-center group">
+                    <motion.div
+                      whileHover={{ y: -5 }}
+                      className="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg h-full flex flex-col items-center justify-center"
+                    >
+                      <Building2 className="w-5 h-5 mb-4 text-gray-400" />
+                      <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Originator</div>
+                      <div className="text-xl font-bold text-ag-green-950">Agronomie</div>
+                    </motion.div>
                   </div>
-               </div>
+                  <div className="flex-1 w-full text-center group relative">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      className="bg-ag-green-950 text-white p-8 rounded-2xl shadow-2xl relative z-10 border border-ag-lime/30 flex flex-col items-center justify-center h-[180px] md:h-[200px]"
+                    >
+                      <Zap className="w-6 h-6 mb-4 text-ag-lime animate-pulse" />
+                      <div className="text-xs text-ag-lime uppercase tracking-widest mb-1">Asset Vehicle</div>
+                      <div className="text-2xl font-bold tracking-tight mb-2">AgAsset Co</div>
+                    </motion.div>
+                  </div>
+                  <div className="flex-1 w-full text-center group">
+                    <motion.div
+                      whileHover={{ y: -5 }}
+                      className="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg h-full flex flex-col items-center justify-center"
+                    >
+                      <Users className="w-5 h-5 mb-4 text-gray-400" />
+                      <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Beneficiary</div>
+                      <div className="text-xl font-bold text-ag-green-950">End User</div>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -215,115 +266,115 @@ const AboutUsPage: React.FC = () => {
       <section className="py-24 bg-ag-green-950 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
+
             {/* Left: Animated Diagram */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
               className="relative h-[500px] md:h-[600px] w-full flex items-center justify-center order-2 lg:order-1"
             >
-                {/* Orbital Rings */}
-                <div className="absolute w-[350px] h-[350px] md:w-[450px] md:h-[450px] border border-white/5 rounded-full" />
-                <div className="absolute w-[250px] h-[250px] md:w-[320px] md:h-[320px] border border-white/10 rounded-full" />
-                
-                {/* SVG Connections */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-                    <motion.path d="M 50% 50% Q 35% 35% 20% 40%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
-                    <motion.path d="M 50% 50% Q 65% 30% 80% 35%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.2 }} />
-                    <motion.path d="M 50% 50% Q 35% 65% 25% 75%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.4 }} />
-                    <motion.path d="M 50% 50% Q 65% 75% 75% 85%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.6 }} />
-                </svg>
+              {/* Orbital Rings */}
+              <div className="absolute w-[350px] h-[350px] md:w-[450px] md:h-[450px] border border-white/5 rounded-full" />
+              <div className="absolute w-[250px] h-[250px] md:w-[320px] md:h-[320px] border border-white/10 rounded-full" />
 
-                {/* Central Node */}
-                <div className="relative z-10 w-24 h-24 rounded-[0.7rem] bg-ag-green-950 border-2 border-ag-lime flex items-center justify-center shadow-[0_0_50px_rgba(120,188,66,0.3)]">
-                    <div className="w-12 h-12 bg-ag-lime/10 rounded-xl flex items-center justify-center">
-                       <Building2 className="text-ag-lime w-8 h-8" />
-                    </div>
-                </div>
+              {/* SVG Connections */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+                <motion.path d="M 50% 50% Q 35% 35% 20% 40%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
+                <motion.path d="M 50% 50% Q 65% 30% 80% 35%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.2 }} />
+                <motion.path d="M 50% 50% Q 35% 65% 25% 75%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.4 }} />
+                <motion.path d="M 50% 50% Q 65% 75% 75% 85%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.6 }} />
+              </svg>
 
-                {/* Satellite Nodes */}
-                <div className="absolute top-[35%] left-[15%] flex flex-col items-center group">
-                    <motion.div 
-                      whileHover={{ scale: 1.15 }}
-                      className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                    >
-                        <Activity className="text-ag-lime w-6 h-6" />
-                    </motion.div>
-                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Telemetry</span>
+              {/* Central Node */}
+              <div className="relative z-10 w-24 h-24 rounded-[0.7rem] bg-ag-green-950 border-2 border-ag-lime flex items-center justify-center shadow-[0_0_50px_rgba(120,188,66,0.3)]">
+                <div className="w-12 h-12 bg-ag-lime/10 rounded-xl flex items-center justify-center">
+                  <Building2 className="text-ag-lime w-8 h-8" />
                 </div>
+              </div>
 
-                <div className="absolute top-[30%] right-[12%] flex flex-col items-center group">
-                    <motion.div 
-                      whileHover={{ scale: 1.15 }}
-                      className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                    >
-                        <Search className="text-ag-lime w-6 h-6" />
-                    </motion.div>
-                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Predictive</span>
-                </div>
+              {/* Satellite Nodes */}
+              <div className="absolute top-[35%] left-[15%] flex flex-col items-center group">
+                <motion.div
+                  whileHover={{ scale: 1.15 }}
+                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
+                >
+                  <Activity className="text-ag-lime w-6 h-6" />
+                </motion.div>
+                <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Telemetry</span>
+              </div>
 
-                <div className="absolute bottom-[20%] left-[20%] flex flex-col items-center group">
-                    <motion.div 
-                      whileHover={{ scale: 1.15 }}
-                      className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                    >
-                        <Lock className="text-ag-lime w-6 h-6" />
-                    </motion.div>
-                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Remote Lock</span>
-                </div>
+              <div className="absolute top-[30%] right-[12%] flex flex-col items-center group">
+                <motion.div
+                  whileHover={{ scale: 1.15 }}
+                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
+                >
+                  <Search className="text-ag-lime w-6 h-6" />
+                </motion.div>
+                <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Predictive</span>
+              </div>
 
-                <div className="absolute bottom-[10%] right-[22%] flex flex-col items-center group">
-                    <motion.div 
-                      whileHover={{ scale: 1.15 }}
-                      className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                    >
-                        <Zap className="text-ag-lime w-6 h-6" />
-                    </motion.div>
-                    <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Load Control</span>
-                </div>
+              <div className="absolute bottom-[20%] left-[20%] flex flex-col items-center group">
+                <motion.div
+                  whileHover={{ scale: 1.15 }}
+                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
+                >
+                  <Lock className="text-ag-lime w-6 h-6" />
+                </motion.div>
+                <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Remote Lock</span>
+              </div>
+
+              <div className="absolute bottom-[10%] right-[22%] flex flex-col items-center group">
+                <motion.div
+                  whileHover={{ scale: 1.15 }}
+                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
+                >
+                  <Zap className="text-ag-lime w-6 h-6" />
+                </motion.div>
+                <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Load Control</span>
+              </div>
             </motion.div>
 
             {/* Right: Text Card */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl order-1 lg:order-2"
             >
-                <div className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] mb-6">03 OPERATIONS</div>
-                <h2 className="text-4xl md:text-5xl font-bold text-ag-green-950 leading-[1.1] tracking-tight mb-8">
-                  Operational <br/> Excellence <br/> Beyond the Grid.
-                </h2>
-                <p className="text-lg text-gray-500 font-light leading-relaxed mb-12">
-                  Financing is easy. Keeping assets running in remote locations is hard. That is our core competency. We leverage real-time data to de-risk investments and maximize runtime.
-                </p>
+              <div className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] mb-6">03 OPERATIONS</div>
+              <h2 className="text-4xl md:text-5xl font-bold text-ag-green-950 leading-[1.1] tracking-tight mb-8">
+                {aboutData?.operations_title || "Operational Excellence Beyond the Grid."}
+              </h2>
+              <p className="text-lg text-gray-500 font-light leading-relaxed mb-12">
+                {aboutData?.operations_description || "Financing is easy. Keeping assets running in remote locations is hard. That is our core competency. We leverage real-time data to de-risk investments and maximize runtime."}
+              </p>
 
-                <div className="space-y-8">
-                   <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Activity className="w-5 h-5 text-ag-green-950" /></div>
-                      <div>
-                        <h4 className="font-bold text-ag-green-950">Centralized Monitoring</h4>
-                        <p className="text-sm text-gray-400 font-light">Remote oversight via global satellite telemetry.</p>
-                      </div>
-                   </div>
-                   <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Cpu className="w-5 h-5 text-ag-green-950" /></div>
-                      <div>
-                        <h4 className="font-bold text-ag-green-950">IoT Lifecycle Management</h4>
-                        <p className="text-sm text-gray-400 font-light">Digital integration for predictive maintenance.</p>
-                      </div>
-                   </div>
-                   <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Users className="w-5 h-5 text-ag-green-950" /></div>
-                      <div>
-                        <h4 className="font-bold text-ag-green-950">Rapid Response Teams</h4>
-                        <p className="text-sm text-gray-400 font-light">Localized implementation for physical repairs.</p>
-                      </div>
-                   </div>
+              <div className="space-y-8">
+                <div className="flex items-center gap-6">
+                  <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Activity className="w-5 h-5 text-ag-green-950" /></div>
+                  <div>
+                    <h4 className="font-bold text-ag-green-950">Centralized Monitoring</h4>
+                    <p className="text-sm text-gray-400 font-light">Remote oversight via global satellite telemetry.</p>
+                  </div>
                 </div>
+                <div className="flex items-center gap-6">
+                  <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Cpu className="w-5 h-5 text-ag-green-950" /></div>
+                  <div>
+                    <h4 className="font-bold text-ag-green-950">IoT Lifecycle Management</h4>
+                    <p className="text-sm text-gray-400 font-light">Digital integration for predictive maintenance.</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Users className="w-5 h-5 text-ag-green-950" /></div>
+                  <div>
+                    <h4 className="font-bold text-ag-green-950">Rapid Response Teams</h4>
+                    <p className="text-sm text-gray-400 font-light">Localized implementation for physical repairs.</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -331,103 +382,111 @@ const AboutUsPage: React.FC = () => {
 
       {/* 04. CORE VALUES (Updated to match Homepage Card Style) */}
       <section className="py-24 bg-white border-b border-gray-100">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
           className="max-w-7xl mx-auto px-6"
         >
-          <SectionHeader number="04" category="Principles" title="The Values That Drive Us." />
-          
+          <SectionHeader number="04" category="Principles" title={aboutData?.values_section_title} />
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[420px]">
             {/* Card 1: Our Mission (Deep Green style) */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="bg-ag-green-950 rounded-[0.7rem] p-8 flex flex-col justify-between relative group hover:shadow-2xl hover:shadow-ag-green-900/20 transition-all duration-300 transform hover:-translate-y-1"
             >
-               <div className="flex justify-between items-start">
-                 <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Our Mission</span>
-                 <motion.div 
-                   animate={{ rotate: [0, 5, -5, 0] }}
-                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                   className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white/10 transition-colors"
-                 >
-                   <ShieldCheck className="text-white w-5 h-5 stroke-[1.5]" />
-                 </motion.div>
-               </div>
-               <div>
-                 <div className="text-4xl font-medium text-white mb-4 leading-tight">
-                   The Impact <br/><span className="text-ag-lime">Mandate</span>
-                 </div>
-                 <p className="text-white/60 text-sm leading-relaxed font-light">
-                   To de-risk the adoption of productive machinery in rural markets, turning energy access into tangible economic output.
-                 </p>
-               </div>
+              <div className="flex justify-between items-start">
+                <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Our Mission</span>
+                <motion.div
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white/10 transition-colors"
+                >
+                  <ShieldCheck className="text-white w-5 h-5 stroke-[1.5]" />
+                </motion.div>
+              </div>
+              <div>
+                <div className="text-4xl font-medium text-white mb-4 leading-tight">
+                  {aboutData?.mission_title ? (
+                    <>
+                      {aboutData.mission_title.split(' ').slice(0, -1).join(' ')} <br /><span className="text-ag-lime">{aboutData.mission_title.split(' ').slice(-1)}</span>
+                    </>
+                  ) : (
+                    <>
+                      The Impact <br /><span className="text-ag-lime">Mandate</span>
+                    </>
+                  )}
+                </div>
+                <p className="text-white/60 text-sm leading-relaxed font-light">
+                  {aboutData?.mission_description || "To de-risk the adoption of productive machinery in rural markets, turning energy access into tangible economic output."}
+                </p>
+              </div>
             </motion.div>
 
             {/* Card 2: Our Vision (Image Background style) */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="relative rounded-[0.7rem] overflow-hidden p-8 flex flex-col justify-between group h-full min-h-[350px] transform hover:-translate-y-1 transition-transform duration-300"
             >
-               <div className="absolute inset-0">
-                 <Image 
-                   src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                   alt="Productive Future" 
-                   fill
-                   className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
-                   sizes="(max-width: 768px) 100vw, 33vw"
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-ag-green-900/90 via-ag-green-900/40 to-ag-green-900/20"></div>
-               </div>
-               <div className="relative z-10 flex justify-end">
-                 <motion.div 
-                   animate={{ y: [0, -4, 0] }}
-                   transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                   className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md hover:bg-white/20 transition-colors"
-                 >
-                   <TrendingUp className="text-white w-5 h-5 stroke-[1.5]" />
-                 </motion.div>
-               </div>
-               <div className="relative z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Productive Future"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ag-green-900/90 via-ag-green-900/40 to-ag-green-900/20"></div>
+              </div>
+              <div className="relative z-10 flex justify-end">
+                <motion.div
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                  className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md hover:bg-white/20 transition-colors"
+                >
+                  <TrendingUp className="text-white w-5 h-5 stroke-[1.5]" />
+                </motion.div>
+              </div>
+              <div className="relative z-10">
                 <div className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">The Long View</div>
-                 <h3 className="text-2xl text-white font-medium mb-3">Community Wealth</h3>
-                 <p className="text-white/80 leading-relaxed font-light text-sm max-w-[95%]">
-                   A continent where every electron generated by a mini-grid is consumed by a machine that creates wealth for a community.
-                 </p>
-               </div>
+                <h3 className="text-2xl text-white font-medium mb-3">{aboutData?.vision_title}</h3>
+                <p className="text-white/80 leading-relaxed font-light text-sm max-w-[95%]">
+                  {aboutData?.vision_description}
+                </p>
+              </div>
             </motion.div>
 
             {/* Card 3: Asset-as-a-Service (Light Gray style) */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="bg-[#F3F4F6] rounded-[0.7rem] p-8 flex flex-col justify-between group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
-               <div className="flex justify-between items-start mb-4">
-                 <span className="text-ag-green-950/60 text-xs font-bold uppercase tracking-widest">Our Model</span>
-                 <motion.div 
-                   whileHover={{ scale: 1.1 }}
-                   className="w-12 h-12 rounded-full border border-ag-green-950/10 flex items-center justify-center bg-white shadow-sm"
-                 >
-                   <Handshake className="text-ag-green-950 w-5 h-5 stroke-[1.5]" />
-                 </motion.div>
-               </div>
-               <div className="flex flex-col h-full justify-end">
-                 <div className="mb-6">
-                    <h3 className="text-2xl text-ag-green-950 font-medium mb-3 leading-tight">Asset-as-a-Service</h3>
-                    <p className="text-sm text-gray-500 font-light leading-relaxed">
-                      We believe ownership shouldn't be a barrier. Our model replaces high CapEx with manageable OpEx, aligned with harvest cycles.
-                    </p>
-                 </div>
-                 <div className="flex flex-wrap gap-2">
-                    {["#CAPEX", "#OPEX", "#SCALE"].map((tag) => (
-                      <span key={tag} className="px-4 py-2 text-xs font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
-                        {tag}
-                      </span>
-                    ))}
-                 </div>
-               </div>
+              <div className="flex justify-between items-start mb-4">
+                <span className="text-ag-green-950/60 text-xs font-bold uppercase tracking-widest">Our Model</span>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 rounded-full border border-ag-green-950/10 flex items-center justify-center bg-white shadow-sm"
+                >
+                  <Handshake className="text-ag-green-950 w-5 h-5 stroke-[1.5]" />
+                </motion.div>
+              </div>
+              <div className="flex flex-col h-full justify-end">
+                <div className="mb-6">
+                  <h3 className="text-2xl text-ag-green-950 font-medium mb-3 leading-tight">{aboutData?.model_title}</h3>
+                  <p className="text-sm text-gray-500 font-light leading-relaxed">
+                    {aboutData?.model_description}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {["#CAPEX", "#OPEX", "#SCALE"].map((tag) => (
+                    <span key={tag} className="px-4 py-2 text-xs font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -435,14 +494,14 @@ const AboutUsPage: React.FC = () => {
 
       {/* 05. LEADERSHIP */}
       <section className="py-24 bg-white">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
           className="max-w-7xl mx-auto px-6"
         >
-          <SectionHeader number="05" category="Governance" title="Guided by Industry Veterans." />
+          <SectionHeader number="05" category="Governance" title={aboutData?.governance_title} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
             {[
               { name: "Dr. Tunde Ojo", title: "Chairman", img: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1887&auto=format&fit=crop" },
@@ -465,7 +524,7 @@ const AboutUsPage: React.FC = () => {
 
       {/* 06. ECOSYSTEM & CALL OUT */}
       <section className="relative bg-ag-green-950 py-32 overflow-hidden border-t border-white/5">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -477,63 +536,71 @@ const AboutUsPage: React.FC = () => {
               <p className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] opacity-80">TRUSTED BY GLOBAL INSTITUTIONS & INFRASTRUCTURE LEADERS</p>
             </div>
             <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
-               {partners.map((name, i) => (
-                 <span key={i} className="text-2xl md:text-3xl font-serif font-bold text-white hover:text-ag-lime transition-colors cursor-default select-none">{name}</span>
-               ))}
+              {partners.map((name, i) => (
+                <span key={i} className="text-2xl md:text-3xl font-serif font-bold text-white hover:text-ag-lime transition-colors cursor-default select-none">{name}</span>
+              ))}
             </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <motion.div variants={fadeInUp}>
-               <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
-                 Align Your <br /> Capital with <br /> <span className="text-ag-lime">Impact.</span>
-               </h2>
-               <p className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
-                 By choosing renewable energy financing, you lower energy costs, reduce carbon emissions, and support innovative solutions that benefit our planet. Whether you are a mini-grid developer seeking utilization or an investor seeking impact, we have the vehicle to execute.
-               </p>
+              <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
+                {aboutData?.cta_heading ? (
+                  <>
+                    {aboutData.cta_heading.split(' ').slice(0, -1).join(' ')} <br /><span className="text-ag-lime">{aboutData.cta_heading.split(' ').slice(-1)}</span>
+                  </>
+                ) : (
+                  <>
+                    Align Your <br /> Capital with <br /> <span className="text-ag-lime">Impact.</span>
+                  </>
+                )}
+              </h2>
+              <p className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
+                {aboutData?.cta_description || "By choosing renewable energy financing, you lower energy costs, reduce carbon emissions, and support innovative solutions that benefit our planet. Whether you are a mini-grid developer seeking utilization or an investor seeking impact, we have the vehicle to execute."}
+              </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="bg-white rounded-[3rem] p-10 md:p-14 shadow-2xl relative overflow-hidden"
             >
-                <div className="mb-10">
-                   <h3 className="text-3xl md:text-4xl font-medium text-ag-green-950 leading-tight mb-2">
-                     Knowledge Center & <br/><span className="text-ag-lime">Corporate Resources.</span>
-                   </h3>
-                </div>
+              <div className="mb-10">
+                <h3 className="text-3xl md:text-4xl font-medium text-ag-green-950 leading-tight mb-2">
+                  Knowledge Center & <br /><span className="text-ag-lime">Corporate Resources.</span>
+                </h3>
+              </div>
 
-                <div className="space-y-4">
-                   <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-ag-green-950 text-white p-1 pr-1 rounded-full hover:bg-ag-lime transition-all duration-500 shadow-xl shadow-ag-green-950/20">
-                      <div className="flex items-center gap-4 pl-8">
-                         <FileCheck className="w-5 h-5 text-ag-lime group-hover:text-white transition-colors" />
-                         <span className="font-bold text-xs tracking-[0.2em] uppercase">Corporate Profile (PDF)</span>
-                      </div>
-                      <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
-                         <Download className="w-5 h-5" />
-                      </div>
-                   </motion.button>
+              <div className="space-y-4">
+                <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-ag-green-950 text-white p-1 pr-1 rounded-full hover:bg-ag-lime transition-all duration-500 shadow-xl shadow-ag-green-950/20">
+                  <div className="flex items-center gap-4 pl-8">
+                    <FileCheck className="w-5 h-5 text-ag-lime group-hover:text-white transition-colors" />
+                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{aboutData?.corporate_profile_label} (PDF)</span>
+                  </div>
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
+                    <Download className="w-5 h-5" />
+                  </div>
+                </motion.button>
 
-                   <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-gray-50 border border-gray-100 text-ag-green-950 p-1 pr-1 rounded-full hover:bg-ag-green-950 hover:text-white transition-all duration-500">
-                      <div className="flex items-center gap-4 pl-8">
-                         <TrendingUp className="w-5 h-5 text-ag-lime" />
-                         <span className="font-bold text-xs tracking-[0.2em] uppercase">Impact Report 2024</span>
-                      </div>
-                      <div className="w-14 h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
-                         <Download className="w-5 h-5" />
-                      </div>
-                   </motion.button>
-                </div>
+                <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-gray-50 border border-gray-100 text-ag-green-950 p-1 pr-1 rounded-full hover:bg-ag-green-950 hover:text-white transition-all duration-500">
+                  <div className="flex items-center gap-4 pl-8">
+                    <TrendingUp className="w-5 h-5 text-ag-lime" />
+                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{aboutData?.impact_report_label}</span>
+                  </div>
+                  <div className="w-14 h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
+                    <Download className="w-5 h-5" />
+                  </div>
+                </motion.button>
+              </div>
 
-                <div className="mt-12 pt-8 border-t border-gray-100 text-center">
-                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                      Need specialized data? <a href="#" className="text-ag-lime hover:underline underline-offset-4 ml-1">Contact Partnerships</a>
-                   </p>
-                </div>
+              <div className="mt-12 pt-8 border-t border-gray-100 text-center">
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                  Need specialized data? <a href="#" className="text-ag-lime hover:underline underline-offset-4 ml-1">{aboutData?.partnerships_link_text}</a>
+                </p>
+              </div>
             </motion.div>
           </div>
         </motion.div>
-        
+
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-ag-lime/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-ag-green-900/40 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2" />
       </section>

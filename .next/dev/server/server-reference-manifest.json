@@ -1,5 +1,21 @@
 {
-  "node": {},
+  "node": {
+    "00bcd3e8d92523a313cda64faf8a70f83c681e8055": {
+      "workers": {
+        "app/solutions/page": {
+          "moduleId": "[project]/.next-internal/server/app/solutions/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/solutions/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "default",
+          "filename": "src/app/solutions/page.tsx"
+        }
+      },
+      "layer": {
+        "app/solutions/page": "rsc"
+      },
+      "filename": "src/app/solutions/page.tsx",
+      "exportedName": "default"
+    }
+  },
   "edge": {},
   "encryptionKey": "UFU6qct+9TfTGibvmX0R4NZ5s2rKS4tQy38a58inZbo="
 }

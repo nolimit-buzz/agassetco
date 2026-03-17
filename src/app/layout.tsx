@@ -12,6 +12,7 @@ const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
   display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
