@@ -1,7 +1,9 @@
 {
   "app": {
-    "[project]/src/app/solutions/page": [],
-    "[project]/src/app/team/page": []
+    "[project]/src/app/cookie-policy/page": [],
+    "[project]/src/app/page": [],
+    "[project]/src/app/privacy/page": [],
+    "[project]/src/app/solutions/page": []
   },
   "appUsingSizeAdjust": true,
   "pages": {},

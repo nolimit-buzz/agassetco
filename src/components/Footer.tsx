@@ -106,6 +106,7 @@ const Footer: React.FC = () => {
            <div className="flex gap-8">
               <Link href="/privacy" className="hover:text-ag-green-950 transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-ag-green-950 transition-colors">Terms</Link>
+              <Link href="/cookie-policy" className="hover:text-ag-green-950 transition-colors">Cookie Policy</Link>
            </div>
            <div className="mt-4 md:mt-0 tracking-[0.2em]">
               Energy for Growth
