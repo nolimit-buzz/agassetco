@@ -109,7 +109,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\syntax\\Documents\\projects\\agassetco",
+    "outputFileTracingRoot": "C:\\Users\\Syntax\\Documents\\Projects\\agassetco",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -302,11 +302,11 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
-      "root": "C:\\Users\\syntax\\Documents\\projects\\agassetco"
+      "root": "C:\\Users\\Syntax\\Documents\\Projects\\agassetco"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "C:\\Users\\syntax\\Documents\\projects\\agassetco",
+  "appDir": "C:\\Users\\Syntax\\Documents\\Projects\\agassetco",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",
