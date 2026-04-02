@@ -3,7 +3,8 @@
     "[project]/src/app/cookie-policy/page": [],
     "[project]/src/app/page": [],
     "[project]/src/app/privacy/page": [],
-    "[project]/src/app/solutions/page": []
+    "[project]/src/app/solutions/page": [],
+    "[project]/src/app/terms/page": []
   },
   "appUsingSizeAdjust": true,
   "pages": {},
