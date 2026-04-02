@@ -1,10 +1,6 @@
 {
   "app": {
-    "[project]/src/app/cookie-policy/page": [],
-    "[project]/src/app/page": [],
-    "[project]/src/app/privacy/page": [],
-    "[project]/src/app/solutions/page": [],
-    "[project]/src/app/terms/page": []
+    "[project]/src/app/solutions/page": []
   },
   "appUsingSizeAdjust": true,
   "pages": {},

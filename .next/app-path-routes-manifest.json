@@ -10,6 +10,7 @@
   "/portfolio/[id]/page": "/portfolio/[id]",
   "/portfolio/page": "/portfolio",
   "/privacy/page": "/privacy",
+  "/sitemap.xml/route": "/sitemap.xml",
   "/solutions/page": "/solutions",
   "/team/page": "/team",
   "/terms/page": "/terms"

@@ -94,6 +94,12 @@
       "namedRegex": "^/privacy(?:/)?$"
     },
     {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
       "page": "/solutions",
       "regex": "^/solutions(?:/)?$",
       "routeKeys": {},

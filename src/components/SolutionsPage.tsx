@@ -40,13 +40,15 @@ interface SolutionsData {
 }
 
 interface SolutionsPageProps {
-  initialData: {
+  initialData?: {
     data: SolutionsData;
-  };
+  } | null;
 }
 
 const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
-  const data = initialData.data;
+  const data = initialData?.data;
+
+  if (!data) return null;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const faqs = [
@@ -159,8 +161,8 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
                 variants={fadeInUp}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
-                {data.hero_title.split('-').slice(0, 2).join('-')}- <br />
-                <span className="text-ag-lime">{data.hero_title.split('-').slice(2).join('-')}</span>
+                {(data.hero_title || '').split('-').slice(0, 2).join('-')}- <br />
+                <span className="text-ag-lime">{(data.hero_title || '').split('-').slice(2).join('-')}</span>
               </motion.h1>
             </div>
             <div className="lg:col-span-5 pt-2">
@@ -294,7 +296,7 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <h2 className="text-4xl md:text-5xl font-medium text-ag-green-950 mb-8 leading-[1.1] tracking-tight">{data.management_heading.split(' ').slice(0, 2).join(' ')} <br /><span className="text-ag-lime">{data.management_heading.split(' ').slice(2).join(' ')}</span></h2>
+              <h2 className="text-4xl md:text-5xl font-medium text-ag-green-950 mb-8 leading-[1.1] tracking-tight">{(data.management_heading || '').split(' ').slice(0, 2).join(' ')} <br /><span className="text-ag-lime">{(data.management_heading || '').split(' ').slice(2).join(' ')}</span></h2>
               <div className="space-y-10">
                 {[
                   { title: "Smart Selection", icon: Database, desc: "Commercial viability testing via Agronomie's deep-market data before deployment." },
@@ -331,7 +333,7 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
         >
           <motion.span variants={fadeInUp} className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] mb-8 block">05 B2B Synergy</motion.span>
           <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">
-            {data.b2b_heading.split(' ').slice(0, 2).join(' ')} <br /> {data.b2b_heading.split(' ').slice(2).join(' ')}
+            {(data.b2b_heading || '').split(' ').slice(0, 2).join(' ')} <br /> {(data.b2b_heading || '').split(' ').slice(2).join(' ')}
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-white/50 font-light leading-relaxed mb-12">
             {data.b2b_description}
@@ -401,10 +403,12 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end pb-8">
             <motion.div variants={fadeInUp}>
               <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-8">
-                {data.cta_heading.split('.').slice(0, 1).join('.')}. <br /> {data.cta_heading.split('.').slice(1, 2).join('.')}. <span className="text-ag-lime">{data.cta_heading.split('.').slice(2).join('.')}</span>
+                {data.cta_heading || 'Empower Your Grid.'}
+                <br />
+                {data.cta_heading || 'Drive ARPU.'}
               </h2>
               <p className="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-lg">
-                {data.cta_description}
+                {data.cta_description || 'We provide the demand anchor your mini-grid needs to thrive. Partner with us to optimize load profiles and maximize the commercial viability of your energy assets.'}
               </p>
             </motion.div>
 
