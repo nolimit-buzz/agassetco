@@ -40,10 +40,10 @@ const Counter = ({ from, to, duration = 2, suffix = "" }: { from: number; to: nu
 };
 
 const Hero: React.FC<{ data?: HeroData }> = ({ data }) => {
-  const headlineText = data?.eyebrow ?? 'Productive Asset Financing for Distributed Energy Markets';
-  const subtitleText = data?.subtitle ? extractText(data.subtitle) : 'We bridge the gap between solar mini-grids and rural economic growth, turning energy access into income generation.';
-  const btnLabel = data?.primaryButtonLabel ?? 'Partner With Us';
-  const btnUrl = data?.primaryButtonUrl ?? '/contact';
+  const headlineText = data?.eyebrow ?? '';
+  const subtitleText = data?.subtitle ? extractText(data.subtitle) : '';
+  const btnLabel = data?.primaryButtonLabel ?? '';
+  const btnUrl = data?.primaryButtonUrl ?? '#';
   const { scrollY } = useScroll();
   const videoRef = useRef<HTMLVideoElement>(null);
   

@@ -84,11 +84,9 @@ const HubAndSolutions: React.FC<{ data?: IntroData }> = ({ data }) => {
 
   const [sectionNum, sectionCategory] = data?.sectionLabel
     ? data.sectionLabel.split(' : ')
-    : ['03', 'Our Ecosystem'];
+    : ['', ''];
 
-  const sectionTitle = data?.title
-    ? extractText(data.title)
-    : null;
+  const sectionTitle = data?.title ? extractText(data.title) : null;
 
   return (
     <section className="relative min-h-screen bg-ag-green-950 pt-32 lg:pt-40 pb-24 overflow-hidden snap-start flex flex-col">
@@ -119,7 +117,7 @@ const HubAndSolutions: React.FC<{ data?: IntroData }> = ({ data }) => {
             <SectionHeader
                 number={sectionNum}
                 category={sectionCategory}
-                title={sectionTitle ?? <>Integrated Solutions <br /> & <span className="text-ag-lime">Infrastructure.</span></>}
+                title={sectionTitle ?? ''}
                 dark={true}
             />
         </div>

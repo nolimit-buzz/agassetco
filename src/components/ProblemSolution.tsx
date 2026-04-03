@@ -16,15 +16,10 @@ interface IntroData {
 const ProblemSolution: React.FC<{ data?: IntroData }> = ({ data }) => {
   const [sectionNum, sectionCategory] = data?.sectionLabel
     ? data.sectionLabel.split(' : ')
-    : ['02', 'The Challenge'];
+    : ['', ''];
 
-  const sectionTitle = data?.title
-    ? extractText(data.title)
-    : null;
-
-  const sectionBody = data?.body
-    ? extractText(data.body)
-    : 'Mini-grids fail without demand. Farmers fail without equipment. We solve the deadlock.';
+  const sectionTitle = data?.title ? extractText(data.title) : null;
+  const sectionBody = data?.body ? extractText(data.body) : '';
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const containerRef = useRef<HTMLElement>(null);
 
@@ -65,7 +60,7 @@ const ProblemSolution: React.FC<{ data?: IntroData }> = ({ data }) => {
         <SectionHeader
           number={sectionNum}
           category={sectionCategory}
-          title={sectionTitle ?? <>The Systemic Failure of <span className="text-ag-lime">Rural Energy Markets.</span></>}
+          title={sectionTitle ?? ''}
         />
 
         {/* Description Paragraph */}

@@ -21,7 +21,7 @@ const TrustBar: React.FC<{ data?: { label?: string } }> = ({ data }) => {
         {/* Title - Styled like the Hero Section Label */}
         <div className="text-center mb-12 md:mb-16">
            <p className="text-xs font-bold text-ag-lime uppercase tracking-[0.2em] drop-shadow-sm">
-             {data?.label ?? 'Trusted by Global Institutions & Infrastructure Leaders'}
+             {data?.label}
            </p>
         </div>
 

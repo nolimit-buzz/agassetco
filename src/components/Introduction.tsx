@@ -45,15 +45,10 @@ const Introduction: React.FC<{ data?: IntroData }> = ({ data }) => {
 
   const [sectionNum, sectionCategory] = data?.sectionLabel
     ? data.sectionLabel.split(' : ')
-    : ['01', 'Introduction'];
+    : ['', ''];
 
-  const sectionTitle = data?.title
-    ? extractText(data.title)
-    : 'Pioneering Productive Use of Energy in Agriculture.';
-
-  const sectionBody = data?.body
-    ? extractText(data.body)
-    : 'We are a modern renewable-energy asset company dedicated to transforming natural sunshine into clean, affordable, and reliable economic power. Our team works with advanced agri-tech to help farmers switch to sustainable energy with confidence.';
+  const sectionTitle = data?.title ? extractText(data.title) : '';
+  const sectionBody = data?.body ? extractText(data.body) : '';
 
   const toggleAccordion = (index: number) => {
     setActiveAccordion(activeAccordion === index ? null : index);
