@@ -1,8 +1,21 @@
 
 "use client";
 import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, animate } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { extractText, RichTextBlock } from '@/lib/richText';
+
+interface HeroData {
+  eyebrow?: string;
+  title?: RichTextBlock[];
+  subtitle?: RichTextBlock[];
+  primaryButtonLabel?: string;
+  primaryButtonUrl?: string;
+  secondaryButtonLabel?: string;
+  secondaryButtonUrl?: string;
+  badgeText?: string;
+}
 
 // Counter Component for animated stats
 const Counter = ({ from, to, duration = 2, suffix = "" }: { from: number; to: number; duration?: number; suffix?: string }) => {
@@ -26,7 +39,11 @@ const Counter = ({ from, to, duration = 2, suffix = "" }: { from: number; to: nu
   return <span ref={nodeRef} />;
 };
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ data?: HeroData }> = ({ data }) => {
+  const headlineText = data?.eyebrow ?? 'Productive Asset Financing for Distributed Energy Markets';
+  const subtitleText = data?.subtitle ? extractText(data.subtitle) : 'We bridge the gap between solar mini-grids and rural economic growth, turning energy access into income generation.';
+  const btnLabel = data?.primaryButtonLabel ?? 'Partner With Us';
+  const btnUrl = data?.primaryButtonUrl ?? '/contact';
   const { scrollY } = useScroll();
   const videoRef = useRef<HTMLVideoElement>(null);
   
@@ -58,7 +75,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden font-sans bg-ag-green-950 snap-start">
+    <section className="relative h-dvh w-full overflow-hidden font-sans bg-ag-green-950 snap-start">
       
       {/* 1. Background Visual */}
       <div className="absolute inset-0 z-0">
@@ -87,7 +104,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* 2. Main Content Layout */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 pt-32 pb-12 flex flex-col justify-between">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 pt-20 md:pt-28 lg:pt-32 pb-6 md:pb-12 flex flex-col justify-between">
         
         {/* TOP/CENTER: Headline Area */}
         <div className="flex-1 flex items-center">
@@ -97,16 +114,23 @@ const Hero: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
-                    className="text-6xl md:text-7xl lg:text-9xl leading-[1.05] font-bold text-white tracking-tight drop-shadow-lg will-change-transform"
+                    className="text-6xl md:text-8xl  leading-[1.05] font-bold text-white tracking-tight drop-shadow-lg will-change-transform"
                 >
-                    Productive Use <br />
-                    of <span className="text-ag-lime">Energy Financing.</span>
+                    {(() => {
+                        const parts = headlineText.split(' for ');
+                        return parts.length > 1 ? (
+                            <>
+                                {parts[0]} <span></span>
+                                for <span className="text-ag-lime">{parts[1]}.</span>
+                            </>
+                        ) : headlineText;
+                    })()}
                 </motion.h1>
             </div>
         </div>
 
         {/* BOTTOM CLUSTER: Anchored Elements */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-12 border-t border-white/10 pt-8">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-6 md:gap-12 border-t border-white/10 pt-5 md:pt-8">
             
             {/* Bottom-Left: Subtext & CTA */}
             <motion.div 
@@ -119,20 +143,22 @@ const Hero: React.FC = () => {
                     transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
                     className="text-lg text-white/90 font-light leading-relaxed mb-8 drop-shadow-md"
                 >
-                    We bridge the gap between solar mini-grids and rural economic growth, turning energy access into income generation.
+                    {subtitleText}
                 </motion.p>
                 
-                <motion.button 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7, duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }}
-                    className="group bg-white hover:bg-ag-lime text-ag-green-950 hover:text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-ag-lime/20"
-                >
-                    Partner With Us
-                    <div className="w-8 h-8 bg-ag-green-950 group-hover:bg-white rounded-full flex items-center justify-center transition-colors">
-                        <ArrowUpRight className="w-4 h-4 text-white group-hover:text-ag-green-950" />
-                    </div>
-                </motion.button>
+                <Link href={btnUrl}>
+                  <motion.button
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.7, duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }}
+                      className="group bg-white hover:bg-ag-lime text-ag-green-950 hover:text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-ag-lime/20"
+                  >
+                      {btnLabel}
+                      <div className="w-8 h-8 bg-ag-green-950 group-hover:bg-white rounded-full flex items-center justify-center transition-colors">
+                          <ArrowUpRight className="w-4 h-4 text-white group-hover:text-ag-green-950" />
+                      </div>
+                  </motion.button>
+                </Link>
             </motion.div>
 
             {/* Bottom-Right: Data/Stats */}
@@ -142,7 +168,7 @@ const Hero: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
                 >
-                    <div className="text-5xl md:text-6xl font-bold text-white mb-2 font-sans tabular-nums drop-shadow-md">
+                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-sans tabular-nums drop-shadow-md">
                         <Counter from={0} to={500} suffix="+" />
                     </div>
                     <div className="text-xs font-bold text-ag-lime uppercase tracking-widest drop-shadow-sm">
@@ -150,12 +176,12 @@ const Hero: React.FC = () => {
                     </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9 }}
                 >
-                    <div className="text-5xl md:text-6xl font-bold text-white mb-2 font-sans tabular-nums drop-shadow-md">
+                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-sans tabular-nums drop-shadow-md">
                         <Counter from={0} to={120} suffix="k+" />
                     </div>
                     <div className="text-xs font-bold text-ag-lime uppercase tracking-widest drop-shadow-sm">

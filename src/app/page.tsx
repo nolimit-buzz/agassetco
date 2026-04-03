@@ -7,6 +7,7 @@ import HubAndSolutions from '../components/HubAndSolutions';
 import Portfolio from '../components/Portfolio';
 import NewsSection from '../components/NewsSection';
 import ImpactCTA from '../components/ImpactCTA';
+import strapi from '@/lib/strapi';
 
 export const metadata: Metadata = {
   title: 'AgAsset Co | Productive Use of Energy Financing',
@@ -19,14 +20,31 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+async function getHomePageData() {
+  try {
+    const response = await strapi.get(`home-page?populate=*`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching home page data:', error);
+    return null;
+  }
+}
+
+export default async function HomePage() {
+  const data = await getHomePageData();
+  const sections: any[] = data?.data?.sections ?? [];
+
+  const heroSection   = sections.find(s => s.__component === 'sections.hero');
+  const trustSection  = sections.find(s => s.__component === 'sections.trust-bar');
+  const introSections = sections.filter(s => s.__component === 'sections.introduction');
+
   return (
     <>
-      <Hero />
-      <TrustBar />
-      <Introduction />
-      <ProblemSolution />
-      <HubAndSolutions />
+      <Hero data={heroSection} />
+      <TrustBar data={trustSection} />
+      <Introduction data={introSections[0]} />
+      <ProblemSolution data={introSections[1]} />
+      <HubAndSolutions data={introSections[2]} />
       <Portfolio />
       <NewsSection />
       <ImpactCTA />
