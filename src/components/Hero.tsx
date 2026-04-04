@@ -141,7 +141,7 @@ const Hero: React.FC<{ data?: HeroData }> = ({ data }) => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
-                    className="text-lg text-white/90 font-light leading-relaxed mb-8 drop-shadow-md"
+                    className="text-lg md:text-2xl text-white/90 font-light leading-relaxed mb-8 drop-shadow-md"
                 >
                     {subtitleText}
                 </motion.p>

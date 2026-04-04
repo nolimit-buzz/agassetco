@@ -207,7 +207,7 @@ const HubAndSpoke: React.FC = () => {
                    ...spoke.textStyle 
                  }}
                >
-                 <h4 className="text-white font-bold text-lg mb-1">{spoke.title}</h4>
+                 <h4 className="text-white font-bold text-lg md:text-2xl mb-1">{spoke.title}</h4>
                  <p className="text-sm text-white/50 leading-snug">{spoke.desc}</p>
                </motion.div>
             </div>

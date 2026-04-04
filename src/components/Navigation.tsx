@@ -184,7 +184,7 @@ const Navigation: React.FC = () => {
                           </div>
                           <div>
                             <h4 className="font-bold text-ag-green-950 mb-1 group-hover:text-ag-lime transition-colors">{item.label}</h4>
-                            <p className="text-lg text-gray-500 font-light">{item.desc}</p>
+                            <p className="text-lg md:text-2xl text-gray-500 font-light">{item.desc}</p>
                           </div>
                         </Link>
                       ))}

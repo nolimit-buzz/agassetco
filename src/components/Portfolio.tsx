@@ -175,7 +175,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project, isOpen, onClick }) => 
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
                    transition={{ delay: 0.3 }}
-                   className="text-lg text-gray-500 font-light leading-relaxed max-w-3xl"
+                   className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed max-w-3xl"
                  >
                    {project.description}
                  </motion.p>

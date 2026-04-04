@@ -202,7 +202,7 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
                   <Briefcase className="w-8 h-8 text-ag-green-950/20 group-hover:text-ag-lime transition-colors duration-300" />
                 </div>
                 <h3 className="text-4xl font-medium text-ag-green-950 mb-6 tracking-tight">Asset Ownership Model</h3>
-                <p className="text-lg text-gray-500 font-light leading-relaxed mb-8">Financed 100% by AgAsset Co. Ownership transfers to the partner after the lease term concludes. Ideal for established SMEs.</p>
+                <p className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed mb-8">Financed 100% by AgAsset Co. Ownership transfers to the partner after the lease term concludes. Ideal for established SMEs.</p>
               </div>
               <button className="mt-16 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 hover:text-ag-lime transition-colors">
                 Request Specs <ArrowUpRight className="w-4 h-4" />
@@ -216,7 +216,7 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
                   <Zap className="w-8 h-8 text-white/10 group-hover:text-ag-lime transition-colors duration-300" />
                 </div>
                 <h3 className="text-4xl font-medium text-white mb-6 tracking-tight">PUE-as-a-Service</h3>
-                <p className="text-lg text-white/60 font-light leading-relaxed mb-8">We retain long-term ownership. Users pay per-service (kg/liter/hour). Full O&M is included in the service fee.</p>
+                <p className="text-lg md:text-2xl text-white/60 font-light leading-relaxed mb-8">We retain long-term ownership. Users pay per-service (kg/liter/hour). Full O&M is included in the service fee.</p>
               </div>
               <button className="mt-16 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white hover:text-ag-lime transition-colors">
                 Inquire Now <ArrowUpRight className="w-4 h-4" />

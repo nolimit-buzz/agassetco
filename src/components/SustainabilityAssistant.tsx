@@ -103,7 +103,7 @@ const SustainabilityAssistant: React.FC = () => {
                 <div className="w-8 h-8 rounded-lg bg-ag-lime flex items-center justify-center">
                   <Sparkles size={18} className="text-ag-green-950" />
                 </div>
-                <h3 className="font-bold text-lg tracking-tight">AgAsset AI</h3>
+                <h3 className="font-bold text-lg md:text-2xl tracking-tight">AgAsset AI</h3>
               </div>
               <p className="text-white/60 text-xs font-medium uppercase tracking-widest">Sustainability Advisor</p>
               
