@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { unstable_cache } from 'next/cache';
 import PrivacyPage from '@/components/PrivacyPage';
 import strapi from '@/lib/strapi';
+import TextPageSkeleton from '@/components/skeletons/TextPageSkeleton';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | AgAsset Co',
@@ -13,17 +16,29 @@ export const metadata: Metadata = {
   },
 };
 
-async function getPrivacyData() {
-  try {
-    const response = await strapi.get('privacy-policy?populate=sections');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching privacy policy page data:', error);
-    return null;
-  }
-}
+const getPrivacyData = unstable_cache(
+  async () => {
+    try {
+      const response = await strapi.get('privacy-policy?populate=sections');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching privacy policy page data:', error);
+      return null;
+    }
+  },
+  ['privacy-page'],
+  { revalidate: 3600 }
+);
 
-export default async function PrivacyRoutePage() {
+async function PrivacyContent() {
   const data = await getPrivacyData();
   return <PrivacyPage initialData={data} />;
+}
+
+export default function PrivacyRoutePage() {
+  return (
+    <Suspense fallback={<TextPageSkeleton />}>
+      <PrivacyContent />
+    </Suspense>
+  );
 }

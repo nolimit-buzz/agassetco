@@ -85,6 +85,7 @@ const Navigation: React.FC = () => {
                     >
                       <Link
                         href={link.path}
+                        prefetch={true}
                         onClick={() => {
                           setMobileMenuOpen(false);
                           setIsCompanyHovered(false);
@@ -111,6 +112,7 @@ const Navigation: React.FC = () => {
             <div className="hidden md:block shrink-0 relative z-50">
               <Link
                 href="/contact"
+                prefetch={true}
                 className={`px-6 py-2.5 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg transition-all duration-500 hover:scale-105 active:scale-95 ${
                   isLightMode
                     ? 'bg-ag-green-950 text-white hover:bg-ag-lime'
@@ -170,6 +172,7 @@ const Navigation: React.FC = () => {
                         <Link
                           key={item.id}
                           href={item.path}
+                          prefetch={true}
                           onClick={() => {
                             setMobileMenuOpen(false);
                             setIsCompanyHovered(false);
@@ -227,6 +230,7 @@ const Navigation: React.FC = () => {
                 <motion.div key={link.label} whileHover={{ scale: 1.1 }}>
                   <Link
                     href={link.path}
+                    prefetch={true}
                     className={`text-4xl font-bold tracking-tighter capitalize ${
                       pathname === link.path ? 'text-ag-lime' : 'text-white'
                     }`}

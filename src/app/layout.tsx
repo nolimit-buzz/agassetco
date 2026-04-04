@@ -7,12 +7,12 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import SustainabilityAssistant from '../components/SustainabilityAssistant';
+import NavigationProgress from '../components/NavigationProgress';
 
 const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
   display: 'swap',
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -43,6 +43,7 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} min-h-screen bg-white overflow-x-hidden selection:bg-ag-lime selection:text-white font-sans antialiased`}
       >
+        <NavigationProgress />
         <Navigation />
         <main>{children}</main>
         <Footer />

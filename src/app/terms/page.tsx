@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { unstable_cache } from 'next/cache';
 import TermsPage from '@/components/TermsPage';
 import strapi from '@/lib/strapi';
+import TextPageSkeleton from '@/components/skeletons/TextPageSkeleton';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | AgAsset Co',
@@ -13,20 +16,29 @@ export const metadata: Metadata = {
   },
 };
 
+const getTermsData = unstable_cache(
+  async () => {
+    try {
+      const response = await strapi.get('terms-and-conditions?populate=sections');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching terms page data:', error);
+      return null;
+    }
+  },
+  ['terms-page'],
+  { revalidate: 3600 }
+);
 
-
-async function getTermsData() {
-  try {
-    const response = await strapi.get('terms-and-conditions?populate=sections');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching privacy policy page data:', error);
-    return null;
-  }
-}
-
-export default async function TermsRoutePage() {
+async function TermsContent() {
   const data = await getTermsData();
   return <TermsPage initialData={data} />;
+}
 
+export default function TermsRoutePage() {
+  return (
+    <Suspense fallback={<TextPageSkeleton />}>
+      <TermsContent />
+    </Suspense>
+  );
 }

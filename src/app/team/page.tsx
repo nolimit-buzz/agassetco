@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { unstable_cache } from 'next/cache';
 import strapi from '../../lib/strapi';
 import TeamPage from '../../components/TeamPage';
+import TeamSkeleton from '@/components/skeletons/TeamSkeleton';
 
 export const metadata: Metadata = {
   title: 'Our Team | AgAsset Co',
@@ -13,18 +16,29 @@ export const metadata: Metadata = {
   },
 };
 
-async function getTeamData() {
-  try {
-    const response = await strapi.get(`team-page`);
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching team page data:', error);
-    return null;
-  }
-}
+const getTeamData = unstable_cache(
+  async () => {
+    try {
+      const response = await strapi.get(`team-page`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching team page data:', error);
+      return null;
+    }
+  },
+  ['team-page'],
+  { revalidate: 3600 }
+);
 
-export default async function TeamRoutePage() {
+async function TeamContent() {
   const data = await getTeamData();
   return <TeamPage initialData={data} />;
+}
+
+export default function TeamRoutePage() {
+  return (
+    <Suspense fallback={<TeamSkeleton />}>
+      <TeamContent />
+    </Suspense>
+  );
 }

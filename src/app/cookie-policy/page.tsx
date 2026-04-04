@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { unstable_cache } from 'next/cache';
 import strapi from '@/lib/strapi';
 import CookiePolicyPage from '@/components/CookiePolicyPage';
+import TextPageSkeleton from '@/components/skeletons/TextPageSkeleton';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy | AgAsset Co',
@@ -13,17 +16,29 @@ export const metadata: Metadata = {
   },
 };
 
-async function getCookiePolicyData() {
-  try {
-    const response = await strapi.get('cookie-policy?populate=sections');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching cookie policy page data:', error);
-    return null;
-  }
-}
+const getCookiePolicyData = unstable_cache(
+  async () => {
+    try {
+      const response = await strapi.get('cookie-policy?populate=sections');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching cookie policy page data:', error);
+      return null;
+    }
+  },
+  ['cookie-policy-page'],
+  { revalidate: 3600 }
+);
 
-export default async function CookiePolicyRoutePage() {
+async function CookiePolicyContent() {
   const data = await getCookiePolicyData();
   return <CookiePolicyPage initialData={data} />;
+}
+
+export default function CookiePolicyRoutePage() {
+  return (
+    <Suspense fallback={<TextPageSkeleton />}>
+      <CookiePolicyContent />
+    </Suspense>
+  );
 }

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { unstable_cache } from 'next/cache';
 import AboutUsPage from '../../components/AboutUsPage';
 import strapi from '../../lib/strapi';
+import AboutSkeleton from '@/components/skeletons/AboutSkeleton';
 
 export const metadata: Metadata = {
   title: 'About AgAsset Co | Our Mission & Story',
@@ -13,17 +16,21 @@ export const metadata: Metadata = {
   },
 };
 
-async function getAboutData() {
-  try {
-    const response = await strapi.get(`about-page?populate=deep`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching about page data:', error);
-    return null;
-  }
-}
+const getAboutData = unstable_cache(
+  async () => {
+    try {
+      const response = await strapi.get(`about-page?populate=deep`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching about page data:', error);
+      return null;
+    }
+  },
+  ['about-page'],
+  { revalidate: 3600 }
+);
 
-export default async function AboutPage() {
+async function AboutContent() {
   const data = await getAboutData();
   const sections: any[] = data?.data?.sections ?? [];
 
@@ -45,5 +52,13 @@ export default async function AboutPage() {
       governance={governance}
       cta={cta}
     />
+  );
+}
+
+export default function AboutPage() {
+  return (
+    <Suspense fallback={<AboutSkeleton />}>
+      <AboutContent />
+    </Suspense>
   );
 }

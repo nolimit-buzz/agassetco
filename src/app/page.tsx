@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import { unstable_cache } from 'next/cache';
 import Hero from '../components/Hero';
 import TrustBar from '../components/TrustBar';
 import Introduction from '../components/Introduction';
@@ -8,6 +10,8 @@ import Portfolio from '../components/Portfolio';
 import NewsSection from '../components/NewsSection';
 import ImpactCTA from '../components/ImpactCTA';
 import strapi from '@/lib/strapi';
+import HomeSkeleton from '@/components/skeletons/HomeSkeleton';
+import PrefetchLinks from '@/components/PrefetchLinks';
 
 export const metadata: Metadata = {
   title: 'AgAsset Co | Productive Use of Energy Financing',
@@ -20,17 +24,21 @@ export const metadata: Metadata = {
   },
 };
 
-async function getHomePageData() {
-  try {
-    const response = await strapi.get(`home-page?populate=*`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching home page data:', error);
-    return null;
-  }
-}
+const getHomePageData = unstable_cache(
+  async () => {
+    try {
+      const response = await strapi.get(`home-page?populate=*`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching home page data:', error);
+      return null;
+    }
+  },
+  ['home-page'],
+  { revalidate: 3600 }
+);
 
-export default async function HomePage() {
+async function HomeAboveFold() {
   const data = await getHomePageData();
   const sections: any[] = data?.data?.sections ?? [];
 
@@ -45,9 +53,20 @@ export default async function HomePage() {
       <Introduction data={introSections[0]} />
       <ProblemSolution data={introSections[1]} />
       <HubAndSolutions data={introSections[2]} />
+    </>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <Suspense fallback={<HomeSkeleton />}>
+        <HomeAboveFold />
+      </Suspense>
       <Portfolio />
       <NewsSection />
       <ImpactCTA />
+      <PrefetchLinks hrefs={['/about', '/solutions', '/portfolio', '/news', '/team', '/contact']} />
     </>
   );
 }
