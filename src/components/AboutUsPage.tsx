@@ -525,7 +525,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <motion.div variants={fadeInUp}>
-              <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
+              <h2 className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
                 {limeLastWord(cta?.heading)}
               </h2>
               <p className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">

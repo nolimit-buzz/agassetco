@@ -590,8 +590,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <div>
-               <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
-                 Have a <br /> Project in <br /> <span className="text-ag-lime">Mind?</span>
+               <motion.h2 variants={fadeInUp} className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
+                 Have a <br className="hidden md:block" /> Project in <br className="hidden md:block" /> <span className="text-ag-lime">Mind?</span>
                </motion.h2>
                <motion.p variants={fadeInUp} className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
                  We are actively seeking new mini-grid sites and agricultural clusters to expand our productive use footprint. Partner with us to de-risk your energy assets.

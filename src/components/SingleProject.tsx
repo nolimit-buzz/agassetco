@@ -763,9 +763,9 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-6xl md:text-[8rem] font-bold text-white tracking-tighter leading-[0.85] mb-16 max-w-5xl"
+              className="text-5xl md:text-[8rem] font-bold text-white tracking-tighter leading-[0.85] mb-16 max-w-5xl"
             >
-              Replicate This <br/> <span className="text-ag-lime">Success.</span>
+              Replicate This <br className="hidden md:block" /> <span className="text-ag-lime">Success.</span>
             </motion.h2>
 
             <div className="flex flex-col md:flex-row gap-8 items-center">

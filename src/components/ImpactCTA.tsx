@@ -97,9 +97,9 @@ const ImpactCTA: React.FC = () => {
                initial={{ opacity: 0, x: -50 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
-               className="text-6xl md:text-8xl leading-[1.1] font-bold text-white tracking-tighter mix-blend-overlay opacity-90 mb-6"
+               className="text-5xl md:text-8xl leading-[1.1] font-bold text-white tracking-tighter mix-blend-overlay opacity-90 mb-6"
              >
-               Ready to <br /> Deploy Capital?
+               Ready to <br className="hidden md:block" /> Deploy Capital?
              </motion.h2>
              <motion.p
                initial={{ opacity: 0, y: 20 }}

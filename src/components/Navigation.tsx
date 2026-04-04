@@ -64,7 +64,7 @@ const Navigation: React.FC = () => {
                 alt="AgAsset Co"
                 width={140}
                 height={64}
-                className={`w-auto transition-all duration-500 ${isLightMode ? 'h-16' : 'h-14'}`}
+                className={`w-auto transition-all duration-500 ${isLightMode ? 'h-10 lg:h-16' : 'h-9 lg:h-14'}`}
                 priority
               />
             </Link>
