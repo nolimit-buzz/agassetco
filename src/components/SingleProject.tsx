@@ -156,7 +156,7 @@ const SDGTooltip: React.FC<{ id: number; children: React.ReactNode }> = ({ id, c
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         className="absolute bottom-full left-1/2 mb-3 z-[100] pointer-events-none"
                     >
-                        <div className="bg-ag-green-950 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2.5 rounded-xl shadow-2xl border border-white/10 flex items-center gap-3 w-48 text-center justify-center leading-tight">
+                        <div className="bg-ag-green-950 text-white text-[13px] font-bold uppercase tracking-widest px-4 py-2.5 rounded-xl shadow-2xl border border-white/10 flex items-center gap-3 w-48 text-center justify-center leading-tight">
                             <div className="shrink-0 w-2 h-2 rounded-full" style={{ backgroundColor: data?.color }} />
                             <span className="whitespace-normal">{data?.name}</span>
                             {/* Pointer */}
@@ -190,7 +190,7 @@ const EfficiencyDashboard = () => (
   <div className="flex flex-col gap-6 h-full font-sans">
     <div className="grid grid-cols-2 gap-4">
         <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between h-32">
-            <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest leading-none">Net OpEx Savings</p>
+            <p className="text-[13px] font-bold text-gray-400 uppercase tracking-widest leading-none">Net OpEx Savings</p>
             <div>
                 <span className="text-3xl font-bold text-ag-green-950">62%</span>
                 <div className="w-full h-1 bg-gray-200 mt-2 rounded-full overflow-hidden">
@@ -199,17 +199,17 @@ const EfficiencyDashboard = () => (
             </div>
         </div>
         <div className="bg-ag-green-950 p-6 rounded-2xl border border-white/5 flex flex-col justify-between h-32">
-            <p className="text-[9px] font-bold text-white/40 uppercase tracking-widest leading-none">Carbon Offset</p>
+            <p className="text-[13px] font-bold text-white/40 uppercase tracking-widest leading-none">Carbon Offset</p>
             <div>
                 <span className="text-2xl font-bold text-ag-lime">125T</span>
-                <p className="text-[10px] text-white/40 font-medium mt-1">CO2e per Year</p>
+                <p className="text-[13px] text-white/40 font-medium mt-1">CO2e per Year</p>
             </div>
         </div>
     </div>
     
     <div className="bg-white border border-gray-100 rounded-2xl p-6 flex-1">
         <div className="flex justify-between items-center mb-6">
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Energy Arbitrage</p>
+            <p className="text-[13px] font-bold text-gray-400 uppercase tracking-widest">Energy Arbitrage</p>
             <Zap className="w-3.5 h-3.5 text-ag-lime" />
         </div>
         <div className="space-y-4">
@@ -327,7 +327,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-white/50 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full w-fit border border-white/10 shadow-sm"
+                className="flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-white/50 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full w-fit border border-white/10 shadow-sm"
               >
                 <Home className="w-2.5 h-2.5" />
                 <span className="cursor-pointer hover:text-white transition-colors" onClick={() => onNavigate?.('home')}>Home</span>
@@ -339,7 +339,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
 
               <button 
                 onClick={() => onNavigate?.('portfolio')}
-                className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-white/60 hover:text-ag-lime transition-all active:scale-95 group w-fit"
+                className="flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.3em] text-white/60 hover:text-ag-lime transition-all active:scale-95 group w-fit"
               >
                   <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Portfolio
               </button>
@@ -354,10 +354,10 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
             className="max-w-4xl"
           >
             <div className="flex items-center gap-3 mb-8">
-               <span className="bg-ag-lime text-ag-green-950 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg shadow-ag-lime/20">
+               <span className="bg-ag-lime text-ag-green-950 px-4 py-1.5 rounded-full text-[13px] font-bold uppercase tracking-[0.2em] shadow-lg shadow-ag-lime/20">
                   [ ACTIVE / REPAYING ]
                </span>
-               <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">CASE STUDY: {project.id}</span>
+               <span className="text-white/40 text-[13px] font-bold uppercase tracking-[0.2em]">CASE STUDY: {project.id}</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-bold text-white leading-[0.9] tracking-tighter mb-6">
@@ -375,15 +375,15 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
           <div className="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center">
              <div className="grid grid-cols-3 w-full divide-x divide-white/10 text-white">
                 <div className="px-4 md:px-8 first:pl-0">
-                  <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em] mb-1">Structure</p>
+                  <p className="text-[13px] font-bold text-white/40 uppercase tracking-[0.3em] mb-1">Structure</p>
                   <p className="text-xs md:sm font-bold uppercase tracking-widest">{project.status}</p>
                 </div>
                 <div className="px-4 md:px-8">
-                  <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em] mb-1">Primary Partner</p>
+                  <p className="text-[13px] font-bold text-white/40 uppercase tracking-[0.3em] mb-1">Primary Partner</p>
                   <p className="text-xs md:sm font-bold uppercase tracking-widest">{project.partner}</p>
                 </div>
                 <div className="px-4 md:px-8 last:pr-0">
-                  <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em] mb-1">Commissioned</p>
+                  <p className="text-[13px] font-bold text-white/40 uppercase tracking-[0.3em] mb-1">Commissioned</p>
                   <p className="text-xs md:sm font-bold uppercase tracking-widest">{project.date}</p>
                 </div>
              </div>
@@ -398,7 +398,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
             <button
               key={item.id}
               onClick={() => handleScrollTo(item.id)}
-              className={`text-[10px] md:text-[11px] font-bold uppercase tracking-[0.25em] whitespace-nowrap transition-all duration-300 relative group py-3 ${
+              className={`text-[13px] md:text-[13px] font-bold uppercase tracking-[0.25em] whitespace-nowrap transition-all duration-300 relative group py-3 ${
                 activeSubnav === item.id ? 'text-ag-lime' : 'text-[#94a3b8] hover:text-[#64748b]'
               }`}
             >
@@ -435,25 +435,25 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
                   <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                     <Layers className="w-24 h-24 text-ag-green-950" />
                   </div>
-                  <h4 className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.3em] mb-10">Deal Snapshot</h4>
+                  <h4 className="text-[13px] font-bold text-ag-lime uppercase tracking-[0.3em] mb-10">Deal Snapshot</h4>
                   
                   <div className="space-y-8">
                      <div>
-                        <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Total Asset Value</p>
+                        <p className="text-[13px] font-bold text-gray-400 uppercase tracking-widest mb-1">Total Asset Value</p>
                         <p className="text-3xl font-bold text-ag-green-950 font-mono tracking-tight">{project.totalAssetValue}</p>
                      </div>
                      <div>
-                        <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Direct Beneficiaries</p>
+                        <p className="text-[13px] font-bold text-gray-400 uppercase tracking-widest mb-1">Direct Beneficiaries</p>
                         <p className="text-3xl font-bold text-ag-green-950 font-mono tracking-tight">{project.beneficiaries}</p>
                      </div>
                      <div>
-                        <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">SPV Entity</p>
+                        <p className="text-[13px] font-bold text-gray-400 uppercase tracking-widest mb-1">SPV Entity</p>
                         <p className="text-xl font-bold text-ag-green-950 uppercase tracking-widest">{project.spv}</p>
                      </div>
                   </div>
                   
                   <div className="mt-12 pt-8 border-t border-gray-200 no-print">
-                    <button onClick={handleDownloadFactsheet} className="w-full flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-ag-green-950 hover:text-ag-lime transition-colors group/btn">
+                    <button onClick={handleDownloadFactsheet} className="w-full flex items-center justify-between text-[13px] font-bold uppercase tracking-widest text-ag-green-950 hover:text-ag-lime transition-colors group/btn">
                       Download Deal Sheet <Download className="w-4 h-4 group-hover/btn:translate-y-0.5 transition-transform" />
                     </button>
                   </div>
@@ -486,7 +486,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
                   <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:scale-110 transition-transform duration-1000">
                     <CheckCircle2 className="w-48 h-48 text-white" />
                   </div>
-                  <h3 className="text-[10px] font-bold text-ag-lime uppercase tracking-[0.3em] mb-8">Executive Outcome</h3>
+                  <h3 className="text-[13px] font-bold text-ag-lime uppercase tracking-[0.3em] mb-8">Executive Outcome</h3>
                   <p className="text-2xl md:text-4xl font-medium tracking-tight mb-10 leading-[1.2] relative z-10 italic">
                     "{project.outcome}"
                   </p>
@@ -546,7 +546,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
                                         {React.createElement(project.specs[expandedSpecIndex].icon, { className: "w-6 h-6 stroke-[1.5]" })}
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest leading-none mb-1">
+                                        <p className="text-[13px] font-bold text-white/40 uppercase tracking-widest leading-none mb-1">
                                             {project.specs[expandedSpecIndex].label} Breakdown
                                         </p>
                                         <h3 className="text-3xl font-bold text-white tracking-tight">
@@ -557,19 +557,19 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
                                 <p className="text-lg text-white/70 font-light leading-relaxed mb-8">
                                     {project.specs[expandedSpecIndex].details}
                                 </p>
-                                <div className="flex items-center gap-3 text-[10px] font-bold text-ag-lime uppercase tracking-widest bg-ag-lime/10 px-4 py-2 rounded-full w-fit">
+                                <div className="flex items-center gap-3 text-[13px] font-bold text-ag-lime uppercase tracking-widest bg-ag-lime/10 px-4 py-2 rounded-full w-fit">
                                     <CheckCircle2 className="w-3.5 h-3.5" /> Technical Validation Complete
                                 </div>
                             </div>
                             
                             <div className="md:col-span-4 flex flex-col gap-4">
                                 <div className="bg-white/5 p-8 rounded-[2rem] border border-white/5 flex flex-col gap-2">
-                                    <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Classification</p>
+                                    <p className="text-[13px] font-bold text-white/30 uppercase tracking-widest">Classification</p>
                                     <p className="text-xl font-bold text-ag-lime leading-tight">
                                         {project.specs[expandedSpecIndex].sub}
                                     </p>
                                 </div>
-                                <button className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 hover:text-ag-lime transition-colors flex items-center gap-2 pl-4 no-print">
+                                <button className="text-[13px] font-bold uppercase tracking-[0.2em] text-white/30 hover:text-ag-lime transition-colors flex items-center gap-2 pl-4 no-print">
                                     <Info className="w-3 h-3" /> Technical Datasheet (PDF)
                                 </button>
                             </div>
@@ -627,7 +627,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
                        <div className="text-5xl font-black text-white mb-2 tracking-tighter">
                          <Counter from={0} to={m.to} suffix={m.suffix} />
                        </div>
-                       <p className="text-[11px] font-black text-ag-lime uppercase tracking-[0.3em] mb-4">{m.label}</p>
+                       <p className="text-[13px] font-black text-ag-lime uppercase tracking-[0.3em] mb-4">{m.label}</p>
                     </div>
                     <p className="text-sm text-white/50 leading-relaxed font-light">{m.desc}</p>
                 </motion.div>
@@ -653,7 +653,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
                         >
                         {num}
                         </div>
-                        <span className="text-[9px] font-bold text-white/40 uppercase tracking-widest">SDG {num}</span>
+                        <span className="text-[13px] font-bold text-white/40 uppercase tracking-widest">SDG {num}</span>
                     </motion.div>
                   </SDGTooltip>
                 ))}
@@ -734,7 +734,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-10 relative z-10 shadow-xl border-4 border-white transition-all duration-500 ${i === 2 ? 'bg-ag-lime' : 'bg-ag-green-950'}`}>
                         {i === 2 ? <Activity className="w-6 h-6 text-ag-green-950" /> : <CheckCircle2 className="w-6 h-6 text-white" />}
                     </div>
-                    <p className={`text-[10px] font-bold uppercase tracking-[0.3em] mb-4 ${i === 2 ? 'text-ag-lime' : 'text-gray-400'}`}>
+                    <p className={`text-[13px] font-bold uppercase tracking-[0.3em] mb-4 ${i === 2 ? 'text-ag-lime' : 'text-gray-400'}`}>
                         {i === 2 && <span className="inline-block w-1.5 h-1.5 rounded-full bg-ag-lime animate-pulse mr-3 mb-0.5" />}
                         {step.date}
                     </p>
@@ -755,7 +755,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
             <motion.span 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="text-[11px] font-bold text-ag-lime uppercase tracking-[0.5em] mb-14"
+              className="text-[13px] font-bold text-ag-lime uppercase tracking-[0.5em] mb-14"
             >
               INVESTMENT OPPORTUNITY
             </motion.span>
@@ -818,7 +818,7 @@ const SpecBox: React.FC<{ spec: any; isActive: boolean; onClick: () => void }> =
             {isActive ? <Minus className="w-4 h-4 text-ag-lime" /> : <Plus className="w-4 h-4 text-gray-300 group-hover:text-ag-lime" />}
         </div>
         <div>
-            <p className={`text-[9px] font-bold uppercase tracking-[0.2em] mb-1 ${isActive ? 'text-white/40' : 'text-gray-400'}`}>
+            <p className={`text-[13px] font-bold uppercase tracking-[0.2em] mb-1 ${isActive ? 'text-white/40' : 'text-gray-400'}`}>
                 {spec.label}
             </p>
             <h4 className="text-base font-bold tracking-tight leading-tight">{spec.val}</h4>

@@ -72,7 +72,7 @@ const DevelopmentImpact: React.FC = () => {
               <div className="text-5xl lg:text-6xl font-bold text-ag-green-950 tracking-tighter mb-4 font-sans">
                 ₦<Counter from={0} to={1.2} suffix="B+" decimals={1} />
               </div>
-              <p className="text-ag-green-950/70 font-bold text-[10px] uppercase tracking-[0.2em] leading-relaxed">
+              <p className="text-ag-green-950/70 font-bold text-[13px] uppercase tracking-[0.2em] leading-relaxed">
                 Total project investment <br/> committed to date
               </p>
             </div>
@@ -96,7 +96,7 @@ const DevelopmentImpact: React.FC = () => {
             />
             <div className="absolute inset-0 bg-ag-green-950/20 group-hover:bg-transparent transition-colors duration-1000" />
             <div className="absolute bottom-8 left-8 text-white z-10">
-               <span className="text-[10px] font-bold uppercase tracking-widest bg-ag-lime/90 backdrop-blur-md px-4 py-2 rounded-full text-ag-green-950 shadow-lg">Field Operations</span>
+               <span className="text-[13px] font-bold uppercase tracking-widest bg-ag-lime/90 backdrop-blur-md px-4 py-2 rounded-full text-ag-green-950 shadow-lg">Field Operations</span>
             </div>
           </motion.div>
 
@@ -115,7 +115,7 @@ const DevelopmentImpact: React.FC = () => {
               <div className="text-5xl lg:text-6xl font-bold text-ag-green-950 tracking-tighter mb-4 font-sans">
                 <Counter from={0} to={5000} suffix="+" />
               </div>
-              <p className="text-gray-500 font-bold text-[10px] uppercase tracking-[0.2em] leading-relaxed">
+              <p className="text-gray-500 font-bold text-[13px] uppercase tracking-[0.2em] leading-relaxed">
                 Smallholders with access to <br/> new or improved infrastructure
               </p>
             </div>
@@ -136,7 +136,7 @@ const DevelopmentImpact: React.FC = () => {
               <div className="text-5xl lg:text-6xl font-bold text-ag-green-950 tracking-tighter mb-4 font-sans">
                 <Counter from={0} to={500} suffix="+" />
               </div>
-              <p className="text-gray-500 font-bold text-[10px] uppercase tracking-[0.2em] leading-relaxed">
+              <p className="text-gray-500 font-bold text-[13px] uppercase tracking-[0.2em] leading-relaxed">
                 Productive assets successfully <br/> reached financial close
               </p>
             </div>
@@ -157,7 +157,7 @@ const DevelopmentImpact: React.FC = () => {
               <div className="text-5xl lg:text-6xl font-bold text-white tracking-tighter mb-4 font-sans">
                 ₦<Counter from={0} to={850} suffix="M" />
               </div>
-              <p className="text-white/40 font-bold text-[10px] uppercase tracking-[0.2em] leading-relaxed">
+              <p className="text-white/40 font-bold text-[13px] uppercase tracking-[0.2em] leading-relaxed">
                 Domestic Capital <br/> Mobilized via Institutional Partners
               </p>
             </div>
@@ -178,7 +178,7 @@ const DevelopmentImpact: React.FC = () => {
               <div className="text-5xl lg:text-6xl font-bold text-ag-green-950 tracking-tighter mb-4 font-sans">
                 <Counter from={0} to={1.2} suffix="k" decimals={1} />
               </div>
-              <p className="text-gray-500 font-bold text-[10px] uppercase tracking-[0.2em] leading-relaxed">
+              <p className="text-gray-500 font-bold text-[13px] uppercase tracking-[0.2em] leading-relaxed">
                 Metric Tons of Carbon <br/> Offset (CO2e) Per Year
               </p>
             </div>
@@ -201,7 +201,7 @@ const DevelopmentImpact: React.FC = () => {
             />
             <div className="absolute inset-0 bg-ag-green-950/20 group-hover:bg-transparent transition-colors duration-1000" />
             <div className="absolute top-8 left-8">
-               <span className="text-[10px] font-bold uppercase tracking-widest bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white border border-white/20">Infrastructure Hub</span>
+               <span className="text-[13px] font-bold uppercase tracking-widest bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white border border-white/20">Infrastructure Hub</span>
             </div>
           </motion.div>
 
@@ -220,7 +220,7 @@ const DevelopmentImpact: React.FC = () => {
               <div className="text-5xl lg:text-6xl font-bold text-white tracking-tighter mb-4 font-sans">
                 <Counter from={0} to={185} suffix="+" />
               </div>
-              <p className="text-white/40 font-bold text-[10px] uppercase tracking-[0.2em] leading-relaxed">
+              <p className="text-white/40 font-bold text-[13px] uppercase tracking-[0.2em] leading-relaxed">
                 Female-Led SMEs Supported <br/> through specialized financing
               </p>
             </div>
