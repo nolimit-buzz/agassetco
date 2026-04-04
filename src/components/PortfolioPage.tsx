@@ -804,7 +804,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                     </div>
                     
                     <button
-                      onClick={() => handleNavigate('project-detail', project.id)}
+                      onClick={() => onNavigate?.('project-detail', project.id)}
                       className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 hover:text-ag-lime transition-all group/btn ml-auto"
                     >
                       Learn More <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
