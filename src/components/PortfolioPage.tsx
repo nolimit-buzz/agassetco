@@ -203,6 +203,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate, initialData }
                   alt={heroImageAlt}
                   fill
                   unoptimized
+                  quality={100}
                   className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
                   sizes="100vw"
                   priority
