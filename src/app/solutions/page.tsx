@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const getSolutionsData = unstable_cache(
   async () => {
     try {
-      const response = await strapi.get(`solutions-page`);
+      const response = await strapi.get(`solutions-page?populate=*`);
       return response.data;
     } catch (error) {
       console.error('Error fetching solutions page data:', error);
