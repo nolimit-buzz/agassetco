@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const getCookiePolicyData = unstable_cache(
   async () => {
     try {
-      const response = await strapi.get('cookie-policy?populate=sections');
+      const response = await strapi.get('cookie-policy?populate=*');
       return response.data;
     } catch (error) {
       console.error('Error fetching cookie policy page data:', error);

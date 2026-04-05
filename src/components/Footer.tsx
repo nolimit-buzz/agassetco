@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* 1. Top Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
           
           {/* Branding Column */}
           <div className="col-span-1 md:col-span-1 pr-8">
@@ -31,7 +31,8 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links 1 */}
+        <section className='flex  space-x-20'>
+            {/* Links 1 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Company</h4>
             <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
@@ -64,9 +65,10 @@ const Footer: React.FC = () => {
               ))}
             </ul>
           </div>
+        </section>
 
           {/* Links 3 */}
-          <div>
+          {/* <div>
              <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Connect</h4>
              <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
                {[
@@ -87,7 +89,7 @@ const Footer: React.FC = () => {
                  </li>
                ))}
              </ul>
-          </div>
+          </div> */}
 
         </div>
 

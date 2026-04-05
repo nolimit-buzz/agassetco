@@ -26,8 +26,35 @@ import {
 import SectionHeader from './SectionHeader';
 import { NigeriaMap } from './MapSection';
 
+interface StrapiHeroImage {
+  url: string;
+  alternativeText?: string | null;
+}
+interface StrapiStat {
+  id: number;
+  label: string;
+  value: string;
+}
+interface StrapiMapLocation {
+  id: number;
+  location_id: string;
+  stateName: string;
+}
+interface StrapiPortfolioData {
+  hero_breadcrumb: string;
+  hero_title: string;
+  hero_subtitle: string;
+  hero_description: string;
+  map_section_title: string;
+  hero_image: StrapiHeroImage | null;
+  hero_stats: StrapiStat[];
+  map_locations: StrapiMapLocation[];
+  testimonials: any[];
+}
+
 interface PortfolioPageProps {
   onNavigate?: (page: any, id?: any) => void;
+  initialData?: { data: StrapiPortfolioData; meta: any } | null;
 }
 
 // --- DATA ---
@@ -88,16 +115,26 @@ const PROJECTS = [
 
 const CATEGORIES = ["All", "Agro-Processing", "Cold Chain", "Irrigation"];
 
-const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
+const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate, initialData }) => {
   const router = useRouter();
+  const strapiData = initialData?.data;
+  const mediaBase = process.env.NEXT_PUBLIC_MEDIA_URL ?? '';
+  const heroImageSrc = strapiData?.hero_image?.url
+    ? `${mediaBase}${strapiData.hero_image.url}`
+    : null;
+  const heroImageAlt = strapiData?.hero_image?.alternativeText ?? '';
   const [activeTab, setActiveTab] = useState("All");
   const [viewMode, setViewMode] = useState<'grid' | 'accordion'>('accordion');
   const [activeProjectId, setActiveProjectId] = useState<string | null>("01");
 
-  // Prefetch portfolio detail pages on mount
+  // Prefetch portfolio detail pages and hero image on mount
   useEffect(() => {
     PROJECTS.forEach(p => router.prefetch(`/portfolio/${p.id}`));
-  }, [router]);
+    if (heroImageSrc) {
+      const img = new window.Image();
+      img.src = heroImageSrc;
+    }
+  }, [router, heroImageSrc]);
 
   // Falls back to router navigation when used standalone (no onNavigate prop)
   const handleNavigate = useCallback((page: string, id?: any) => {
@@ -154,20 +191,23 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
             </div>
             
             <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
-              01 Track Record & Projects — 2025
+              {strapiData?.hero_subtitle}
             </div>
           </motion.div>
 
           <motion.div variants={fadeInUp} className="relative w-full aspect-[21/9] md:aspect-[3/1] mb-16 group">
             <div className="absolute inset-0 rounded-[0.7rem] overflow-hidden bg-gray-100">
-              <Image 
-                src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2940&auto=format&fit=crop" 
-                alt="Working Lands" 
-                fill
-                className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
-                sizes="100vw"
-                priority
-              />
+              {heroImageSrc && (
+                <Image
+                  src={heroImageSrc}
+                  alt={heroImageAlt}
+                  fill
+                  unoptimized
+                  className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                  sizes="100vw"
+                  priority
+                />
+              )}
               <div className="absolute inset-0 bg-ag-green-950/10 group-hover:bg-transparent transition-colors duration-1000 mix-blend-multiply"></div>
             </div>
             
@@ -182,17 +222,12 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
               </motion.div>
             </div>
 
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full max-w-5xl px-6">
-               <div className="bg-white shadow-2xl rounded-[0.7rem] p-6 md:p-8 flex flex-wrap justify-between items-center gap-6 border border-gray-100">
-                  {[
-                    { label: "Assets Deployed", val: "500+" },
-                    { label: "Financed", val: "₦850M+" },
-                    { label: "States Covered", val: "12" },
-                    { label: "Tons Processed", val: "5k+" }
-                  ].map((stat, i) => (
-                    <div key={i} className="flex flex-col">
-                       <span className="text-2xl md:text-3xl font-bold text-ag-green-950">{stat.val}</span>
-                       <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{stat.label}</span>
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full px-6">
+               <div className="bg-white shadow-2xl rounded-[0.7rem] px-8 py-6 flex flex-nowrap justify-between items-center gap-4 border border-gray-100 overflow-x-auto">
+                  {strapiData?.hero_stats?.map((stat) => (
+                    <div key={stat.id} className="flex flex-col flex-shrink-0">
+                       <span className="text-xl md:text-2xl font-bold text-ag-green-950 whitespace-nowrap">{stat.value}</span>
+                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</span>
                     </div>
                   ))}
                </div>
@@ -202,20 +237,20 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
           {/* SWAPPED LAYOUT: Title on the right, Description on the left to align with meta-breadcrumbs */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-16 md:mt-24">
             <div className="lg:col-span-5 pt-2">
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
                 className="text-sm md:text-2xl text-gray-500 font-light leading-relaxed max-w-md mb-8"
               >
-                Exploring our footprint of productive use deployments across Nigeria’s underserved rural markets. We turn energy into bankable economic growth through real, durable assets.
+                {strapiData?.hero_description}
               </motion.p>
             </div>
             <div className="lg:col-span-7 lg:text-right">
-              <motion.h1 
+              <motion.h1
                 variants={fadeInUp}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
-                REAL ASSETS. <br/>
-                <span className="text-ag-lime">REAL IMPACT.</span>
+                {strapiData?.hero_title} <br/>
+                <span className="text-ag-lime">{strapiData?.hero_breadcrumb}</span>
               </motion.h1>
             </div>
           </div>
@@ -225,7 +260,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
       {/* 01. GEOGRAPHIC FOOTPRINT */}
       <section className="py-24 bg-gray-50 border-t border-gray-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-12">
-          <SectionHeader number="01" category="Reach" title="Geographic Footprint." />
+          <SectionHeader number="01" category="Reach" title={strapiData?.map_section_title} />
         </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start min-h-[600px]">
@@ -235,13 +270,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 px-4">
                 Select Location
               </h4>
-              {[
-                { id: 'imo', stateName: 'Imo State' },
-                { id: 'niger', stateName: 'Niger State' },
-                { id: 'ogun', stateName: 'Ogun State' },
-                { id: 'kaduna', stateName: 'Kaduna State' },
-                { id: 'kano', stateName: 'Kano State' }
-              ].map((loc) => (
+              {strapiData?.map_locations?.map((loc) => (
                 <button
                   key={loc.id}
                   className="w-full text-left px-6 py-5 rounded-xl transition-all duration-300 font-medium text-sm flex items-center justify-between group bg-white border border-gray-100 text-gray-500 hover:bg-gray-100 hover:text-ag-green-950"
