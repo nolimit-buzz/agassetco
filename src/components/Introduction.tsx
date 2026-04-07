@@ -5,6 +5,13 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Coins, Settings, BarChart3, Plus, Minus } from 'lucide-react';
 import SectionHeader from './SectionHeader';
+import { extractText, RichTextBlock } from '@/lib/richText';
+
+interface IntroData {
+  sectionLabel?: string;
+  title?: RichTextBlock[];
+  body?: RichTextBlock[];
+}
 
 const services = [
   {
@@ -33,8 +40,15 @@ const services = [
   }
 ];
 
-const Introduction: React.FC = () => {
+const Introduction: React.FC<{ data?: IntroData }> = ({ data }) => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
+
+  const [sectionNum, sectionCategory] = data?.sectionLabel
+    ? data.sectionLabel.split(' : ')
+    : ['', ''];
+
+  const sectionTitle = data?.title ? extractText(data.title) : '';
+  const sectionBody = data?.body ? extractText(data.body) : '';
 
   const toggleAccordion = (index: number) => {
     setActiveAccordion(activeAccordion === index ? null : index);
@@ -45,10 +59,10 @@ const Introduction: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* 1. Standardized Header (Maintained as requested) */}
-        <SectionHeader 
-          number="01" 
-          category="Introduction" 
-          title={<>Pioneering Productive Use <br /> of Energy in Agriculture.</>} 
+        <SectionHeader
+          number={sectionNum}
+          category={sectionCategory}
+          title={sectionTitle}
         />
 
         {/* 2. Split Layout */}
@@ -88,7 +102,7 @@ const Introduction: React.FC = () => {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl lg:text-[2.5rem] font-bold text-ag-green-950 tracking-tight leading-[1.1] mb-6"
             >
-              Innovating productive energy for a <span className="text-ag-lime">sustainable future.</span>
+              {sectionTitle}
             </motion.h2>
 
             <motion.p 
@@ -98,7 +112,7 @@ const Introduction: React.FC = () => {
               transition={{ delay: 0.1 }}
               className="text-lg text-gray-500 font-light leading-relaxed mb-10 max-w-lg"
             >
-              We are a modern renewable-energy asset company dedicated to transforming natural sunshine into clean, affordable, and reliable economic power. Our team works with advanced agri-tech to help farmers switch to sustainable energy with confidence.
+              {sectionBody}
             </motion.p>
 
             {/* Accordion List (Replacing Buttons) */}

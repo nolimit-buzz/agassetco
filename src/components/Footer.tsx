@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
           {/* Links 1 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Company</h4>
-            <ul className="space-y-4 text-base md:text-sm font-medium">
+            <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
               {[
                 { name: 'About Us', href: '/about' },
                 { name: 'Portfolio', href: '/portfolio' },

@@ -4,6 +4,13 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Wifi, Users, Briefcase, Settings, ArrowUpRight, Zap, Database, ShieldCheck } from 'lucide-react';
 import SectionHeader from './SectionHeader';
+import { extractText, RichTextBlock } from '@/lib/richText';
+
+interface IntroData {
+  sectionLabel?: string;
+  title?: RichTextBlock[];
+  body?: RichTextBlock[];
+}
 
 // --- DATA CONFIGURATION ---
 
@@ -71,9 +78,15 @@ const SPOKES = [
   }
 ];
 
-const HubAndSolutions: React.FC = () => {
+const HubAndSolutions: React.FC<{ data?: IntroData }> = ({ data }) => {
   const [activeSolution, setActiveSolution] = useState(0);
   const activeSpokeId = SOLUTIONS[activeSolution].relatedSpokeId;
+
+  const [sectionNum, sectionCategory] = data?.sectionLabel
+    ? data.sectionLabel.split(' : ')
+    : ['', ''];
+
+  const sectionTitle = data?.title ? extractText(data.title) : null;
 
   return (
     <section className="relative min-h-screen bg-ag-green-950 pt-32 lg:pt-40 pb-24 overflow-hidden snap-start flex flex-col">
@@ -101,10 +114,10 @@ const HubAndSolutions: React.FC = () => {
         
         {/* HEADER */}
         <div className="mb-12 border-b border-white/20 pb-8 drop-shadow-md">
-            <SectionHeader 
-                number="03" 
-                category="Our Ecosystem" 
-                title={<>Integrated Solutions <br /> & <span className="text-ag-lime">Infrastructure.</span></>} 
+            <SectionHeader
+                number={sectionNum}
+                category={sectionCategory}
+                title={sectionTitle ?? ''}
                 dark={true}
             />
         </div>

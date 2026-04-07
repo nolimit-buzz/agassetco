@@ -5,8 +5,21 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BatteryWarning, Wrench, Coins } from 'lucide-react';
 import SectionHeader from './SectionHeader';
+import { extractText, RichTextBlock } from '@/lib/richText';
 
-const ProblemSolution: React.FC = () => {
+interface IntroData {
+  sectionLabel?: string;
+  title?: RichTextBlock[];
+  body?: RichTextBlock[];
+}
+
+const ProblemSolution: React.FC<{ data?: IntroData }> = ({ data }) => {
+  const [sectionNum, sectionCategory] = data?.sectionLabel
+    ? data.sectionLabel.split(' : ')
+    : ['', ''];
+
+  const sectionTitle = data?.title ? extractText(data.title) : null;
+  const sectionBody = data?.body ? extractText(data.body) : '';
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const containerRef = useRef<HTMLElement>(null);
 
@@ -44,10 +57,10 @@ const ProblemSolution: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 py-24 relative z-10 bg-white">
         
         {/* Standardized Header */}
-        <SectionHeader 
-          number="02" 
-          category="The Challenge" 
-          title={<>The Systemic Failure of <span className="text-ag-lime">Rural Energy Markets.</span></>} 
+        <SectionHeader
+          number={sectionNum}
+          category={sectionCategory}
+          title={sectionTitle ?? ''}
         />
 
         {/* Description Paragraph */}
@@ -58,7 +71,7 @@ const ProblemSolution: React.FC = () => {
           className="max-w-3xl mb-16 -mt-8 md:-mt-12"
         >
           <p className="text-xl text-gray-500 font-light leading-relaxed">
-            Mini-grids fail without demand. Farmers fail without equipment. We solve the deadlock.
+            {sectionBody}
           </p>
         </motion.div>
 
