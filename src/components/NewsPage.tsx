@@ -1,7 +1,8 @@
 
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, ChevronRight, Calendar, ArrowRight, Filter, ChevronDown, Plus, TrendingUp, Clock, Bookmark } from 'lucide-react';
 
@@ -94,7 +95,23 @@ const ARTICLES = [
 ];
 
 const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
+  const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Prefetch all news detail pages on mount
+  useEffect(() => {
+    ARTICLES.forEach(a => router.prefetch(`/news/${a.id}`));
+  }, [router]);
+
+  // Falls back to router navigation when used standalone
+  const handleNavigate = useCallback((page: string, id?: any) => {
+    if (onNavigate) {
+      onNavigate(page, id);
+    } else {
+      if (page === 'news-detail' && id) router.push(`/news/${id}`);
+      else if (page === 'home') router.push('/');
+    }
+  }, [onNavigate, router]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -129,7 +146,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
           <motion.div variants={fadeInUp} className="flex flex-row items-center justify-between mb-12 border-b border-gray-100 pb-8">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
               <Home className="w-2.5 h-2.5" />
-              <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => onNavigate?.('home')}>Home</span>
+              <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => handleNavigate('home')}>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
               <span className="opacity-50">Media</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
@@ -189,7 +206,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                 <div 
                   key={slide.id} 
                   onMouseEnter={() => setCurrentSlide(i)}
-                  onClick={() => onNavigate?.('news-detail', slide.id)}
+                  onClick={() => handleNavigate('news-detail', slide.id)}
                   className={`flex flex-col md:flex-row items-center justify-between py-10 border-b border-gray-100 group cursor-pointer transition-all duration-500 ${currentSlide === i ? 'bg-gray-50/50 px-6 -mx-6' : 'hover:bg-gray-50/30'}`}
                 >
                   <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12 flex-1">
@@ -251,7 +268,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              onClick={() => onNavigate?.('news-detail', article.id)}
+              onClick={() => handleNavigate('news-detail', article.id)}
               className="relative aspect-[4/5] rounded-[0.7rem] overflow-hidden group cursor-pointer transition-all duration-500 bg-white"
             >
               {/* Default View: Full Immersive Image */}

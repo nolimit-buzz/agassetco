@@ -218,7 +218,7 @@ const SustainabilityAssistant: React.FC = () => {
                   <Send size={18} />
                 </button>
               </div>
-              <p className="text-[9px] text-center text-gray-400 font-bold uppercase tracking-widest mt-3">
+              <p className="text-[13px] text-center text-gray-400 font-bold uppercase tracking-widest mt-3">
                 AgAsset Co AI • Enterprise Support
               </p>
             </div>

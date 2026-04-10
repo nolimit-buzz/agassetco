@@ -114,7 +114,7 @@ const Hero: React.FC<{ data?: HeroData }> = ({ data }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
-                    className="text-6xl md:text-8xl  leading-[1.05] font-bold text-white tracking-tight drop-shadow-lg will-change-transform"
+                    className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tight drop-shadow-lg will-change-transform"
                 >
                     {(() => {
                         const parts = headlineText.split(' for ');

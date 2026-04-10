@@ -402,9 +402,9 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end pb-8">
             <motion.div variants={fadeInUp}>
-              <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-8">
+              <h2 className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-8">
                 {data.cta_heading || 'Empower Your Grid.'}
-                <br />
+                <br className="hidden md:block" />
                 {data.cta_heading || 'Drive ARPU.'}
               </h2>
               <p className="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-lg">

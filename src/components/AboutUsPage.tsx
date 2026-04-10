@@ -27,46 +27,66 @@ import {
 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
-interface AboutPageData {
-  id: number;
-  documentId: string;
-  hero_breadcrumb: string;
-  hero_title: string;
-  hero_subtitle: string;
-  hero_description: string;
-  structure_title: string;
-  structure_section_title: string;
-  structure_description: string;
-  operations_title: string;
-  operations_description: string;
-  values_section_title: string;
-  mission_title: string;
-  mission_description: string;
-  vision_title: string;
-  vision_description: string;
-  model_title: string;
-  model_description: string;
-  governance_title: string;
-  cta_heading: string;
-  cta_description: string;
-  corporate_profile_label: string;
-  impact_report_label: string;
-  partnerships_link_text: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
+interface HeroSection {
+  breadcrumb?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}
+
+interface StructureSection {
+  title?: string;
+  section_title?: string;
+  description?: string;
+  labels?: { id: number; label: string }[];
+}
+
+interface OperationsSection {
+  title?: string;
+  description?: string;
+  features?: { id: number; title: string; description: string }[];
+}
+
+interface ValuesSection {
+  section_title?: string;
+  mission_title?: string;
+  mission_description?: string;
+  vision_title?: string;
+  vision_description?: string;
+}
+
+interface ModelSection {
+  title?: string;
+  description?: string;
+  tags?: { id: number; label: string }[];
+}
+
+interface GovernanceSection {
+  title?: string;
+}
+
+interface CtaSection {
+  heading?: string;
+  description?: string;
+  corporate_profile_label?: string;
+  impact_report_label?: string;
+  partnerships_link_text?: string;
 }
 
 interface AboutUsPageProps {
-  initialData?: {
-    data: AboutPageData;
-  };
+  hero?: HeroSection;
+  structure?: StructureSection;
+  operations?: OperationsSection;
+  values?: ValuesSection;
+  model?: ModelSection;
+  governance?: GovernanceSection;
+  cta?: CtaSection;
 }
 
-const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
-  const partners = ["REA", "Agronomie", "Power Africa", "Shell Foundation", "World Bank", "IFC"];
+const operationIcons = [Activity, Cpu, Users, ShieldCheck];
 
-  const aboutData = initialData?.data;
+const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, values, model, governance, cta }) => {
+  const partners = ["REA", "Agronomie", "Power Africa", "Shell Foundation", "World Bank", "IFC"];
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -75,12 +95,10 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
       y: 0,
       transition: {
         duration: 1.2,
-        ease: [0.16, 1, 0.3, 1] as any,   // ← add `as any`
+        ease: [0.16, 1, 0.3, 1] as any,
       },
     },
   };
-
-
 
   const imageEntrance = {
     hidden: { opacity: 0, scale: 1.08 },
@@ -102,9 +120,13 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
     }
   };
 
-
-
-
+  // Helper: split text so the last word renders in ag-lime
+  const limeLastWord = (text?: string) => {
+    if (!text) return null;
+    const words = text.split(' ');
+    const last = words.pop();
+    return <>{words.join(' ')} <br /><span className="text-ag-lime">{last}</span></>;
+  };
 
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-ag-lime selection:text-white">
@@ -119,7 +141,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
         >
           <motion.div variants={fadeInUp} className="border-b border-gray-200 py-4 flex justify-between items-center mb-12">
             <div className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
-              {aboutData?.hero_breadcrumb || "AgAsset Corporate Presentation"}
+              {hero?.breadcrumb}
             </div>
             <div className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">
               01
@@ -167,17 +189,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
                 variants={fadeInUp}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-ag-green-950 leading-[0.95] tracking-tighter"
               >
-                {aboutData?.hero_title ? (
-                  <>
-                    {aboutData.hero_title.split(' ').slice(0, -1).join(' ')} <br />
-                    <span className="text-ag-lime">{aboutData.hero_title.split(' ').slice(-1)}</span>
-                  </>
-                ) : (
-                  <>
-                    EXECUTION <br />
-                    <span className="text-ag-lime">ENGINE.</span>
-                  </>
-                )}
+                {limeLastWord(hero?.title)}
               </motion.h1>
             </div>
             <div className="lg:col-span-5 pt-2">
@@ -185,7 +197,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
                 variants={fadeInUp}
                 className="text-sm md:text-base text-gray-500 font-light leading-relaxed max-w-md mb-8"
               >
-                {aboutData?.hero_description || "AgAsset Co is a specialized asset vehicle dedicated to bridging the gap between energy access and productive use. We finance, deploy, and manage machinery at scale."}
+                {hero?.description}
               </motion.p>
               <motion.button
                 variants={fadeInUp}
@@ -207,20 +219,25 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
           variants={staggerContainer}
           className="max-w-7xl mx-auto px-6"
         >
-          <SectionHeader number="02" category="Structure" title={aboutData?.structure_title} />
+          <SectionHeader number="02" category="Structure" title={structure?.title} />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div variants={fadeInUp} className="lg:col-span-5">
-              <h3 className="text-3xl font-medium text-ag-green-950 mb-6">{aboutData?.structure_section_title}</h3>
+              <h3 className="text-3xl font-medium text-ag-green-950 mb-6">{structure?.section_title}</h3>
               <p className="text-lg text-gray-500 font-light leading-relaxed mb-6">
-                {aboutData?.structure_description}
+                {structure?.description}
               </p>
-              <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-ag-green-950/40">
-                <span>Infrastructure</span>
-                <span className="w-1 h-1 bg-ag-lime rounded-full"></span>
-                <span>Financing</span>
-                <span className="w-1 h-1 bg-ag-lime rounded-full"></span>
-                <span>Operations</span>
-              </div>
+              {structure?.labels && structure.labels.length > 0 && (
+                <div className="flex flex-wrap items-center gap-4 text-xs font-bold uppercase tracking-widest text-ag-green-950/40">
+                  {structure.labels.map((l, i) => (
+                    <React.Fragment key={l.id}>
+                      <span>{l.label}</span>
+                      {i < structure.labels!.length - 1 && (
+                        <span className="w-1 h-1 bg-ag-lime rounded-full" />
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              )}
             </motion.div>
             <motion.div variants={fadeInUp} className="lg:col-span-7">
               <div className="relative rounded-[2.5rem] bg-gray-50/50 border border-gray-100 p-8 md:p-12 overflow-hidden shadow-inner">
@@ -275,11 +292,9 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
               transition={{ duration: 1 }}
               className="relative h-[500px] md:h-[600px] w-full flex items-center justify-center order-2 lg:order-1"
             >
-              {/* Orbital Rings */}
               <div className="absolute w-[350px] h-[350px] md:w-[450px] md:h-[450px] border border-white/5 rounded-full" />
               <div className="absolute w-[250px] h-[250px] md:w-[320px] md:h-[320px] border border-white/10 rounded-full" />
 
-              {/* SVG Connections */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
                 <motion.path d="M 50% 50% Q 35% 35% 20% 40%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
                 <motion.path d="M 50% 50% Q 65% 30% 80% 35%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.2 }} />
@@ -287,49 +302,32 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
                 <motion.path d="M 50% 50% Q 65% 75% 75% 85%" stroke="#78BC42" strokeWidth="1" strokeOpacity="0.4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5, delay: 0.6 }} />
               </svg>
 
-              {/* Central Node */}
               <div className="relative z-10 w-24 h-24 rounded-[0.7rem] bg-ag-green-950 border-2 border-ag-lime flex items-center justify-center shadow-[0_0_50px_rgba(120,188,66,0.3)]">
                 <div className="w-12 h-12 bg-ag-lime/10 rounded-xl flex items-center justify-center">
                   <Building2 className="text-ag-lime w-8 h-8" />
                 </div>
               </div>
 
-              {/* Satellite Nodes */}
               <div className="absolute top-[35%] left-[15%] flex flex-col items-center group">
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                >
+                <motion.div whileHover={{ scale: 1.15 }} className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer">
                   <Activity className="text-ag-lime w-6 h-6" />
                 </motion.div>
                 <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Telemetry</span>
               </div>
-
               <div className="absolute top-[30%] right-[12%] flex flex-col items-center group">
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                >
+                <motion.div whileHover={{ scale: 1.15 }} className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer">
                   <Search className="text-ag-lime w-6 h-6" />
                 </motion.div>
                 <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Predictive</span>
               </div>
-
               <div className="absolute bottom-[20%] left-[20%] flex flex-col items-center group">
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                >
+                <motion.div whileHover={{ scale: 1.15 }} className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer">
                   <Lock className="text-ag-lime w-6 h-6" />
                 </motion.div>
                 <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Remote Lock</span>
               </div>
-
               <div className="absolute bottom-[10%] right-[22%] flex flex-col items-center group">
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer"
-                >
+                <motion.div whileHover={{ scale: 1.15 }} className="w-16 h-16 rounded-[0.7rem] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-3 group-hover:bg-ag-lime/20 transition-all cursor-pointer">
                   <Zap className="text-ag-lime w-6 h-6" />
                 </motion.div>
                 <span className="text-xs font-bold text-white uppercase tracking-widest opacity-60">Load Control</span>
@@ -346,41 +344,34 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
             >
               <div className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] mb-6">03 OPERATIONS</div>
               <h2 className="text-4xl md:text-5xl font-bold text-ag-green-950 leading-[1.1] tracking-tight mb-8">
-                {aboutData?.operations_title || "Operational Excellence Beyond the Grid."}
+                {operations?.title}
               </h2>
               <p className="text-lg text-gray-500 font-light leading-relaxed mb-12">
-                {aboutData?.operations_description || "Financing is easy. Keeping assets running in remote locations is hard. That is our core competency. We leverage real-time data to de-risk investments and maximize runtime."}
+                {operations?.description}
               </p>
 
               <div className="space-y-8">
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Activity className="w-5 h-5 text-ag-green-950" /></div>
-                  <div>
-                    <h4 className="font-bold text-ag-green-950">Centralized Monitoring</h4>
-                    <p className="text-sm text-gray-400 font-light">Remote oversight via global satellite telemetry.</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Cpu className="w-5 h-5 text-ag-green-950" /></div>
-                  <div>
-                    <h4 className="font-bold text-ag-green-950">IoT Lifecycle Management</h4>
-                    <p className="text-sm text-gray-400 font-light">Digital integration for predictive maintenance.</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100"><Users className="w-5 h-5 text-ag-green-950" /></div>
-                  <div>
-                    <h4 className="font-bold text-ag-green-950">Rapid Response Teams</h4>
-                    <p className="text-sm text-gray-400 font-light">Localized implementation for physical repairs.</p>
-                  </div>
-                </div>
+                {operations?.features?.map((feature, i) => {
+                  const Icon = operationIcons[i % operationIcons.length];
+                  return (
+                    <div key={feature.id} className="flex items-center gap-6">
+                      <div className="w-12 h-12 rounded-[0.7rem] bg-gray-50 flex items-center justify-center border border-gray-100 shrink-0">
+                        <Icon className="w-5 h-5 text-ag-green-950" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-ag-green-950">{feature.title}</h4>
+                        <p className="text-sm text-gray-400 font-light">{feature.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 04. CORE VALUES (Updated to match Homepage Card Style) */}
+      {/* 04. CORE VALUES */}
       <section className="py-24 bg-white border-b border-gray-100">
         <motion.div
           initial="hidden"
@@ -389,10 +380,10 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
           variants={staggerContainer}
           className="max-w-7xl mx-auto px-6"
         >
-          <SectionHeader number="04" category="Principles" title={aboutData?.values_section_title} />
+          <SectionHeader number="04" category="Principles" title={values?.section_title} />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[420px]">
-            {/* Card 1: Our Mission (Deep Green style) */}
+            {/* Card 1: Our Mission */}
             <motion.div
               variants={fadeInUp}
               className="bg-ag-green-950 rounded-[0.7rem] p-8 flex flex-col justify-between relative group hover:shadow-2xl hover:shadow-ag-green-900/20 transition-all duration-300 transform hover:-translate-y-1"
@@ -409,23 +400,15 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
               </div>
               <div>
                 <div className="text-4xl font-medium text-white mb-4 leading-tight">
-                  {aboutData?.mission_title ? (
-                    <>
-                      {aboutData.mission_title.split(' ').slice(0, -1).join(' ')} <br /><span className="text-ag-lime">{aboutData.mission_title.split(' ').slice(-1)}</span>
-                    </>
-                  ) : (
-                    <>
-                      The Impact <br /><span className="text-ag-lime">Mandate</span>
-                    </>
-                  )}
+                  {limeLastWord(values?.mission_title)}
                 </div>
                 <p className="text-white/60 text-sm leading-relaxed font-light">
-                  {aboutData?.mission_description || "To de-risk the adoption of productive machinery in rural markets, turning energy access into tangible economic output."}
+                  {values?.mission_description}
                 </p>
               </div>
             </motion.div>
 
-            {/* Card 2: Our Vision (Image Background style) */}
+            {/* Card 2: Our Vision */}
             <motion.div
               variants={fadeInUp}
               className="relative rounded-[0.7rem] overflow-hidden p-8 flex flex-col justify-between group h-full min-h-[350px] transform hover:-translate-y-1 transition-transform duration-300"
@@ -437,6 +420,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale mix-blend-multiply opacity-80"
                   sizes="(max-width: 768px) 100vw, 33vw"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ag-green-900/90 via-ag-green-900/40 to-ag-green-900/20"></div>
               </div>
@@ -451,14 +435,14 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
               </div>
               <div className="relative z-10">
                 <div className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">The Long View</div>
-                <h3 className="text-2xl text-white font-medium mb-3">{aboutData?.vision_title}</h3>
+                <h3 className="text-2xl text-white font-medium mb-3">{values?.vision_title}</h3>
                 <p className="text-white/80 leading-relaxed font-light text-sm max-w-[95%]">
-                  {aboutData?.vision_description}
+                  {values?.vision_description}
                 </p>
               </div>
             </motion.div>
 
-            {/* Card 3: Asset-as-a-Service (Light Gray style) */}
+            {/* Card 3: Our Model */}
             <motion.div
               variants={fadeInUp}
               className="bg-[#F3F4F6] rounded-[0.7rem] p-8 flex flex-col justify-between group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
@@ -474,15 +458,13 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
               </div>
               <div className="flex flex-col h-full justify-end">
                 <div className="mb-6">
-                  <h3 className="text-2xl text-ag-green-950 font-medium mb-3 leading-tight">{aboutData?.model_title}</h3>
-                  <p className="text-sm text-gray-500 font-light leading-relaxed">
-                    {aboutData?.model_description}
-                  </p>
+                  <h3 className="text-2xl text-ag-green-950 font-medium mb-3 leading-tight">{model?.title}</h3>
+                  <p className="text-sm text-gray-500 font-light leading-relaxed">{model?.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {["#CAPEX", "#OPEX", "#SCALE"].map((tag) => (
-                    <span key={tag} className="px-4 py-2 text-xs font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
-                      {tag}
+                  {model?.tags?.map(tag => (
+                    <span key={tag.id} className="px-4 py-2 text-xs font-bold rounded-full bg-white text-ag-green-950 border border-gray-200 group-hover:border-ag-green-950 transition-colors">
+                      {tag.label}
                     </span>
                   ))}
                 </div>
@@ -501,7 +483,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
           variants={staggerContainer}
           className="max-w-7xl mx-auto px-6"
         >
-          <SectionHeader number="05" category="Governance" title={aboutData?.governance_title} />
+          <SectionHeader number="05" category="Governance" title={governance?.title} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
             {[
               { name: "Dr. Tunde Ojo", title: "Chairman", img: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1887&auto=format&fit=crop" },
@@ -510,9 +492,8 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
               { name: "Elena Rossi", title: "CIO", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop" }
             ].map((person, i) => (
               <motion.div variants={fadeInUp} key={i} className="group cursor-pointer">
-                {/* Updated border radius to 0.7rem */}
                 <div className="aspect-[3/4] overflow-hidden rounded-[0.7rem] mb-6 bg-gray-100 relative">
-                  <Image src={person.img} alt={person.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" sizes="(max-width: 640px) 50vw, 25vw" />
+                  <Image src={person.img} alt={person.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" sizes="(max-width: 640px) 50vw, 25vw" priority />
                 </div>
                 <h3 className="text-xl font-bold text-ag-green-950 group-hover:text-ag-lime transition-colors">{person.name}</h3>
                 <p className="text-sm font-bold uppercase tracking-widest text-gray-400 mt-1">{person.title}</p>
@@ -544,19 +525,11 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <motion.div variants={fadeInUp}>
-              <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
-                {aboutData?.cta_heading ? (
-                  <>
-                    {aboutData.cta_heading.split(' ').slice(0, -1).join(' ')} <br /><span className="text-ag-lime">{aboutData.cta_heading.split(' ').slice(-1)}</span>
-                  </>
-                ) : (
-                  <>
-                    Align Your <br /> Capital with <br /> <span className="text-ag-lime">Impact.</span>
-                  </>
-                )}
+              <h2 className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
+                {limeLastWord(cta?.heading)}
               </h2>
               <p className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
-                {aboutData?.cta_description || "By choosing renewable energy financing, you lower energy costs, reduce carbon emissions, and support innovative solutions that benefit our planet. Whether you are a mini-grid developer seeking utilization or an investor seeking impact, we have the vehicle to execute."}
+                {cta?.description}
               </p>
             </motion.div>
 
@@ -574,7 +547,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
                 <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-ag-green-950 text-white p-1 pr-1 rounded-full hover:bg-ag-lime transition-all duration-500 shadow-xl shadow-ag-green-950/20">
                   <div className="flex items-center gap-4 pl-8">
                     <FileCheck className="w-5 h-5 text-ag-lime group-hover:text-white transition-colors" />
-                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{aboutData?.corporate_profile_label} (PDF)</span>
+                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{cta?.corporate_profile_label} (PDF)</span>
                   </div>
                   <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
                     <Download className="w-5 h-5" />
@@ -584,7 +557,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
                 <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-gray-50 border border-gray-100 text-ag-green-950 p-1 pr-1 rounded-full hover:bg-ag-green-950 hover:text-white transition-all duration-500">
                   <div className="flex items-center gap-4 pl-8">
                     <TrendingUp className="w-5 h-5 text-ag-lime" />
-                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{aboutData?.impact_report_label}</span>
+                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{cta?.impact_report_label}</span>
                   </div>
                   <div className="w-14 h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
                     <Download className="w-5 h-5" />
@@ -594,7 +567,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ initialData }) => {
 
               <div className="mt-12 pt-8 border-t border-gray-100 text-center">
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                  Need specialized data? <a href="#" className="text-ag-lime hover:underline underline-offset-4 ml-1">{aboutData?.partnerships_link_text}</a>
+                  Need specialized data? <a href="#" className="text-ag-lime hover:underline underline-offset-4 ml-1">{cta?.partnerships_link_text}</a>
                 </p>
               </div>
             </motion.div>

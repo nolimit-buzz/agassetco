@@ -137,9 +137,9 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ initialData }) => {
               <div className="lg:col-span-7 lg:text-right">
                 <motion.h1
                   variants={fadeInUp}
-                  className="text-6xl md:text-8xl lg:text-9xl font-bold text-ag-green-950 leading-[0.9] tracking-tighter"
+                  className="text-5xl md:text-8xl lg:text-9xl font-bold text-ag-green-950 leading-[0.9] tracking-tighter"
                 >
-                  PRIVACY <br/>
+                  PRIVACY <br className="hidden md:block" />
                   <span className="text-ag-lime">POLICY.</span>
                 </motion.h1>
               </div>

@@ -380,8 +380,8 @@ const ContactPage = ({ initialData }: ContactPageProps) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end pb-8">
             <motion.div variants={fadeInUp}>
-              <h2 className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-8">
-                {data.cta_heading.split(' ').slice(0, 4).join(' ')} <br /> <span className="text-ag-lime">{data.cta_heading.split(' ').slice(4).join(' ')}</span>
+              <h2 className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-8">
+                {data.cta_heading.split(' ').slice(0, 4).join(' ')} <br className="hidden md:block" /> <span className="text-ag-lime">{data.cta_heading.split(' ').slice(4).join(' ')}</span>
               </h2>
               <p className="text-xl text-gray-300 font-light leading-relaxed mb-10 max-w-lg">
                 {data.cta_description}

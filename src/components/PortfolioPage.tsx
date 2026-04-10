@@ -1,6 +1,7 @@
 
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -88,9 +89,25 @@ const PROJECTS = [
 const CATEGORIES = ["All", "Agro-Processing", "Cold Chain", "Irrigation"];
 
 const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("All");
   const [viewMode, setViewMode] = useState<'grid' | 'accordion'>('accordion');
   const [activeProjectId, setActiveProjectId] = useState<string | null>("01");
+
+  // Prefetch portfolio detail pages on mount
+  useEffect(() => {
+    PROJECTS.forEach(p => router.prefetch(`/portfolio/${p.id}`));
+  }, [router]);
+
+  // Falls back to router navigation when used standalone (no onNavigate prop)
+  const handleNavigate = useCallback((page: string, id?: any) => {
+    if (onNavigate) {
+      onNavigate(page, id);
+    } else {
+      if (page === 'project-detail' && id) router.push(`/portfolio/${id}`);
+      else if (page === 'home') router.push('/');
+    }
+  }, [onNavigate, router]);
 
   const filteredProjects = activeTab === "All" 
     ? PROJECTS 
@@ -131,7 +148,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
           <motion.div variants={fadeInUp} className="flex flex-row items-center justify-between mb-12 border-b border-gray-100 pb-8">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
               <Home className="w-2.5 h-2.5" />
-              <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => onNavigate?.('home')}>Home</span>
+              <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => handleNavigate('home')}>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
               <span className="text-ag-green-950">Portfolio</span>
             </div>
@@ -347,7 +364,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.5 }}
-                    className="group bg-white rounded-[0.7rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+                    onClick={() => handleNavigate('project-detail', project.id)}
+                    className="group bg-white rounded-[0.7rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer"
                   >
                     <div className="aspect-[4/3] overflow-hidden relative">
                        <Image src={project.images[0]} alt={project.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 33vw" priority={project.id === "01"} />
@@ -398,7 +416,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                     project={project} 
                     isOpen={activeProjectId === project.id}
                     onClick={() => setActiveProjectId(activeProjectId === project.id ? null : project.id)}
-                    onNavigate={onNavigate}
+                    onNavigate={handleNavigate}
                   />
                 ))}
               </AnimatePresence>
@@ -572,8 +590,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <div>
-               <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
-                 Have a <br /> Project in <br /> <span className="text-ag-lime">Mind?</span>
+               <motion.h2 variants={fadeInUp} className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
+                 Have a <br className="hidden md:block" /> Project in <br className="hidden md:block" /> <span className="text-ag-lime">Mind?</span>
                </motion.h2>
                <motion.p variants={fadeInUp} className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
                  We are actively seeking new mini-grid sites and agricultural clusters to expand our productive use footprint. Partner with us to de-risk your energy assets.
