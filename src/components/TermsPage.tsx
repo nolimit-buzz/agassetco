@@ -118,7 +118,7 @@ const TermsPage: React.FC<TermsPageProps> = ({ initialData }) => {
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
               <div className="lg:col-span-5 pb-4">
-                <motion.p variants={fadeInUp} className="text-lg text-gray-500 font-light leading-relaxed mb-10 max-w-sm">
+                <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed mb-10 max-w-sm">
                   {cmsData?.hero_description}
                 </motion.p>
                 <motion.div variants={fadeInUp} className="flex gap-8">

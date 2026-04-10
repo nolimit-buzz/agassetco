@@ -223,7 +223,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div variants={fadeInUp} className="lg:col-span-5">
               <h3 className="text-3xl font-medium text-ag-green-950 mb-6">{structure?.section_title}</h3>
-              <p className="text-lg text-gray-500 font-light leading-relaxed mb-6">
+              <p className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed mb-6">
                 {structure?.description}
               </p>
               {structure?.labels && structure.labels.length > 0 && (
@@ -346,7 +346,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
               <h2 className="text-4xl md:text-5xl font-bold text-ag-green-950 leading-[1.1] tracking-tight mb-8">
                 {operations?.title}
               </h2>
-              <p className="text-lg text-gray-500 font-light leading-relaxed mb-12">
+              <p className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed mb-12">
                 {operations?.description}
               </p>
 
@@ -528,7 +528,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
               <h2 className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
                 {limeLastWord(cta?.heading)}
               </h2>
-              <p className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
+              <p className="text-lg md:text-2xl text-gray-400 font-light leading-relaxed max-w-md mb-8">
                 {cta?.description}
               </p>
             </motion.div>

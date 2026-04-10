@@ -70,7 +70,7 @@ const AboutSlider: React.FC = () => {
               <h2 className="text-4xl md:text-5xl font-medium text-ag-green-950 leading-tight tracking-tight mb-6">
                 We drive rural economic growth by financing productive assets powered by <span className="text-ag-lime">renewable energy.</span>
               </h2>
-              <p className="text-lg text-gray-500 font-light leading-relaxed max-w-md">
+              <p className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed max-w-md">
                 Bridging the gap between energy access and income generation through an integrated, data-driven approach.
               </p>
             </div>
@@ -149,7 +149,7 @@ const AboutSlider: React.FC = () => {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
-                                className="text-lg font-light leading-relaxed text-white/90"
+                                className="text-lg md:text-2xl font-light leading-relaxed text-white/90"
                             >
                                 {slides[currentSlide].desc}
                              </motion.p>

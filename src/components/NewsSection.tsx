@@ -103,7 +103,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigate }) => {
             {/* Article List Navigation */}
             <div>
               <div className="flex justify-between items-end border-b border-ag-green-950 mb-6 pb-2">
-                <h3 className="text-lg font-bold text-ag-green-950">Latest Articles</h3>
+                <h3 className="text-lg md:text-2xl font-bold text-ag-green-950">Latest Articles</h3>
                 <span className="text-xs text-gray-400 font-mono cursor-pointer" onClick={() => onNavigate?.('news')}>[ VIEW ALL ]</span>
               </div>
               
@@ -116,7 +116,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigate }) => {
                     className="group flex items-center justify-between py-6 border-b border-gray-100 hover:border-ag-lime/30 transition-colors text-left"
                   >
                     <span 
-                      className={`text-lg md:text-xl transition-colors duration-300 ${
+                      className={`text-lg md:text-2xl transition-colors duration-300 ${
                         activeId === article.id 
                           ? 'text-ag-green-950 font-bold' 
                           : 'text-gray-400 font-medium group-hover:text-ag-green-950'

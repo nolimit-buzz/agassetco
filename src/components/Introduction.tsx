@@ -110,7 +110,7 @@ const Introduction: React.FC<{ data?: IntroData }> = ({ data }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-gray-500 font-light leading-relaxed mb-10 max-w-lg"
+              className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed mb-10 max-w-lg"
             >
               {sectionBody}
             </motion.p>
@@ -130,7 +130,7 @@ const Introduction: React.FC<{ data?: IntroData }> = ({ data }) => {
                       `}>
                         <service.icon className="w-5 h-5 stroke-[1.5]" />
                       </div>
-                      <span className={`text-lg font-bold transition-colors duration-300 ${activeAccordion === index ? 'text-ag-green-950' : 'text-gray-400 group-hover:text-ag-green-950'}`}>
+                      <span className={`text-lg md:text-2xl font-bold transition-colors duration-300 ${activeAccordion === index ? 'text-ag-green-950' : 'text-gray-400 group-hover:text-ag-green-950'}`}>
                         {service.title}
                       </span>
                     </div>

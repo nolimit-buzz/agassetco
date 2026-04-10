@@ -204,7 +204,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5 pt-2">
               <motion.p 
                 variants={fadeInUp}
-                className="text-sm md:text-lg text-gray-500 font-light leading-relaxed max-w-md mb-8"
+                className="text-sm md:text-2xl text-gray-500 font-light leading-relaxed max-w-md mb-8"
               >
                 Exploring our footprint of productive use deployments across Nigeria’s underserved rural markets. We turn energy into bankable economic growth through real, durable assets.
               </motion.p>
@@ -593,7 +593,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ onNavigate }) => {
                <motion.h2 variants={fadeInUp} className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
                  Have a <br className="hidden md:block" /> Project in <br className="hidden md:block" /> <span className="text-ag-lime">Mind?</span>
                </motion.h2>
-               <motion.p variants={fadeInUp} className="text-lg text-gray-400 font-light leading-relaxed max-w-md mb-8">
+               <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-gray-400 font-light leading-relaxed max-w-md mb-8">
                  We are actively seeking new mini-grid sites and agricultural clusters to expand our productive use footprint. Partner with us to de-risk your energy assets.
                </motion.p>
             </div>
@@ -763,13 +763,13 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                         {activeDetailTab === 'problem' && (
                           <motion.div key="p" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.3 }}>
                              <span className="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-4">Challenge Analysis</span>
-                             <p className="text-lg text-gray-500 font-normal leading-relaxed">{project.problem}</p>
+                             <p className="text-lg md:text-2xl text-gray-500 font-normal leading-relaxed">{project.problem}</p>
                           </motion.div>
                         )}
                         {activeDetailTab === 'solution' && (
                           <motion.div key="s" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.3 }}>
                              <span className="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-4">Strategic Intervention</span>
-                             <p className="text-lg text-gray-500 font-normal leading-relaxed">{project.solution}</p>
+                             <p className="text-lg md:text-2xl text-gray-500 font-normal leading-relaxed">{project.solution}</p>
                           </motion.div>
                         )}
                         {activeDetailTab === 'impact' && (
@@ -779,7 +779,7 @@ const ProjectAccordionRow: React.FC<ProjectAccordionRowProps> = ({ project, isOp
                                 {project.impact.map((metric, i) => (
                                   <li key={i} className="flex items-center gap-3">
                                     <div className="w-1.5 h-1.5 rounded-full bg-ag-lime" />
-                                    <span className="text-lg text-gray-500 font-normal">{metric}</span>
+                                    <span className="text-lg md:text-2xl text-gray-500 font-normal">{metric}</span>
                                   </li>
                                 ))}
                              </ul>

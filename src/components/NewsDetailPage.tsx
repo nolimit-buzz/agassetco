@@ -140,7 +140,7 @@ const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ articleId, onNavigate }
             <div className="w-1 h-8 bg-ag-lime rounded-full" />
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-ag-green-950">About AgAsset Co</h3>
           </div>
-          <p className="text-lg text-gray-500 font-light leading-relaxed mb-6">
+          <p className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed mb-6">
             Founded to accelerate Africa’s transition to sustainable logistics, <strong className="text-ag-green-950">AgAsset Co</strong> is building the continent’s most resilient clean-energy infrastructure. By combining solar-integrated swapping hubs, automotive-grade battery technology, and real-time IoT telemetry, we provide a zero-downtime energy layer for commercial fleets. Committed to reducing carbon emissions and lowering operational costs, AgAsset Co empowers logistics operators to scale efficiently in high-growth urban markets. Recognized for our vertically integrated "Power-as-a-Service" model, we are redefining how African cities move.
           </p>
           <a href="https://www.agasset.co" className="text-sm font-bold text-ag-lime border-b border-ag-lime pb-1 hover:text-ag-green-950 hover:border-ag-green-950 transition-all">

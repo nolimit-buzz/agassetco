@@ -120,17 +120,17 @@ const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ initialData }) => {
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
               <div className="lg:col-span-5 pb-4">
-                <motion.p variants={fadeInUp} className="text-2xl text-gray-500 font-light leading-relaxed mb-10 max-w-sm">
+                <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-gray-500 font-light leading-relaxed mb-10 max-w-sm">
                   {cmsData?.hero_description}
                 </motion.p>
                 <motion.div variants={fadeInUp} className="flex gap-8">
                   <div className="flex flex-col gap-1">
                     <p className="text-sm font-bold text-gray-400 uppercase tracking-widest leading-none">Last Updated</p>
-                    <p className="text-lg font-bold text-ag-green-950">{cmsData?.version_label}</p>
+                    <p className="text-lg md:text-2xl font-bold text-ag-green-950">{cmsData?.version_label}</p>
                   </div>
                   <div className="flex flex-col gap-1">
                     <p className="text-sm font-bold text-gray-400 uppercase tracking-widest leading-none">Scope</p>
-                    <p className="text-lg font-bold text-ag-green-950">Global Site & Portal</p>
+                    <p className="text-lg md:text-2xl font-bold text-ag-green-950">Global Site & Portal</p>
                   </div>
                 </motion.div>
               </div>

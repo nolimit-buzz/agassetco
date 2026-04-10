@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
                 className="h-16 w-auto"
               />
             </Link>
-            <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-6 font-medium">
+            <p className="text-base md:text-2xl text-gray-400 leading-relaxed mb-6 font-medium">
               A wholly owned subsidiary of <strong className="text-ag-green-950">Agronomie</strong>.
             </p>
             <div className="text-base font-bold uppercase tracking-widest text-gray-300">
