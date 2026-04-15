@@ -13,14 +13,14 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
           
           {/* Branding Column */}
-          <div className="col-span-1 md:col-span-1 pr-8">
+          <div className="flex justify-center items-center w-full flex-col md:block col-span-1 md:col-span-1 pr-8">
             <Link href="/" className="mb-6 inline-block select-none cursor-pointer">
               <Image
                 src="/logo.svg"
                 alt="AgAsset Co"
                 width={140}
                 height={64}
-                className="h-16 w-auto"
+                className="h-10 md:h-16 w-auto"
               />
             </Link>
             <p className="text-base md:text-2xl text-gray-400 leading-relaxed mb-6 font-medium">
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-        <section className='flex  space-x-20'>
+        <section className='flex space-x-24 md:space-x-20'>
             {/* Links 1 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Company</h4>
@@ -98,13 +98,13 @@ const Footer: React.FC = () => {
            {/* Line matching section title lines width and color */}
            <div className="w-full h-px bg-gray-200 mb-8" />
            
-           <h1 className="text-xl font-bold tracking-widest text-ag-green-950 w-full text-center md:text-left select-none uppercase mb-8">
+           <h1 className="text-sm md:text-xl font-bold tracking-widest text-ag-green-950 w-full text-center md:text-left select-none uppercase mb-8">
               ©2025 — AGASSETCO
            </h1>
         </div>
 
         {/* 3. Bottom Utility Row */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm font-bold text-gray-400 uppercase tracking-widest mt-4">
+        <div className="flex flex-col md:flex-row md:justify-between items-center text-sm font-bold text-gray-400 uppercase md:tracking-widest mt-4">
            <div className="flex gap-8">
               <Link href="/privacy" className="hover:text-ag-green-950 transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-ag-green-950 transition-colors">Terms</Link>

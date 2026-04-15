@@ -193,14 +193,14 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
     <div className="bg-white min-h-screen font-sans selection:bg-ag-lime selection:text-white">
 
       {/* 01. HERO SECTION */}
-      <section className="pt-32 pb-24 bg-white overflow-hidden px-6">
+      <section className="pt-32 pb-24 bg-white overflow-hidden md:px-6 px-4">
         <motion.div
           initial="hidden"
           animate="visible"
           className="max-w-7xl mx-auto"
         >
           {/* Breadcrumbs */}
-          <motion.div variants={fadeInUp as any} className="flex flex-row items-center justify-between mb-12 border-b border-gray-100 pb-8">
+          <motion.div variants={fadeInUp as any} className="flex flex-col gap-y-2 md:flex-row items-center justify-between mb-12 border-b border-gray-100 pb-8">
             <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-ag-green-950 bg-gray-50 px-4 py-2 rounded-full w-fit border border-gray-100">
               <Home className="w-2.5 h-2.5" />
               <span className="cursor-pointer hover:text-ag-lime transition-colors" onClick={() => onNavigate?.('home')}>Home</span>
@@ -210,7 +210,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
               <span className="text-ag-green-950">{heroBreadcrumb}</span>
             </div>
 
-            <div className="text-sm font-bold uppercase tracking-[0.3em] text-ag-green-950">
+            <div className="text-sm font-bold uppercase md:tracking-[0.3em] text-ag-green-950">
               02 Corporate Governance & Leadership — 2025
             </div>
           </motion.div>
@@ -277,7 +277,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
       </section>
 
       {/* 02. MAIN CONTENT WITH SIDEBAR */}
-      <section className="max-w-7xl mx-auto px-6 mt-12 relative mb-24">
+      <section className="max-w-7xl mx-auto md:px-6 px-4 mt-12 relative mb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
 
           {/* STICKY SIDEBAR NAVIGATION */}
@@ -375,7 +375,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
 
       {/* 03. CTA FOOTER SECTION */}
       <section className="relative bg-ag-green-950 py-24 overflow-hidden no-print">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+        <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10 text-center flex flex-col items-center">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

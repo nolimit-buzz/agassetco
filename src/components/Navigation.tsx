@@ -50,7 +50,7 @@ const Navigation: React.FC = () => {
     <>
       <nav 
         onMouseLeave={() => setIsCompanyHovered(false)}
-        className={`fixed top-0 left-0 w-full z-[999] px-6 transition-all duration-700 ease-in-out font-sans ${
+        className={`fixed top-0 left-0 w-full z-[999] md:px-6 transition-all duration-700 ease-in-out font-sans ${
           isLightMode 
             ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-gray-200/50 py-3' 
             : 'bg-transparent py-6 border-b border-white/5'
@@ -231,7 +231,7 @@ const Navigation: React.FC = () => {
                   <Link
                     href={link.path}
                     prefetch={true}
-                    className={`text-4xl font-bold tracking-tighter capitalize ${
+                    className={`text-xl font-bold tracking-tighter capitalize ${
                       pathname === link.path ? 'text-ag-lime' : 'text-white'
                     }`}
                     onClick={() => {

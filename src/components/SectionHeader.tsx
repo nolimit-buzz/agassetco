@@ -16,7 +16,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ number, category, title, 
       <div className={`w-full h-[1px] mb-8 ${dark ? 'bg-white/10' : 'bg-gray-100'}`} />
       
       {/* Meta Labels Row: Wide tracking, small font for premium feel */}
-      <div className="flex justify-between items-center text-xs font-bold uppercase tracking-[0.3em] opacity-80 mb-14">
+      <div className="flex justify-between items-center text-[12px] md:text-xs font-bold uppercase md:tracking-[0.3em] opacity-80 mb-14 ">
         <div className="flex items-center gap-4">
           <span className={dark ? 'text-ag-lime' : 'text-ag-green-950'}>{number}</span>
           <span className={`w-8 h-px ${dark ? 'bg-white/10' : 'bg-gray-100'}`}></span>

@@ -132,7 +132,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
     <div className="bg-white min-h-screen font-sans selection:bg-ag-lime selection:text-white">
 
       {/* 01. PRESENTATION HERO SECTION */}
-      <section className="pt-32 pb-24 bg-white overflow-hidden px-6">
+      <section className="pt-32 pb-24 bg-white overflow-hidden px-4 md:px-6">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -173,7 +173,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
               </motion.div>
             </div>
 
-            <div className="absolute bottom-6 left-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white bg-black/20 backdrop-blur-md px-4 py-2 rounded-full">
+            <div className="absolute bottom-2 md:bottom-6 left-6 flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase md:tracking-widest text-white bg-black/20 backdrop-blur-md md:px-4 px-10 py-2 rounded-full z-10">
               <Home className="w-2.5 h-2.5" />
               <span>Home</span>
               <ChevronRight className="w-2.5 h-2.5 opacity-50" />
@@ -217,7 +217,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="max-w-7xl mx-auto px-6"
+          className="max-w-7xl mx-auto px-4 md:px-6"
         >
           <SectionHeader number="02" category="Structure" title={structure?.title} />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -281,7 +281,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
 
       {/* 03. OPERATIONS */}
       <section className="py-24 bg-ag-green-950 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
             {/* Left: Animated Diagram */}
@@ -290,7 +290,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="relative h-[500px] md:h-[600px] w-full flex items-center justify-center order-2 lg:order-1"
+              className="relative h-[500px] md:h-[600px] w-full md:flex items-center justify-center order-2 lg:order-1 hidden"
             >
               <div className="absolute w-[350px] h-[350px] md:w-[450px] md:h-[450px] border border-white/5 rounded-full" />
               <div className="absolute w-[250px] h-[250px] md:w-[320px] md:h-[320px] border border-white/10 rounded-full" />
@@ -340,7 +340,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl order-1 lg:order-2"
+              className="bg-white md:rounded-[3rem]  rounded-2xl p-10 md:p-16 shadow-2xl order-1 lg:order-2"
             >
               <div className="text-xs font-bold text-ag-lime uppercase tracking-[0.3em] mb-6">03 OPERATIONS</div>
               <h2 className="text-4xl md:text-5xl font-bold text-ag-green-950 leading-[1.1] tracking-tight mb-8">
@@ -378,7 +378,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="max-w-7xl mx-auto px-6"
+          className="max-w-7xl mx-auto px-4 md:px-6"
         >
           <SectionHeader number="04" category="Principles" title={values?.section_title} />
 
@@ -481,7 +481,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="max-w-7xl mx-auto px-6"
+          className="max-w-7xl mx-auto px-4 md:px-6"
         >
           <SectionHeader number="05" category="Governance" title={governance?.title} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
@@ -510,7 +510,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="max-w-7xl mx-auto px-6 relative z-10"
+          className="max-w-7xl mx-auto px-4 md:px-6 relative z-10"
         >
           <motion.div variants={fadeInUp} className="w-full border-b border-white/10 pb-16 mb-24">
             <div className="text-center mb-12">
@@ -525,7 +525,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end">
             <motion.div variants={fadeInUp}>
-              <h2 className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10">
+              <h2 className="text-5xl md:text-8xl leading-[1.05] font-bold text-white tracking-tighter mb-10 ">
                 {limeLastWord(cta?.heading)}
               </h2>
               <p className="text-lg md:text-2xl text-gray-400 font-light leading-relaxed max-w-md mb-8">
@@ -535,7 +535,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
 
             <motion.div
               variants={fadeInUp}
-              className="bg-white rounded-[3rem] p-10 md:p-14 shadow-2xl relative overflow-hidden"
+              className="bg-white rounded-2xl md:md:rounded-[3rem]  rounded-2xl p-10 md:p-14 shadow-2xl relative overflow-hidden"
             >
               <div className="mb-10">
                 <h3 className="text-3xl md:text-4xl font-medium text-ag-green-950 leading-tight mb-2">
@@ -545,21 +545,21 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ hero, structure, operations, 
 
               <div className="space-y-4">
                 <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-ag-green-950 text-white p-1 pr-1 rounded-full hover:bg-ag-lime transition-all duration-500 shadow-xl shadow-ag-green-950/20">
-                  <div className="flex items-center gap-4 pl-8">
+                  <div className="flex items-center gap-4 pl-2 md:pl-8">
                     <FileCheck className="w-5 h-5 text-ag-lime group-hover:text-white transition-colors" />
-                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{cta?.corporate_profile_label} (PDF)</span>
+                    <span className="font-bold text-[10px] md:text-xs line-clamp-1 md:tracking-[0.2em] uppercase">{cta?.corporate_profile_label} (PDF)</span>
                   </div>
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
-                    <Download className="w-5 h-5" />
+                  <div className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
+                    <Download className="md:w-5 md:h-5 w-4 h-4" />
                   </div>
                 </motion.button>
 
                 <motion.button whileHover={{ scale: 1.01 }} className="group flex items-center justify-between w-full bg-gray-50 border border-gray-100 text-ag-green-950 p-1 pr-1 rounded-full hover:bg-ag-green-950 hover:text-white transition-all duration-500">
-                  <div className="flex items-center gap-4 pl-8">
+                  <div className="flex items-center gap-4 pl-2 md:pl-8">
                     <TrendingUp className="w-5 h-5 text-ag-lime" />
-                    <span className="font-bold text-xs tracking-[0.2em] uppercase">{cta?.impact_report_label}</span>
+                    <span className="font-bold text-[10px] md:text-xs line-clamp-1 md:tracking-[0.2em] uppercase">{cta?.impact_report_label}</span>
                   </div>
-                  <div className="w-14 h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
+                  <div className="w-10 h-10 md:w-14 md:h-14 bg-white border border-gray-100 rounded-full flex items-center justify-center text-ag-green-950 transition-transform group-hover:rotate-45">
                     <Download className="w-5 h-5" />
                   </div>
                 </motion.button>
