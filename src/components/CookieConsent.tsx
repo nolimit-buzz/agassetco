@@ -72,13 +72,13 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onNavigate }) => {
               <div className="flex flex-row items-center gap-4 shrink-0 relative z-10 w-full md:w-auto">
                 <button
                   onClick={handleDecline}
-                  className="flex-1 md:flex-none px-6 py-3 rounded-full border border-white/20 text-white text-base font-bold uppercase tracking-widest hover:bg-white/5 transition-colors"
+                  className="flex-1 md:flex-none px-6 py-3 rounded-full border border-white/20 text-white text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-colors"
                 >
                   Decline
                 </button>
                 <button
                   onClick={handleAccept}
-                  className="flex-1 md:flex-none px-8 py-3 rounded-full bg-ag-lime text-ag-green-950 text-base font-bold uppercase tracking-widest hover:bg-white transition-colors shadow-lg shadow-ag-lime/20"
+                  className="flex-1 md:flex-none px-8 py-3 rounded-full bg-ag-lime text-ag-green-950 text-sm font-bold uppercase tracking-widest hover:bg-white transition-colors shadow-lg shadow-ag-lime/20"
                 >
                   Accept All
                 </button>

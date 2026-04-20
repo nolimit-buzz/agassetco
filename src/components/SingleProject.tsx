@@ -309,17 +309,22 @@ const SingleProject: React.FC<SingleProjectProps> = ({ projectId, onNavigate }) 
       
       {/* 1. HERO SECTION */}
       <section className="relative h-[85vh] w-full overflow-hidden bg-ag-green-950 flex flex-col justify-end">
-        <div className="absolute inset-0 z-0">
-          <motion.img 
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5 }}
-            src={project.heroImage} 
-            className="w-full h-full object-cover" 
-            alt={project.title} 
+        <motion.div
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src={project.heroImage}
+            alt={project.title}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ag-green-950 via-ag-green-950/40 to-transparent" />
-        </div>
+        </motion.div>
 
         {/* BREADCRUMBS & BACK */}
         <div className="absolute top-32 left-0 w-full z-30 px-6 no-print">
@@ -821,7 +826,7 @@ const SpecBox: React.FC<{ spec: any; isActive: boolean; onClick: () => void }> =
             <p className={`text-[13px] font-bold uppercase tracking-[0.2em] mb-1 ${isActive ? 'text-white/40' : 'text-gray-400'}`}>
                 {spec.label}
             </p>
-            <h4 className="text-base font-bold tracking-tight leading-tight">{spec.val}</h4>
+            <h4 className="text-sm font-bold tracking-tight leading-tight">{spec.val}</h4>
         </div>
     </motion.button>
 );

@@ -250,7 +250,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
               >
                 {heroDescription}
               </motion.p>
-              <motion.div variants={fadeInUp as any} className="flex items-center gap-4 text-base font-bold text-ag-green-950/40 uppercase tracking-widest">
+              <motion.div variants={fadeInUp as any} className="flex items-center gap-4 text-sm font-bold text-ag-green-950/40 uppercase tracking-widest">
                 <span>Infrastructure</span>
                 <span className="w-1 h-1 bg-ag-lime rounded-full"></span>
                 <span>Operations</span>
@@ -296,7 +296,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
                     key={section.id}
                     href={`#${section.id}`}
                     onClick={(e) => scrollToSection(e, section.id)}
-                    className={`text-base font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-8 pl-1.5 py-6 relative group ${isActive ? 'text-ag-green-950' : 'text-gray-300 hover:text-ag-green-950/70'
+                    className={`text-sm font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-8 pl-1.5 py-6 relative group ${isActive ? 'text-ag-green-950' : 'text-gray-300 hover:text-ag-green-950/70'
                       }`}
                   >
                     <div className={`absolute left-0 w-[7px] h-[7px] rounded-full z-10 transition-all duration-500 ${isActive ? 'bg-ag-lime scale-100' : 'bg-transparent scale-0'
@@ -398,7 +398,7 @@ const TeamPage: React.FC<TeamPageProps> = ({ onNavigate, initialData }) => {
             onClick={() => onNavigate?.('contact')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group flex items-center gap-8 bg-white text-ag-green-950 px-10 py-6 rounded-full font-bold uppercase tracking-widest text-base hover:shadow-2xl transition-all duration-500"
+            className="group flex items-center gap-8 bg-white text-ag-green-950 px-10 py-6 rounded-full font-bold uppercase tracking-widest text-sm hover:shadow-2xl transition-all duration-500"
           >
             View Open Roles
             <div className="w-8 h-8 bg-ag-green-950 rounded-full flex items-center justify-center text-white transition-all">

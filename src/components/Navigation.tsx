@@ -90,7 +90,7 @@ const Navigation: React.FC = () => {
                           setMobileMenuOpen(false);
                           setIsCompanyHovered(false);
                         }}
-                        className={`text-sm font-semibold relative group transition-all duration-300 flex items-center gap-1 ${
+                        className={`text-base font-semibold relative group transition-all duration-300 flex items-center gap-1 ${
                           isActiveRoute(pathname, link.path)
                             ? 'text-ag-lime' 
                             : (isLightMode ? 'text-ag-green-950 hover:text-ag-lime' : 'text-white/80 hover:text-white')
@@ -113,7 +113,7 @@ const Navigation: React.FC = () => {
               <Link
                 href="/contact"
                 prefetch={true}
-                className={`px-6 py-2.5 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg transition-all duration-500 hover:scale-105 active:scale-95 ${
+                className={`px-6 py-2.5 rounded-full text-base font-bold tracking-widest uppercase shadow-lg transition-all duration-500 hover:scale-105 active:scale-95 ${
                   isLightMode
                     ? 'bg-ag-green-950 text-white hover:bg-ag-lime'
                     : 'bg-white text-ag-green-950 hover:bg-ag-lime hover:text-ag-green-950'
@@ -192,14 +192,14 @@ const Navigation: React.FC = () => {
 
                     <div className="mt-8 pt-8 border-t border-gray-100 flex items-center justify-between">
                        <div className="flex items-center gap-6">
-                          <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">Global Reach:</span>
+                          <span className="text-base font-bold text-gray-400 uppercase tracking-widest">Global Reach:</span>
                           <div className="flex gap-4">
                             {['Lagos', 'Nairobi', 'London'].map(city => (
                               <span key={city} className="text-base font-bold text-ag-green-950">{city}</span>
                             ))}
                           </div>
                        </div>
-                       <p className="text-sm font-bold text-ag-lime uppercase tracking-[0.2em]">Energy for Growth</p>
+                       <p className="text-base font-bold text-ag-lime uppercase tracking-[0.2em]">Energy for Growth</p>
                     </div>
                   </div>
                 </div>

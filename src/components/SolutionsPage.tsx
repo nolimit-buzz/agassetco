@@ -168,7 +168,7 @@ const SolutionsPage: React.FC<SolutionsPageProps> = ({ initialData }) => {
             <div className="lg:col-span-5 pt-2">
               <motion.p
                 variants={fadeInUp}
-                className="text-sm md:text-base text-gray-500 font-light leading-relaxed max-w-md mb-8"
+                className="text-sm text-gray-500 font-light leading-relaxed max-w-md mb-8"
               >
                 {data.hero_description}
               </motion.p>

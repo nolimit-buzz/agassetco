@@ -23,10 +23,10 @@ const Footer: React.FC = () => {
                 className="h-10 md:h-16 w-auto"
               />
             </Link>
-            <p className="text-base md:text-2xl text-gray-400 leading-relaxed mb-6 font-medium">
+            <p className="text-sm md:text-2xl text-gray-400 leading-relaxed mb-6 font-medium">
               A wholly owned subsidiary of <strong className="text-ag-green-950">Agronomie</strong>.
             </p>
-            <div className="text-base font-bold uppercase tracking-widest text-gray-300">
+            <div className="text-sm font-bold uppercase tracking-widest text-gray-300">
                Lagos • Nairobi
             </div>
           </div>
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
             {/* Links 1 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Company</h4>
-            <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
+            <ul className="space-y-4 text-sm font-medium">
               {[
                 { name: 'About Us', href: '/about' },
                 { name: 'Portfolio', href: '/portfolio' },
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
           {/* Links 2 */}
           <div>
             <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Solutions</h4>
-            <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
+            <ul className="space-y-4 text-sm font-medium">
               {['Lease-to-Own', 'PUE Financing', 'Asset Management', 'Developer Portal'].map(item => (
                 <li key={item}>
                   <a href="#" className="hover:text-ag-lime transition-colors">
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
           {/* Links 3 */}
           {/* <div>
              <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-gray-400">Connect</h4>
-             <ul className="space-y-4 text-base md:text-[0.875rem] font-medium">
+             <ul className="space-y-4 text-sm font-medium">
                {[
                  { name: 'LinkedIn', href: 'https://www.linkedin.com' },
                  { name: 'Twitter / X', href: 'https://twitter.com' },

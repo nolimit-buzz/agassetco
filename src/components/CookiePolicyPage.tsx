@@ -168,7 +168,7 @@ const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ initialData }) => {
                     key={section.section_id}
                     href={`#${section.section_id}`}
                     onClick={(e) => scrollToSection(e, section.section_id)}
-                    className={`text-base font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-8 pl-1.5 py-6 relative group ${
+                    className={`text-sm font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-8 pl-1.5 py-6 relative group ${
                       isActive ? 'text-ag-green-950' : 'text-gray-300 hover:text-ag-green-950/70'
                     }`}
                   >
@@ -200,7 +200,7 @@ const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ initialData }) => {
                   {cmsData.support_card_title}
                 </p>
                 {cmsData.support_card_description && (
-                  <p className="text-base text-gray-500 font-light leading-relaxed mb-10">
+                  <p className="text-sm text-gray-500 font-light leading-relaxed mb-10">
                     {cmsData.support_card_description}
                   </p>
                 )}
