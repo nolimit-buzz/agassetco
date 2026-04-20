@@ -63,7 +63,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onNavigate }) => {
                 </div>
                 <p className="text-white/80 text-lg md:text-2xl font-light leading-relaxed max-w-2xl">
                   We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. Read our{' '}
-                  <a href="#" onClick={handlePolicyClick} className="text-white font-medium underline underline-offset-4 hover:text-ag-lime transition-colors">
+                  <a href="/cookie-policy" onClick={handlePolicyClick} className="text-white font-medium underline underline-offset-4 hover:text-ag-lime transition-colors">
                     Cookie Policy
                   </a>.
                 </p>
